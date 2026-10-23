@@ -2,8 +2,13 @@ import argparse, hashlib, json, pathlib, sys
 from .checks import run
 from .aggregate import aggregate
 def main(argv=None):
-    ap = argparse.ArgumentParser(prog="cultural_typographic_ai_evaluation"); ap.add_argument("cmd", choices=["report","slice","collection","baseline"]); ap.add_argument("--specs")
+    ap = argparse.ArgumentParser(prog="cultural_typographic_ai_evaluation"); ap.add_argument("cmd", choices=["report","slice","collection","baseline","failure"]); ap.add_argument("--specs")
     ap.add_argument("fixture", nargs="?", default="."); ap.add_argument("--out", required=True); a = ap.parse_args(argv)
+    if a.cmd == "failure":
+        from .failure import run as frun
+        rep = frun(); o = pathlib.Path(a.out); o.mkdir(parents=True, exist_ok=True)
+        (o / "failure.json").write_text(json.dumps(rep, indent=1, sort_keys=True, ensure_ascii=False) + "\n")
+        print(json.dumps({"passed": f'{rep["passed"]}/{rep["n"]}'})); return 0 if rep["passed"] == rep["n"] else 1
     if a.cmd in ("collection", "baseline"):
         from .collection import build, corruption_suite
         man, specs = build(a.fixture); o = pathlib.Path(a.out); o.mkdir(parents=True, exist_ok=True)

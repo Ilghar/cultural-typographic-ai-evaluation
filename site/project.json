@@ -27,6 +27,13 @@
    "denominator": 4,
    "kind": "measured",
    "caveat": "template SVG, not model outputs"
+  },
+  {
+   "metric": "adversarial check/aggregation suite",
+   "value": "28/28 after M07 fixes (11/28 before)",
+   "denominator": 28,
+   "kind": "measured robustness",
+   "caveat": "suite written by check author"
   }
  ],
  "assets": [],
@@ -34,6 +41,7 @@
  "limitations": [
   "No generative model outputs evaluated.",
   "No human annotations; aesthetic axes unmeasured.",
-  "C03/C04 are human-review-only; text checks cannot see font shaping."
+  "C03/C04 are human-review-only; text checks cannot see font shaping.",
+  "Illustration (assets/ASSETS.json) is AI-generated, illustration only, stored on Drive not git; the native diagram is authoritative."
  ]
 }

@@ -1,0 +1,186 @@
+{
+ "n": 28,
+ "passed": 11,
+ "rows": [
+  {
+   "name": "glyph_clean",
+   "expected": "pass",
+   "got": "pass",
+   "exception": null,
+   "pass": true
+  },
+  {
+   "name": "glyph_arabic_yeh",
+   "expected": "fail",
+   "got": "fail",
+   "exception": null,
+   "pass": true
+  },
+  {
+   "name": "glyph_nfd_vs_nfc",
+   "expected": "fail",
+   "got": "fail",
+   "exception": null,
+   "pass": true
+  },
+  {
+   "name": "glyph_injected_rlm",
+   "expected": "fail",
+   "got": "fail",
+   "exception": null,
+   "pass": true
+  },
+  {
+   "name": "glyph_observed_int",
+   "expected": "fail",
+   "got": null,
+   "exception": "AttributeError: 'int' object has no attribute 'count'",
+   "pass": false
+  },
+  {
+   "name": "glyph_observed_list",
+   "expected": "fail",
+   "got": null,
+   "exception": "TypeError: ord() expected a character, but string of length 22 found",
+   "pass": false
+  },
+  {
+   "name": "order_clean",
+   "expected": "pass",
+   "got": "pass",
+   "exception": null,
+   "pass": true
+  },
+  {
+   "name": "order_tuple_vs_list",
+   "expected": "fail",
+   "got": "fail",
+   "exception": null,
+   "pass": true
+  },
+  {
+   "name": "fields_clean",
+   "expected": "pass",
+   "got": "pass",
+   "exception": null,
+   "pass": true
+  },
+  {
+   "name": "fields_zwsp_only",
+   "expected": "fail",
+   "got": "pass",
+   "exception": null,
+   "pass": false
+  },
+  {
+   "name": "fields_bidi_only",
+   "expected": "fail",
+   "got": "pass",
+   "exception": null,
+   "pass": false
+  },
+  {
+   "name": "fields_not_dict",
+   "expected": "fail",
+   "got": null,
+   "exception": "AttributeError: 'str' object has no attribute 'get'",
+   "pass": false
+  },
+  {
+   "name": "fields_none_value",
+   "expected": "fail",
+   "got": "pass",
+   "exception": null,
+   "pass": false
+  },
+  {
+   "name": "diagram_clean",
+   "expected": "pass",
+   "got": "pass",
+   "exception": null,
+   "pass": true
+  },
+  {
+   "name": "diagram_pct_ascii",
+   "expected": "fail",
+   "got": "fail",
+   "exception": null,
+   "pass": true
+  },
+  {
+   "name": "diagram_pct_persian",
+   "expected": "fail",
+   "got": "pass",
+   "exception": null,
+   "pass": false
+  },
+  {
+   "name": "diagram_pct_word",
+   "expected": "fail",
+   "got": "pass",
+   "exception": null,
+   "pass": false
+  },
+  {
+   "name": "diagram_swapped",
+   "expected": "fail",
+   "got": "fail",
+   "exception": null,
+   "pass": true
+  },
+  {
+   "name": "diagram_duplicate_stage",
+   "expected": "fail",
+   "got": "fail",
+   "exception": null,
+   "pass": true
+  },
+  {
+   "name": "diagram_not_string",
+   "expected": "fail",
+   "got": null,
+   "exception": "TypeError: expected string or bytes-like object, got 'NoneType'",
+   "pass": false
+  },
+  {
+   "name": "agg_bool_rating_rejected",
+   "exception": null,
+   "pass": false
+  },
+  {
+   "name": "agg_identity_field_case_variant",
+   "exception": null,
+   "pass": false
+  },
+  {
+   "name": "agg_missing_results_no_crash",
+   "exception": "KeyError: 'constraint_results'",
+   "pass": false
+  },
+  {
+   "name": "agg_results_not_list",
+   "exception": "AttributeError: 'str' object has no attribute 'get'",
+   "pass": false
+  },
+  {
+   "name": "agg_duplicate_rater_rejected",
+   "exception": null,
+   "pass": false
+  },
+  {
+   "name": "agg_pass_vs_uncertain_flagged",
+   "exception": "KeyError: 'needs_adjudication'",
+   "pass": false
+  },
+  {
+   "name": "agg_pass_vs_fail_flagged",
+   "exception": "KeyError: 'needs_adjudication'",
+   "pass": false
+  },
+  {
+   "name": "agg_agreement_not_flagged",
+   "exception": "KeyError: 'needs_adjudication'",
+   "pass": false
+  }
+ ]
+}

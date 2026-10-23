@@ -1,0 +1,186 @@
+{
+ "n": 28,
+ "passed": 28,
+ "rows": [
+  {
+   "exception": null,
+   "expected": "pass",
+   "got": "pass",
+   "name": "glyph_clean",
+   "pass": true
+  },
+  {
+   "exception": null,
+   "expected": "fail",
+   "got": "fail",
+   "name": "glyph_arabic_yeh",
+   "pass": true
+  },
+  {
+   "exception": null,
+   "expected": "fail",
+   "got": "fail",
+   "name": "glyph_nfd_vs_nfc",
+   "pass": true
+  },
+  {
+   "exception": null,
+   "expected": "fail",
+   "got": "fail",
+   "name": "glyph_injected_rlm",
+   "pass": true
+  },
+  {
+   "exception": null,
+   "expected": "fail",
+   "got": "fail",
+   "name": "glyph_observed_int",
+   "pass": true
+  },
+  {
+   "exception": null,
+   "expected": "fail",
+   "got": "fail",
+   "name": "glyph_observed_list",
+   "pass": true
+  },
+  {
+   "exception": null,
+   "expected": "pass",
+   "got": "pass",
+   "name": "order_clean",
+   "pass": true
+  },
+  {
+   "exception": null,
+   "expected": "fail",
+   "got": "fail",
+   "name": "order_tuple_vs_list",
+   "pass": true
+  },
+  {
+   "exception": null,
+   "expected": "pass",
+   "got": "pass",
+   "name": "fields_clean",
+   "pass": true
+  },
+  {
+   "exception": null,
+   "expected": "fail",
+   "got": "fail",
+   "name": "fields_zwsp_only",
+   "pass": true
+  },
+  {
+   "exception": null,
+   "expected": "fail",
+   "got": "fail",
+   "name": "fields_bidi_only",
+   "pass": true
+  },
+  {
+   "exception": null,
+   "expected": "fail",
+   "got": "fail",
+   "name": "fields_not_dict",
+   "pass": true
+  },
+  {
+   "exception": null,
+   "expected": "fail",
+   "got": "fail",
+   "name": "fields_none_value",
+   "pass": true
+  },
+  {
+   "exception": null,
+   "expected": "pass",
+   "got": "pass",
+   "name": "diagram_clean",
+   "pass": true
+  },
+  {
+   "exception": null,
+   "expected": "fail",
+   "got": "fail",
+   "name": "diagram_pct_ascii",
+   "pass": true
+  },
+  {
+   "exception": null,
+   "expected": "fail",
+   "got": "fail",
+   "name": "diagram_pct_persian",
+   "pass": true
+  },
+  {
+   "exception": null,
+   "expected": "fail",
+   "got": "fail",
+   "name": "diagram_pct_word",
+   "pass": true
+  },
+  {
+   "exception": null,
+   "expected": "fail",
+   "got": "fail",
+   "name": "diagram_swapped",
+   "pass": true
+  },
+  {
+   "exception": null,
+   "expected": "fail",
+   "got": "fail",
+   "name": "diagram_duplicate_stage",
+   "pass": true
+  },
+  {
+   "exception": null,
+   "expected": "fail",
+   "got": "fail",
+   "name": "diagram_not_string",
+   "pass": true
+  },
+  {
+   "exception": null,
+   "name": "agg_bool_rating_rejected",
+   "pass": true
+  },
+  {
+   "exception": null,
+   "name": "agg_identity_field_case_variant",
+   "pass": true
+  },
+  {
+   "exception": null,
+   "name": "agg_missing_results_no_crash",
+   "pass": true
+  },
+  {
+   "exception": null,
+   "name": "agg_results_not_list",
+   "pass": true
+  },
+  {
+   "exception": null,
+   "name": "agg_duplicate_rater_rejected",
+   "pass": true
+  },
+  {
+   "exception": null,
+   "name": "agg_pass_vs_uncertain_flagged",
+   "pass": true
+  },
+  {
+   "exception": null,
+   "name": "agg_pass_vs_fail_flagged",
+   "pass": true
+  },
+  {
+   "exception": null,
+   "name": "agg_agreement_not_flagged",
+   "pass": true
+  }
+ ]
+}

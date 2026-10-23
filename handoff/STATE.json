@@ -1,12 +1,12 @@
 {
   "schema_version": 1,
   "project_id": "02",
-  "stage": "bot_m06_accepted",
+  "stage": "bot_m07_accepted",
   "owner": "Grok Bot (coordinator)",
   "repository": {
     "url": "https://github.com/Ilghar/cultural-typographic-ai-evaluation",
     "branch": "main",
-    "commit": "M02 da629e97ea7d6bf9957ec1bd45054bb0f1eba5d4; M03 7370f06ba950dc746a4f9106655f20a1108fea73; M04 4e8f8e4ace136600ddedf491e5815d97aa369ec2; latest in Drive MANIFEST_M05_M06.json",
+    "commit": "M02 da629e97ea7d6bf9957ec1bd45054bb0f1eba5d4; M03 7370f06ba950dc746a4f9106655f20a1108fea73; M04 4e8f8e4ace136600ddedf491e5815d97aa369ec2; M05/M06 219be1789cc293ba7c985dfaed6f643fb9aaae09; latest in Drive MANIFEST_M07.json",
     "visibility": "private"
   },
   "drive_folder_url": "https://drive.google.com/drive/folders/1RQlqxKACA7kJJ8zDX76gC6Jyt3_viDKj",
@@ -87,8 +87,15 @@
     },
     {
       "id": "M07",
-      "status": "not_started",
-      "evidence": []
+      "status": "accepted",
+      "evidence": [
+        "docs/FAILURE_ANALYSIS.md",
+        "src/cultural_typographic_ai_evaluation/failure.py",
+        "tests/test_m07.py",
+        "tests/receipts/m07_failure.json",
+        "tests/receipts/m07_prefix_run.json",
+        "tests/receipts/m07_run.json"
+      ]
     },
     {
       "id": "M08",
@@ -110,7 +117,7 @@
     {
       "command": "PYTHONPATH=src python3 -m unittest discover -s tests -v",
       "scope": "behavioural, synthetic/mock fixtures",
-      "receipt": "tests/receipts/m05_m06_run.json"
+      "receipt": "tests/receipts/m07_run.json"
     },
     {
       "command": "python3 common/validate_state.py handoff/STATE.json --root .",
@@ -118,17 +125,17 @@
     }
   ],
   "next_actions": [
-    "M07 failure analysis/adversarial cases",
-    "Blind case set by Ilghar/Expert",
-    "Independent review M01-M06"
+    "Native/expert annotation of C01-C06",
+    "Independent review of M01-M07",
+    "M08 packaging/CI"
   ],
   "budget": {
     "observed_remaining": "week1 3% used at 11:09 Berlin (user reading)",
     "pool_relationship": "unknown",
     "paid_spend_allowed": false
   },
-  "completion_fraction": 0.6,
-  "notes": "M01-M06 accepted by Bot review only (not independent). Representation draft (site/index.html, CASE_PAGE.md, architecture.svg) exists but M09 not claimed. No image generated.",
+  "completion_fraction": 0.7,
+  "notes": "M01-M07 accepted by Bot review only (not independent). Illustration generated (assets/ASSETS.json), binary on Drive only.",
   "lease": {
     "status": "active",
     "released_at": null,
