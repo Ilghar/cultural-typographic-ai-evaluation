@@ -1,0 +1,32 @@
+{
+ "utc_time": "2026-10-23T08:55:15+00:00",
+ "python": "3.13.5",
+ "environment": "fresh copy, stdlib only, no network",
+ "base_commit": "7370f06ba950dc746a4f9106655f20a1108fea73",
+ "fixture_sha256": {
+  "inputs/synthetic_cases.json": "35a10873fef77ec2a909e4b364ac42c76dcb48602956f93fc72d022d078ab2f5",
+  "fixtures/card_specs_m04.json": "aa61d13ebc1c43dde937e63f18ffec718ead67c9a23aac9a3f5c0e21f1f562c6"
+ },
+ "runs": [
+  {
+   "name": "unittest",
+   "command": "PYTHONPATH=src python3 -m unittest discover -s tests -v",
+   "exit_code": 0,
+   "stdout": "",
+   "stderr": "test_identity_fields_and_range_rejected_minority_kept (test_checks.Aggregation.test_identity_fields_and_range_rejected_minority_kept) ... ok\ntest_report (test_checks.CLI.test_report) ... ok\ntest_arabic_yeh_detected_and_exact_passes (test_checks.Glyph.test_arabic_yeh_detected_and_exact_passes) ... ok\ntest_zwnj_and_arabic_kaf_detected (test_checks.Glyph.test_zwnj_and_arabic_kaf_detected) ... ok\ntest_end_to_end_on_cleared_cases (test_slice.Slice.test_end_to_end_on_cleared_cases) ... ok\ntest_missing_field_and_wrong_order_fail (test_slice.Slice.test_missing_field_and_wrong_order_fail) ... ok\ntest_render_escapes_and_roundtrips_exact_unicode (test_slice.Slice.test_render_escapes_and_roundtrips_exact_unicode) ... ok\n\n----------------------------------------------------------------------\nRan 7 tests in 0.077s\n\nOK\n"
+  },
+  {
+   "name": "slice",
+   "command": "PYTHONPATH=src python3 -m cultural_typographic_ai_evaluation slice inputs/synthetic_cases.json --specs fixtures/card_specs_m04.json --out out/m04",
+   "exit_code": 0,
+   "stdout": "{\"C01\": [\"pass\", \"pass\", \"pass\"], \"C02\": [\"pass\", \"pass\", \"pass\"], \"C03\": [], \"C04\": [], \"C05\": [], \"C06\": []}\n",
+   "stderr": ""
+  },
+  {
+   "name": "validate_state",
+   "command": "python3 common/validate_state.py handoff/STATE.json --root .",
+   "note": "run in working tree after STATE update (fresh copy excluded receipts, so its earlier pre-run failed on missing evidence paths)",
+   "output": "{\"valid\": true, \"errors\": [], \"scope\": \"bookkeeping only, not semantic or production readiness\"}\nexit=0"
+  }
+ ]
+}

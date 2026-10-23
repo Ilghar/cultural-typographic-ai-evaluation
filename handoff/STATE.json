@@ -1,12 +1,12 @@
 {
   "schema_version": 1,
   "project_id": "02",
-  "stage": "bot_m03_accepted",
+  "stage": "bot_m04_accepted",
   "owner": "Grok Bot (coordinator)",
   "repository": {
     "url": "https://github.com/Ilghar/cultural-typographic-ai-evaluation",
     "branch": "main",
-    "commit": "M02 base da629e97ea7d6bf9957ec1bd45054bb0f1eba5d4; M03 SHA recorded in Drive outputs/current/MANIFEST_M03.json",
+    "commit": "M02 da629e97ea7d6bf9957ec1bd45054bb0f1eba5d4; M03 7370f06ba950dc746a4f9106655f20a1108fea73; M04 in Drive MANIFEST_M04.json",
     "visibility": "private"
   },
   "drive_folder_url": "https://drive.google.com/drive/folders/1RQlqxKACA7kJJ8zDX76gC6Jyt3_viDKj",
@@ -25,11 +25,12 @@
       "status": "accepted",
       "evidence": [
         "docs/ARCHITECTURE.md",
+        "docs/REVIEW_M01_M03.md",
         "docs/adr/0001-scope-and-boundaries.md",
         "docs/architecture.mmd",
-        "tools/check_m02.py",
         "schemas/annotation.schema.json",
-        "schemas/case.schema.json"
+        "schemas/case.schema.json",
+        "tools/check_m02.py"
       ]
     },
     {
@@ -50,8 +51,16 @@
     },
     {
       "id": "M04",
-      "status": "not_started",
-      "evidence": []
+      "status": "accepted",
+      "evidence": [
+        "src/cultural_typographic_ai_evaluation/slice.py",
+        "tests/test_slice.py",
+        "inputs/synthetic_cases.json",
+        "fixtures/card_specs_m04.json",
+        "tests/receipts/m04_run.json",
+        "tests/receipts/m04_report.json",
+        "docs/REVIEW_M01_M03.md"
+      ]
     },
     {
       "id": "M05",
@@ -88,7 +97,7 @@
     {
       "command": "PYTHONPATH=src python3 -m unittest discover -s tests -v",
       "scope": "behavioural, synthetic/mock fixtures",
-      "receipt": "tests/receipts/m03_run.json"
+      "receipt": "tests/receipts/m04_run.json"
     },
     {
       "command": "python3 common/validate_state.py handoff/STATE.json --root .",
@@ -96,17 +105,17 @@
     }
   ],
   "next_actions": [
-    "M04 per common/MILESTONES.json (week-2 budget)",
-    "Independent review of M01-M03",
-    "Native/expert review of fixtures before any gold labels"
+    "Human/independent review of M01-M04",
+    "M05 per common/MILESTONES.json",
+    "Address review gaps in docs/REVIEW_M01_M03.md"
   ],
   "budget": {
-    "observed_remaining": "week1 ~99/100 pts at 10:42 Berlin (user reading)",
+    "observed_remaining": "week1 2% used at 10:51 Berlin (user reading)",
     "pool_relationship": "unknown",
     "paid_spend_allowed": false
   },
-  "completion_fraction": 0.3,
-  "notes": "M01-M03 accepted by Bot self-review; all results are on synthetic/mock data; no model, audio or real-rater results exist.",
+  "completion_fraction": 0.4,
+  "notes": "M01-M04 accepted by Bot (second-pass review, not independent human). M04 slice: Cleared C01-C06 -> C01/C02 deterministic RTL SVG cards (template, not AI) -> text extraction -> glyph/order/field checks + corrupted negative control -> blank annotation templates for all six. C03-C06 human-review only.",
   "lease": {
     "status": "active",
     "released_at": null,

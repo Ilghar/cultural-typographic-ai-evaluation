@@ -32,3 +32,7 @@ Only original synthetic text now. Any image/media: requires source, license, con
 
 ## Review
 Bot self-review 2026-10-23 against M02 + TEST_PLAN; independent review pending.
+
+## Implementation status (after M04)
+Built: `checks.py`, `aggregate.py`, `slice.py` (M04 template SVG renderer + extraction), `cli.py`. Planned not built: `schema.py`, `report.py` (Markdown), `viewer/`.
+Schemas are documentation + test references; they are not machine-enforced (stdlib, no jsonschema).

@@ -1,0 +1,256 @@
+{
+ "cases": {
+  "C01": {
+   "annotation_template": {
+    "aesthetic_ratings": [
+     {
+      "axis": "Typographic hierarchy",
+      "confidence": null,
+      "rating": null,
+      "rationale": null
+     }
+    ],
+    "artifact_id": null,
+    "case_id": "C01",
+    "constraint_results": [
+     {
+      "constraint_id": "objective",
+      "evidence": null,
+      "instructions": "Compare original Unicode text to displayed/exported native text.",
+      "source_citation": null,
+      "verdict": null
+     }
+    ],
+    "notes": "Fill independently. Do not record nationality/ethnicity; cite sources for cultural claims.",
+    "rater_id": null
+   },
+   "automated_checks": [
+    {
+     "constraint_id": "title",
+     "evidence": "exact codepoint match",
+     "type": "glyph_exact",
+     "verdict": "pass"
+    },
+    {
+     "constraint_id": "order",
+     "evidence": "expected ['rtl:title', 'ltr:date', 'rtl:venue'] observed ['rtl:title', 'ltr:date', 'rtl:venue']",
+     "type": "reading_order",
+     "verdict": "pass"
+    },
+    {
+     "constraint_id": "fields",
+     "evidence": "all present",
+     "type": "required_fields",
+     "verdict": "pass"
+    }
+   ],
+   "brief": "Keep the exact Persian title on an exhibition card.",
+   "gold_verdict": null,
+   "negative_control_checks": [
+    {
+     "constraint_id": "title",
+     "evidence": "ZWNJ count 1 expected, 0 observed; Arabic ARABIC LETTER KAF used where Persian ARABIC LETTER KEHEH expected",
+     "type": "glyph_exact",
+     "verdict": "fail"
+    },
+    {
+     "constraint_id": "order",
+     "evidence": "expected ['rtl:title', 'ltr:date', 'rtl:venue'] observed ['rtl:title', 'ltr:date', 'rtl:venue']",
+     "type": "reading_order",
+     "verdict": "pass"
+    },
+    {
+     "constraint_id": "fields",
+     "evidence": "all present",
+     "type": "required_fields",
+     "verdict": "pass"
+    }
+   ]
+  },
+  "C02": {
+   "annotation_template": {
+    "aesthetic_ratings": [
+     {
+      "axis": "Visual balance",
+      "confidence": null,
+      "rating": null,
+      "rationale": null
+     }
+    ],
+    "artifact_id": null,
+    "case_id": "C02",
+    "constraint_results": [
+     {
+      "constraint_id": "objective",
+      "evidence": null,
+      "instructions": "Check presence and order of required fields.",
+      "source_citation": null,
+      "verdict": null
+     }
+    ],
+    "notes": "Fill independently. Do not record nationality/ethnicity; cite sources for cultural claims.",
+    "rater_id": null
+   },
+   "automated_checks": [
+    {
+     "constraint_id": "title",
+     "evidence": "exact codepoint match",
+     "type": "glyph_exact",
+     "verdict": "pass"
+    },
+    {
+     "constraint_id": "order",
+     "evidence": "expected ['rtl:title', 'ltr:date', 'rtl:venue'] observed ['rtl:title', 'ltr:date', 'rtl:venue']",
+     "type": "reading_order",
+     "verdict": "pass"
+    },
+    {
+     "constraint_id": "fields",
+     "evidence": "all present",
+     "type": "required_fields",
+     "verdict": "pass"
+    }
+   ],
+   "brief": "Place all required event details on a mobile layout.",
+   "gold_verdict": null,
+   "negative_control_checks": [
+    {
+     "constraint_id": "title",
+     "evidence": "exact codepoint match",
+     "type": "glyph_exact",
+     "verdict": "pass"
+    },
+    {
+     "constraint_id": "order",
+     "evidence": "expected ['rtl:title', 'ltr:date', 'rtl:venue'] observed ['rtl:title', 'ltr:date', 'rtl:venue']",
+     "type": "reading_order",
+     "verdict": "pass"
+    },
+    {
+     "constraint_id": "fields",
+     "evidence": "all present",
+     "type": "required_fields",
+     "verdict": "pass"
+    }
+   ]
+  },
+  "C03": {
+   "annotation_template": {
+    "aesthetic_ratings": [
+     {
+      "axis": "Narrative resonance",
+      "confidence": null,
+      "rating": null,
+      "rationale": null
+     }
+    ],
+    "artifact_id": null,
+    "case_id": "C03",
+    "constraint_results": [
+     {
+      "constraint_id": "objective",
+      "evidence": null,
+      "instructions": "Check source citation and thematic justification; do not infer symbolism.",
+      "source_citation": null,
+      "verdict": null
+     }
+    ],
+    "notes": "Fill independently. Do not record nationality/ethnicity; cite sources for cultural claims.",
+    "rater_id": null
+   },
+   "automated_checks": [],
+   "brief": "Use a reference object because its history supports the stated theme.",
+   "gold_verdict": null,
+   "status": "human_review_only (no automatable spec)"
+  },
+  "C04": {
+   "annotation_template": {
+    "aesthetic_ratings": [
+     {
+      "axis": "Composition",
+      "confidence": null,
+      "rating": null,
+      "rationale": null
+     }
+    ],
+    "artifact_id": null,
+    "case_id": "C04",
+    "constraint_results": [
+     {
+      "constraint_id": "objective",
+      "evidence": null,
+      "instructions": "Check documented shape constraints against permitted reference.",
+      "source_citation": null,
+      "verdict": null
+     }
+    ],
+    "notes": "Fill independently. Do not record nationality/ethnicity; cite sources for cultural claims.",
+    "rater_id": null
+   },
+   "automated_checks": [],
+   "brief": "Preserve a neutral product reference shape while changing background.",
+   "gold_verdict": null,
+   "status": "human_review_only (no automatable spec)"
+  },
+  "C05": {
+   "annotation_template": {
+    "aesthetic_ratings": [
+     {
+      "axis": "Typeface pairing",
+      "confidence": null,
+      "rating": null,
+      "rationale": null
+     }
+    ],
+    "artifact_id": null,
+    "case_id": "C05",
+    "constraint_results": [
+     {
+      "constraint_id": "objective",
+      "evidence": null,
+      "instructions": "Check RTL/LTR order, punctuation and ZWNJ handling.",
+      "source_citation": null,
+      "verdict": null
+     }
+    ],
+    "notes": "Fill independently. Do not record nationality/ethnicity; cite sources for cultural claims.",
+    "rater_id": null
+   },
+   "automated_checks": [],
+   "brief": "Show Persian and English together without corrupting reading order.",
+   "gold_verdict": null,
+   "status": "human_review_only (no automatable spec)"
+  },
+  "C06": {
+   "annotation_template": {
+    "aesthetic_ratings": [
+     {
+      "axis": "Clarity and spacing",
+      "confidence": null,
+      "rating": null,
+      "rationale": null
+     }
+    ],
+    "artifact_id": null,
+    "case_id": "C06",
+    "constraint_results": [
+     {
+      "constraint_id": "objective",
+      "evidence": null,
+      "instructions": "Check nodes/arrows against the list; no invented benchmark numbers.",
+      "source_citation": null,
+      "verdict": null
+     }
+    ],
+    "notes": "Fill independently. Do not record nationality/ethnicity; cite sources for cultural claims.",
+    "rater_id": null
+   },
+   "automated_checks": [],
+   "brief": "Make a clean architecture diagram from a supplied stage list.",
+   "gold_verdict": null,
+   "status": "human_review_only (no automatable spec)"
+  }
+ },
+ "fixture_sha256": "35a10873fef77ec2a909e4b364ac42c76dcb48602956f93fc72d022d078ab2f5",
+ "run_kind": "template_render"
+}

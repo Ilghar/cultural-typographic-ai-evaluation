@@ -1,6 +1,6 @@
 # Cultural and typographic AI evaluation kit
 
-**Status: work in progress (private). 3/10 milestones; minimal stdlib tool on synthetic/mock fixtures only — no measured model results.**
+**Status: work in progress (private). 4/10 milestones; stdlib vertical slice on cleared synthetic inputs — no measured model results.**
 
 - Product contract: `docs/PRODUCT_CONTRACT.md`
 - Sources/evidence vs plans: `docs/SOURCES.md`
@@ -17,3 +17,10 @@ PYTHONPATH=src python3 -m unittest discover -s tests -v
 PYTHONPATH=src python3 -m cultural_typographic_ai_evaluation report fixtures/synthetic_eval_m03.json --out out/
 ```
 Modules: checks.py, aggregate.py, cli.py. Fixture: 2 synthetic specs, mock artifacts and 3 mock annotations (one deliberately invalid); exercises ZWNJ/Arabic-kaf detection, identity-field rejection, minority retention. Receipts: `tests/receipts/`.
+
+## Vertical slice (M04)
+```
+PYTHONPATH=src python3 -m cultural_typographic_ai_evaluation slice inputs/synthetic_cases.json --specs fixtures/card_specs_m04.json --out out/m04
+```
+Cleared C01-C06 -> C01/C02 deterministic RTL SVG cards (template, not AI) -> text extraction -> glyph/order/field checks + corrupted negative control -> blank annotation templates for all six. C03-C06 human-review only.
+Review: `docs/REVIEW_M01_M03.md`.
