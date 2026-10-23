@@ -1,0 +1,25 @@
+{
+ "utc_time": "2026-10-23T08:49:29+00:00",
+ "python": "3.13.5",
+ "environment": "fresh copy of working tree in /tmp/fresh (no installed packages, stdlib only)",
+ "base_commit": "da629e97ea7d6bf9957ec1bd45054bb0f1eba5d4",
+ "fixture_sha256": {
+  "fixtures/synthetic_eval_m03.json": "7b1f0de89808bd2c6f4db3e8338c7e06cdb5ec54b9d47ace5d5b82f3d56de514"
+ },
+ "runs": [
+  {
+   "name": "unittest",
+   "command": "PYTHONPATH=src python3 -m unittest discover -s tests -v",
+   "exit_code": 0,
+   "stdout": "",
+   "stderr": "test_identity_fields_and_range_rejected_minority_kept (test_checks.Aggregation.test_identity_fields_and_range_rejected_minority_kept) ... ok\ntest_report (test_checks.CLI.test_report) ... ok\ntest_arabic_yeh_detected_and_exact_passes (test_checks.Glyph.test_arabic_yeh_detected_and_exact_passes) ... ok\ntest_zwnj_and_arabic_kaf_detected (test_checks.Glyph.test_zwnj_and_arabic_kaf_detected) ... ok\n\n----------------------------------------------------------------------\nRan 4 tests in 0.031s\n\nOK\n"
+  },
+  {
+   "name": "cli",
+   "command": "PYTHONPATH=src python3 -m cultural_typographic_ai_evaluation report fixtures/synthetic_eval_m03.json --out out/m03",
+   "exit_code": 0,
+   "stdout": "{\"X01\": [\"fail\", \"fail\", \"fail\", \"uncertain\"], \"X02\": [\"pass\"]}\n",
+   "stderr": ""
+  }
+ ]
+}

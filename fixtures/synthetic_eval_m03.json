@@ -1,0 +1,119 @@
+{
+ "fixture_kind": "synthetic",
+ "run_kind": "mock",
+ "note": "New synthetic specs + hand-written mock artifacts/annotations for code paths only. Not real raters, not model outputs.",
+ "cases": [
+  {
+   "id": "X01",
+   "constraints": [
+    {
+     "id": "title",
+     "type": "glyph_exact",
+     "expected": "می‌خواهم کتاب"
+    },
+    {
+     "id": "order",
+     "type": "reading_order",
+     "expected": [
+      "rtl:عنوان",
+      "ltr:2026"
+     ]
+    },
+    {
+     "id": "fields",
+     "type": "required_fields",
+     "expected": [
+      "title",
+      "date",
+      "venue"
+     ]
+    },
+    {
+     "id": "ref",
+     "type": "reference_justified"
+    }
+   ]
+  },
+  {
+   "id": "X02",
+   "constraints": [
+    {
+     "id": "title",
+     "type": "glyph_exact",
+     "expected": "یک کتاب"
+    }
+   ]
+  }
+ ],
+ "artifacts": {
+  "X01": {
+   "title": "میخواهم كتاب",
+   "order": [
+    "ltr:2026",
+    "rtl:عنوان"
+   ],
+   "fields": {
+    "title": "t",
+    "date": "2026",
+    "venue": ""
+   }
+  },
+  "X02": {
+   "title": "یک کتاب"
+  }
+ },
+ "annotations": [
+  {
+   "case_id": "X01",
+   "artifact_id": "a1",
+   "rater_id": "r1",
+   "constraint_results": [
+    {
+     "constraint_id": "ref",
+     "verdict": "pass",
+     "evidence": "cites source S"
+    }
+   ],
+   "aesthetic_ratings": [
+    {
+     "axis": "hierarchy",
+     "rating": 4,
+     "rationale": "clear"
+    }
+   ]
+  },
+  {
+   "case_id": "X01",
+   "artifact_id": "a1",
+   "rater_id": "r2",
+   "constraint_results": [
+    {
+     "constraint_id": "ref",
+     "verdict": "fail",
+     "evidence": "no citation"
+    }
+   ],
+   "aesthetic_ratings": [
+    {
+     "axis": "hierarchy",
+     "rating": 2,
+     "rationale": "crowded"
+    }
+   ]
+  },
+  {
+   "case_id": "X01",
+   "artifact_id": "a1",
+   "rater_id": "r3",
+   "rater_nationality": "x",
+   "constraint_results": [],
+   "aesthetic_ratings": [
+    {
+     "axis": "hierarchy",
+     "rating": 9,
+     "rationale": "bad"
+    }
+   ]
+  }
+ ]
+}

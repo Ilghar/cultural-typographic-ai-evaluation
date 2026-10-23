@@ -1,0 +1,85 @@
+{
+ "cases": {
+  "X01": {
+   "automated_checks": [
+    {
+     "constraint_id": "title",
+     "evidence": "ZWNJ count 1 expected, 0 observed; Arabic ARABIC LETTER KAF used where Persian ARABIC LETTER KEHEH expected",
+     "type": "glyph_exact",
+     "verdict": "fail"
+    },
+    {
+     "constraint_id": "order",
+     "evidence": "expected ['rtl:عنوان', 'ltr:2026'] observed ['ltr:2026', 'rtl:عنوان']",
+     "type": "reading_order",
+     "verdict": "fail"
+    },
+    {
+     "constraint_id": "fields",
+     "evidence": "missing: venue",
+     "type": "required_fields",
+     "verdict": "fail"
+    },
+    {
+     "constraint_id": "ref",
+     "evidence": "artifact lacks data for this constraint",
+     "type": "reference_justified",
+     "verdict": "uncertain"
+    }
+   ],
+   "gold_verdict": null,
+   "human": {
+    "aesthetics": {
+     "hierarchy": {
+      "distribution": {
+       "2": 1,
+       "4": 1
+      },
+      "max": 4,
+      "min": 2,
+      "n": 2
+     }
+    },
+    "constraints": {
+     "ref": {
+      "counts": {
+       "fail": 1,
+       "pass": 1
+      },
+      "disagreement": true,
+      "raters": 2
+     }
+    },
+    "n_valid_annotations": 2,
+    "rejected_annotations": [
+     {
+      "errors": [
+       "forbidden identity field rater_nationality",
+       "rating out of range on hierarchy"
+      ],
+      "rater_id": "r3"
+     }
+    ]
+   }
+  },
+  "X02": {
+   "automated_checks": [
+    {
+     "constraint_id": "title",
+     "evidence": "exact codepoint match",
+     "type": "glyph_exact",
+     "verdict": "pass"
+    }
+   ],
+   "gold_verdict": null,
+   "human": {
+    "aesthetics": {},
+    "constraints": {},
+    "n_valid_annotations": 0,
+    "rejected_annotations": []
+   }
+  }
+ },
+ "fixture_sha256": "7b1f0de89808bd2c6f4db3e8338c7e06cdb5ec54b9d47ace5d5b82f3d56de514",
+ "run_kind": "mock"
+}
