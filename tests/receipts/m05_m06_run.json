@@ -1,0 +1,36 @@
+{
+ "utc_time": "2026-10-23T09:15:09+00:00",
+ "python": "3.13.5",
+ "environment": "fresh copy, stdlib only, no network",
+ "base_commit": "4e8f8e4ace136600ddedf491e5815d97aa369ec2",
+ "runs": [
+  {
+   "name": "unittest",
+   "command": "PYTHONPATH=src python3 -m unittest discover -s tests -v",
+   "exit_code": 0,
+   "stdout": "",
+   "stderr": "test_identity_fields_and_range_rejected_minority_kept (test_checks.Aggregation.test_identity_fields_and_range_rejected_minority_kept) ... ok\ntest_report (test_checks.CLI.test_report) ... ok\ntest_arabic_yeh_detected_and_exact_passes (test_checks.Glyph.test_arabic_yeh_detected_and_exact_passes) ... ok\ntest_zwnj_and_arabic_kaf_detected (test_checks.Glyph.test_zwnj_and_arabic_kaf_detected) ... ok\ntest_measured_detector_baseline_regression (test_m05_m06.Baseline.test_measured_detector_baseline_regression) ... ok\ntest_all_six_cases_bridge_and_validate (test_m05_m06.Bridge.test_all_six_cases_bridge_and_validate) ... ok\ntest_annotation_schema_forbids_identity_fields (test_m05_m06.Bridge.test_annotation_schema_forbids_identity_fields) ... ok\ntest_fidelity (test_m05_m06.Diagram.test_fidelity) ... ok\ntest_project_json_valid_and_html_escapes (test_site.Site.test_project_json_valid_and_html_escapes) ... ok\ntest_svg_diagram_matches_project_architecture (test_site.Site.test_svg_diagram_matches_project_architecture) ... ok\ntest_end_to_end_on_cleared_cases (test_slice.Slice.test_end_to_end_on_cleared_cases) ... ok\ntest_missing_field_and_wrong_order_fail (test_slice.Slice.test_missing_field_and_wrong_order_fail) ... ok\ntest_render_escapes_and_roundtrips_exact_unicode (test_slice.Slice.test_render_escapes_and_roundtrips_exact_unicode) ... ok\n\n----------------------------------------------------------------------\nRan 13 tests in 0.139s\n\nOK\n"
+  },
+  {
+   "name": "export_site",
+   "command": "PYTHONPATH=src python3 tools/export_site.py",
+   "exit_code": 0,
+   "stdout": "{\"valid\": true, \"wrote\": \"site/index.html\"}\n",
+   "stderr": ""
+  },
+  {
+   "name": "collection",
+   "command": "PYTHONPATH=src python3 -m cultural_typographic_ai_evaluation collection --out out/x",
+   "exit_code": 0,
+   "stdout": "{\"errors\": [], \"automatable\": {\"C01\": [\"glyph_exact\"], \"C02\": [\"required_fields\", \"reading_order\"], \"C03\": [], \"C04\": [], \"C05\": [\"reading_order\", \"glyph_exact\"], \"C06\": [\"diagram_fidelity\"]}}\n",
+   "stderr": ""
+  },
+  {
+   "name": "baseline",
+   "command": "PYTHONPATH=src python3 -m cultural_typographic_ai_evaluation baseline --out out/x",
+   "exit_code": 0,
+   "stdout": "{\"detection\": {\"detected\": 15, \"denominator\": 15, \"value\": 1.0}, \"false_positives_on_clean\": {\"count\": 0, \"denominator\": 4}, \"by_variant\": {\"arabic_kaf\": {\"detected\": 2}, \"arabic_yeh\": {\"detected\": 2}, \"drop_stage\": {\"detected\": 1}, \"drop_venue\": {\"detected\": 3}, \"drop_zwnj\": {\"detected\": 1}, \"invented_metric\": {\"detected\": 1}, \"swap_order\": {\"detected\": 1}, \"title_moved_last\": {\"detected\": 3}, \"zwnj_to_space\": {\"detected\": 1}}}\n",
+   "stderr": ""
+  }
+ ]
+}

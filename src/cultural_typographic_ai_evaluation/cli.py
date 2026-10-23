@@ -2,8 +2,15 @@ import argparse, hashlib, json, pathlib, sys
 from .checks import run
 from .aggregate import aggregate
 def main(argv=None):
-    ap = argparse.ArgumentParser(prog="cultural_typographic_ai_evaluation"); ap.add_argument("cmd", choices=["report","slice"]); ap.add_argument("--specs")
-    ap.add_argument("fixture"); ap.add_argument("--out", required=True); a = ap.parse_args(argv)
+    ap = argparse.ArgumentParser(prog="cultural_typographic_ai_evaluation"); ap.add_argument("cmd", choices=["report","slice","collection","baseline"]); ap.add_argument("--specs")
+    ap.add_argument("fixture", nargs="?", default="."); ap.add_argument("--out", required=True); a = ap.parse_args(argv)
+    if a.cmd in ("collection", "baseline"):
+        from .collection import build, corruption_suite
+        man, specs = build(a.fixture); o = pathlib.Path(a.out); o.mkdir(parents=True, exist_ok=True)
+        if a.cmd == "collection":
+            (o / "manifest.json").write_text(json.dumps(man, indent=1, sort_keys=True, ensure_ascii=False) + "\n"); print(json.dumps({"errors": man["errors"], "automatable": man["automatable"]})); return 1 if man["errors"] else 0
+        rep = corruption_suite(specs); (o / "baseline.json").write_text(json.dumps(rep, indent=1, sort_keys=True, ensure_ascii=False) + "\n")
+        print(json.dumps({k: rep[k] for k in ("detection", "false_positives_on_clean", "by_variant")})); return 0
     raw = pathlib.Path(a.fixture).read_bytes(); d = json.loads(raw)
     if a.cmd == "slice":
         from .slice import run as srun

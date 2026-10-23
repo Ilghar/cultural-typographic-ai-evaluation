@@ -20,10 +20,21 @@ def run(case, artifact):
     out = []
     for c in case["constraints"]:
         t = c["type"]; a = artifact.get(c["id"])
-        if a is None: r = {"verdict": "uncertain", "evidence": "artifact lacks data for this constraint"}
+        if "expected" not in c and c["type"] != "reference_justified": r = {"verdict": "uncertain", "evidence": "human review only; no automatable expected value"}
+        elif a is None: r = {"verdict": "uncertain", "evidence": "artifact lacks data for this constraint"}
         elif t == "glyph_exact": r = glyph_exact(c["expected"], a)
         elif t == "reading_order": r = reading_order(c["expected"], a)
         elif t == "required_fields": r = required_fields(c["expected"], a)
+        elif t == "diagram_fidelity" and "expected" in c: r = diagram_fidelity(c["expected"], a)
         else: r = {"verdict": "uncertain", "evidence": f"{t} needs human review"}
         out.append({"constraint_id": c["id"], "type": t, **r})
     return out
+
+def diagram_fidelity(expected_stages, mermaid_text):
+    """Ordered quoted node labels in a Mermaid flowchart must equal the stage list; numeric % claims fail."""
+    import re
+    labels = re.findall(r'\[\s*"([^"\]]+)"\s*\]', mermaid_text)
+    nums = re.findall(r"\d+(?:\.\d+)?\s?%", mermaid_text)
+    missing = [s for s in expected_stages if s not in labels]; extra = [l for l in labels if l not in expected_stages]
+    ok = labels == list(expected_stages) and not nums
+    return {"verdict": "pass" if ok else "fail", "evidence": f"missing={missing} extra={extra} order_ok={labels == list(expected_stages)} numeric_claims={nums}"}

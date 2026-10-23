@@ -1,0 +1,39 @@
+{
+ "id": "cultural-typographic-ai-evaluation",
+ "title": "Cultural and typographic AI evaluation kit",
+ "summary": "How can evaluators separate factual cultural/typographic constraint failures from subjective aesthetic preference, while documenting disagreement and source provenance?",
+ "status": "in_progress",
+ "evidence_level": "Measured check self-consistency on template artifacts; no model or rater results",
+ "contribution": "Ilghar Dadgostari: problem framing, requirements and evaluation direction. Implementation AI-assisted (Grok Bot), reviewed only by Grok Bot so far.",
+ "architecture": [
+  "Cleared brief + reference constraints",
+  "Original or licensed candidate example",
+  "Separate factual and aesthetic rubric axes",
+  "Independent annotation + uncertainty",
+  "Adjudication without identity-based inference",
+  "Versioned evaluation report and design examples"
+ ],
+ "results": [
+  {
+   "metric": "automated check detection of generated corruptions",
+   "value": "15/15",
+   "denominator": 15,
+   "kind": "measured self-consistency",
+   "caveat": "corruptions written by check author"
+  },
+  {
+   "metric": "false positives on clean template artifacts",
+   "value": "0/4",
+   "denominator": 4,
+   "kind": "measured",
+   "caveat": "template SVG, not model outputs"
+  }
+ ],
+ "assets": [],
+ "links": [],
+ "limitations": [
+  "No generative model outputs evaluated.",
+  "No human annotations; aesthetic axes unmeasured.",
+  "C03/C04 are human-review-only; text checks cannot see font shaping."
+ ]
+}

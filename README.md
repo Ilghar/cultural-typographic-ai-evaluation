@@ -1,6 +1,6 @@
 # Cultural and typographic AI evaluation kit
 
-**Status: work in progress (private). 4/10 milestones; stdlib vertical slice on cleared synthetic inputs — no measured model results.**
+**Status: work in progress (private). 6/10 milestones (Bot-reviewed); synthetic data only.**
 
 - Product contract: `docs/PRODUCT_CONTRACT.md`
 - Sources/evidence vs plans: `docs/SOURCES.md`
@@ -24,3 +24,9 @@ PYTHONPATH=src python3 -m cultural_typographic_ai_evaluation slice inputs/synthe
 ```
 Cleared C01-C06 -> C01/C02 deterministic RTL SVG cards (template, not AI) -> text extraction -> glyph/order/field checks + corrupted negative control -> blank annotation templates for all six. C03-C06 human-review only.
 Review: `docs/REVIEW_M01_M03.md`.
+
+## Collection and results
+- Datasheet: `data/collection_v1/DATASHEET.md`
+- Results: `docs/RESULTS.md`
+- Case page: `docs/CASE_PAGE.md`; static page: `site/index.html` (`python3 tools/export_site.py`); diagram `docs/architecture.mmd` + `docs/architecture.svg`
+- Schema validation in code: `src/cultural_typographic_ai_evaluation/schema.py` (stdlib subset)

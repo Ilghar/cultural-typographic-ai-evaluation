@@ -1,0 +1,264 @@
+{
+ "automatable": {
+  "C01": [
+   "glyph_exact"
+  ],
+  "C02": [
+   "required_fields",
+   "reading_order"
+  ],
+  "C03": [],
+  "C04": [],
+  "C05": [
+   "reading_order",
+   "glyph_exact"
+  ],
+  "C06": [
+   "diagram_fidelity"
+  ]
+ },
+ "cases": [
+  {
+   "aesthetic_axes": [
+    "Typographic hierarchy"
+   ],
+   "brief": "Keep the exact Persian title on an exhibition card.",
+   "constraints": [
+    {
+     "description": "Compare original Unicode text to displayed/exported native text.",
+     "expected": "نمایشگاه کتاب‌های کوچک",
+     "id": "C01-glyph_exact",
+     "type": "glyph_exact"
+    }
+   ],
+   "gold_verdict": null,
+   "id": "C01",
+   "kind": "new_synthetic_specification",
+   "required_text": [
+    {
+     "direction": "rtl",
+     "text": "نمایشگاه کتاب‌های کوچک"
+    },
+    {
+     "direction": "ltr",
+     "text": "2026-11-14"
+    },
+    {
+     "direction": "rtl",
+     "text": "تالار شمارهٔ یک"
+    }
+   ],
+   "review_status": "unreviewed",
+   "rights": {
+    "consent": "not_applicable_synthetic",
+    "license": "not yet chosen (repo-level decision at M10)",
+    "private": false,
+    "source": "newly drafted (Drive S-register)"
+   }
+  },
+  {
+   "aesthetic_axes": [
+    "Visual balance"
+   ],
+   "brief": "Place all required event details on a mobile layout.",
+   "constraints": [
+    {
+     "description": "Check presence and order of required fields.",
+     "expected": [
+      "title",
+      "date",
+      "venue"
+     ],
+     "id": "C02-required_fields",
+     "type": "required_fields"
+    },
+    {
+     "description": "Check presence and order of required fields.",
+     "expected": [
+      "rtl:title",
+      "ltr:date",
+      "rtl:venue"
+     ],
+     "id": "C02-reading_order",
+     "type": "reading_order"
+    }
+   ],
+   "gold_verdict": null,
+   "id": "C02",
+   "kind": "new_synthetic_specification",
+   "required_text": [
+    {
+     "direction": "rtl",
+     "text": "شب شعر"
+    },
+    {
+     "direction": "ltr",
+     "text": "2026-12-01"
+    },
+    {
+     "direction": "rtl",
+     "text": "کتابخانهٔ محله"
+    }
+   ],
+   "review_status": "unreviewed",
+   "rights": {
+    "consent": "not_applicable_synthetic",
+    "license": "not yet chosen (repo-level decision at M10)",
+    "private": false,
+    "source": "newly drafted (Drive S-register)"
+   }
+  },
+  {
+   "aesthetic_axes": [
+    "Narrative resonance"
+   ],
+   "brief": "Use a reference object because its history supports the stated theme.",
+   "constraints": [
+    {
+     "description": "Check source citation and thematic justification; do not infer symbolism.",
+     "id": "C03-reference_justified",
+     "review": "human_only",
+     "type": "reference_justified"
+    }
+   ],
+   "gold_verdict": null,
+   "id": "C03",
+   "kind": "new_synthetic_specification",
+   "required_text": [],
+   "review_status": "unreviewed",
+   "rights": {
+    "consent": "not_applicable_synthetic",
+    "license": "not yet chosen (repo-level decision at M10)",
+    "private": false,
+    "source": "newly drafted (Drive S-register)"
+   }
+  },
+  {
+   "aesthetic_axes": [
+    "Composition"
+   ],
+   "brief": "Preserve a neutral product reference shape while changing background.",
+   "constraints": [
+    {
+     "description": "Check documented shape constraints against permitted reference.",
+     "id": "C04-identity_attribute_preserved",
+     "review": "human_only",
+     "type": "identity_attribute_preserved"
+    }
+   ],
+   "gold_verdict": null,
+   "id": "C04",
+   "kind": "new_synthetic_specification",
+   "required_text": [],
+   "review_status": "unreviewed",
+   "rights": {
+    "consent": "not_applicable_synthetic",
+    "license": "not yet chosen (repo-level decision at M10)",
+    "private": false,
+    "source": "newly drafted (Drive S-register)"
+   }
+  },
+  {
+   "aesthetic_axes": [
+    "Typeface pairing"
+   ],
+   "brief": "Show Persian and English together without corrupting reading order.",
+   "constraints": [
+    {
+     "description": "Check RTL/LTR order, punctuation and ZWNJ handling.",
+     "expected": [
+      "rtl:title",
+      "ltr:date",
+      "rtl:venue"
+     ],
+     "id": "C05-reading_order",
+     "type": "reading_order"
+    },
+    {
+     "description": "Check RTL/LTR order, punctuation and ZWNJ handling.",
+     "expected": "کارگاه Python برای همه",
+     "id": "C05-glyph_exact",
+     "type": "glyph_exact"
+    }
+   ],
+   "gold_verdict": null,
+   "id": "C05",
+   "kind": "new_synthetic_specification",
+   "required_text": [
+    {
+     "direction": "mixed",
+     "text": "کارگاه Python برای همه"
+    },
+    {
+     "direction": "ltr",
+     "text": "2026-12-10"
+    },
+    {
+     "direction": "rtl",
+     "text": "سالن ۲"
+    }
+   ],
+   "review_status": "unreviewed",
+   "rights": {
+    "consent": "not_applicable_synthetic",
+    "license": "not yet chosen (repo-level decision at M10)",
+    "private": false,
+    "source": "newly drafted (Drive S-register)"
+   }
+  },
+  {
+   "aesthetic_axes": [
+    "Clarity and spacing"
+   ],
+   "brief": "Make a clean architecture diagram from a supplied stage list.",
+   "constraints": [
+    {
+     "description": "Check nodes/arrows against the list; no invented benchmark numbers.",
+     "expected": [
+      "Cleared brief",
+      "Candidate artifact",
+      "Factual checks",
+      "Aesthetic ratings",
+      "Annotations",
+      "Adjudication",
+      "Report"
+     ],
+     "id": "C06-diagram_fidelity",
+     "type": "diagram_fidelity"
+    }
+   ],
+   "gold_verdict": null,
+   "id": "C06",
+   "kind": "new_synthetic_specification",
+   "required_text": [],
+   "review_status": "unreviewed",
+   "rights": {
+    "consent": "not_applicable_synthetic",
+    "license": "not yet chosen (repo-level decision at M10)",
+    "private": false,
+    "source": "newly drafted (Drive S-register)"
+   }
+  }
+ ],
+ "collection": "cultural-typographic-cases",
+ "empirical_items": 0,
+ "errors": [],
+ "files": {
+  "data/collection_v1/specs.json": "93e5fbbb548bee45f6d9704fcbcb797cabb78f5ddd787827da3e1c1e58598899",
+  "inputs/synthetic_cases.json": "35a10873fef77ec2a909e4b364ac42c76dcb48602956f93fc72d022d078ab2f5"
+ },
+ "human_only": {
+  "C01": [],
+  "C02": [],
+  "C03": [
+   "reference_justified"
+  ],
+  "C04": [
+   "identity_attribute_preserved"
+  ],
+  "C05": [],
+  "C06": []
+ },
+ "split": "all dev (n=6 too small to split)",
+ "version": "1.0.0"
+}
