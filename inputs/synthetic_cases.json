@@ -1,0 +1,62 @@
+[
+  {
+    "id": "C01",
+    "kind": "new_synthetic_specification",
+    "brief": "Keep the exact Persian title on an exhibition card.",
+    "objective_check": "Compare original Unicode text to displayed/exported native text.",
+    "subjective_axis": "Typographic hierarchy",
+    "gold_verdict": null,
+    "rights": "newly drafted neutral text; no third-party image",
+    "review_status": "unreviewed"
+  },
+  {
+    "id": "C02",
+    "kind": "new_synthetic_specification",
+    "brief": "Place all required event details on a mobile layout.",
+    "objective_check": "Check presence and order of required fields.",
+    "subjective_axis": "Visual balance",
+    "gold_verdict": null,
+    "rights": "newly drafted neutral text; no third-party image",
+    "review_status": "unreviewed"
+  },
+  {
+    "id": "C03",
+    "kind": "new_synthetic_specification",
+    "brief": "Use a reference object because its history supports the stated theme.",
+    "objective_check": "Check source citation and thematic justification; do not infer symbolism.",
+    "subjective_axis": "Narrative resonance",
+    "gold_verdict": null,
+    "rights": "newly drafted neutral text; no third-party image",
+    "review_status": "unreviewed"
+  },
+  {
+    "id": "C04",
+    "kind": "new_synthetic_specification",
+    "brief": "Preserve a neutral product reference shape while changing background.",
+    "objective_check": "Check documented shape constraints against permitted reference.",
+    "subjective_axis": "Composition",
+    "gold_verdict": null,
+    "rights": "newly drafted neutral text; no third-party image",
+    "review_status": "unreviewed"
+  },
+  {
+    "id": "C05",
+    "kind": "new_synthetic_specification",
+    "brief": "Show Persian and English together without corrupting reading order.",
+    "objective_check": "Check RTL/LTR order, punctuation and ZWNJ handling.",
+    "subjective_axis": "Typeface pairing",
+    "gold_verdict": null,
+    "rights": "newly drafted neutral text; no third-party image",
+    "review_status": "unreviewed"
+  },
+  {
+    "id": "C06",
+    "kind": "new_synthetic_specification",
+    "brief": "Make a clean architecture diagram from a supplied stage list.",
+    "objective_check": "Check nodes/arrows against the list; no invented benchmark numbers.",
+    "subjective_axis": "Clarity and spacing",
+    "gold_verdict": null,
+    "rights": "newly drafted neutral text; no third-party image",
+    "review_status": "unreviewed"
+  }
+]

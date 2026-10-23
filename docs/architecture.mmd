@@ -1,0 +1,8 @@
+flowchart LR
+  A["Cleared brief + reference constraints"] --> B["Original/licensed candidate (text + metadata)"]
+  B --> C["Factual checks (glyph, order, fields)"]
+  B --> D["Aesthetic ratings (separate axis)"]
+  C --> E["Independent annotations + uncertainty"]
+  D --> E
+  E --> F["Adjudication (minority kept, no identity inference)"]
+  F --> G["Versioned report with denominators"]
