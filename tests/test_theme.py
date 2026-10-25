@@ -6,11 +6,24 @@ from cultural_typographic_ai_evaluation import theme
 import export_site
 
 class Theme(unittest.TestCase):
-    def test_contrast_pairs_meet_wcag_aa_in_both_themes(self):
+    def test_text_pairs_meet_wcag_aa_in_both_themes(self):
         for mode in ("light", "dark"):
-            for fg, bg, minimum in theme.PAIRS:
+            for fg, bg in theme.TEXT_PAIRS:
                 r = theme.contrast(theme.TOKENS[mode][fg], theme.TOKENS[mode][bg])
-                self.assertGreaterEqual(r, minimum, f"{mode}: {fg} on {bg} = {r:.2f}")
+                self.assertGreaterEqual(r, 4.5, f"{mode}: {fg} on {bg} = {r:.2f}")
+    def test_decorative_exceptions_documented_and_never_text(self):
+        # rose/mauve are decoration only: documented, ratios recorded but not enforced, and never used as text colour
+        self.assertTrue({"accent", "muted", "subtle", "line"} <= set(theme.DECORATIVE_EXCEPTIONS))
+        pages = [ROOT / "site/index.html"] + sorted((ROOT / "reports").rglob("index.html"))
+        for pg in pages:
+            css = re.search(r"<style>(.*?)</style>", pg.read_text(encoding="utf-8"), re.S).group(1)
+            for tok in theme.DECORATIVE_EXCEPTIONS:
+                self.assertNotRegex(css, r"(?<![-\w])color:var\(--%s\)" % tok, f"{pg.name}: --{tok} used as text colour")
+    def test_palette_is_exactly_the_studio_palette(self):
+        studio = {"#f3f1f6", "#fffcfe", "#4a3a5c", "#7a688c", "#a394ae", "#c97a98", "#fffafc", "#e4dde8",
+                  "#4a434c", "#5a535c", "#f4eef3", "#cbbdce", "#9a8a9c", "#e8a8bc", "#2c262f", "#4a424c"}
+        used = {v for m in theme.TOKENS.values() for v in m.values()} | set(theme.FIGURE_BG.values())
+        self.assertEqual(used - studio, set())
     def test_contrast_formula_reference_values(self):
         self.assertAlmostEqual(theme.contrast("#000000", "#ffffff"), 21.0, places=2)
         self.assertAlmostEqual(theme.contrast("#777777", "#ffffff"), 4.48, places=2)
