@@ -2,9 +2,9 @@
 
 **A kit for judging generated design work the way a typographer would: first the facts you can check (the right Persian letters, the right reading order, the grid that actually adds up), then taste, kept separate and allowed to disagree.**
 
-![A plum typewriter with blank keycaps above a square modular grid sheet, a brass line gauge and a loupe.](../assets/hero.svg)
+![Project board: a fine-line girih star grid with some stars marked blue, a photo of a hand-laid star tiling with a compass, and a text column describing the six checks.](../assets/board-light.svg)
 
-*Blank keys on purpose: letters belong in native text that can be checked, not in pixels. Editorial illustration.*
+*Project board, ilghar.studio. Light and dark versions follow the page theme.*
 
 ## The question
 > How can evaluators separate factual cultural/typographic constraint failures from subjective aesthetic preference, while documenting disagreement and source provenance?

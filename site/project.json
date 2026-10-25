@@ -96,12 +96,13 @@
    "body": "script_lint walks every string in an evaluation output and flags codepoint-level Persian-script faults: Arabic yeh/kaf (U+064A, U+0649, U+0643) where Persian U+06CC/U+06A9 are expected, misplaced or repeated ZWNJ, bidi control characters, mixed digit sets, and a labelled heuristic for a missing ZWNJ after the mi-/nemi- verb prefix. Rules follow the character-level guidance in W3C Arabic & Persian Layout Requirements (alreq, https://www.w3.org/TR/alreq/). It reports characters, not language quality; exit 0 clean, 1 findings, 2 bad input."
   }
  ],
- "hero": {
-  "src": "../assets/hero.svg",
-  "alt": "A plum typewriter with blank keycaps above a square modular grid sheet, a brass line gauge and a loupe.",
-  "caption": "Blank keys on purpose: letters belong in native text that can be checked, not in pixels. Editorial illustration.",
-  "width": 1280,
-  "height": 720
+ "board": {
+  "light": "../assets/board-light.svg",
+  "dark": "../assets/board-dark.svg",
+  "width": 2400,
+  "height": 1500,
+  "alt": "Project board: a fine-line girih star grid with some stars marked blue, a photo of a hand-laid star tiling with a compass, and a text column describing the six checks.",
+  "caption": "Project board, ilghar.studio. Light and dark versions follow the page theme."
  },
  "figures": [
   {
