@@ -1,11 +1,10 @@
 tests/fixtures/script_lint/dirty.json:outputs[0].output@0 PS006 'مي' prefix joined without ZWNJ (heuristic; verify)
 tests/fixtures/script_lint/dirty.json:outputs[0].output@1 PS001 ARABIC LETTER YEH U+064A; Persian uses U+06CC
 tests/fixtures/script_lint/dirty.json:outputs[0].output@8 PS002 ARABIC LETTER KAF U+0643; Persian uses U+06A9
-tests/fixtures/script_lint/dirty.json:outputs[1].output@4 PS003 doubled ZWNJ
-tests/fixtures/script_lint/dirty.json:outputs[1].output@5 PS003 ZWNJ not between Arabic-script letters
+tests/fixtures/script_lint/dirty.json:outputs[1].output@4 PS003 repeated ZWNJ
 tests/fixtures/script_lint/dirty.json:outputs[1].output@11 PS003 ZWNJ at word edge or beside whitespace
 tests/fixtures/script_lint/dirty.json:outputs[2].output@0 PS004 bidi control RLE U+202B
 tests/fixtures/script_lint/dirty.json:outputs[2].output@5 PS004 bidi control PDF U+202C
 tests/fixtures/script_lint/dirty.json:outputs[3].output@0 PS005 mixed digit sets: ascii, persian
-9 finding(s)
+8 finding(s)
 exit=1

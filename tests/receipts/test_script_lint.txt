@@ -7,6 +7,6 @@ test_yeh_kaf (tests.test_script_lint.Rules.test_yeh_kaf) ... ok
 test_zwnj (tests.test_script_lint.Rules.test_zwnj) ... ok
 
 ----------------------------------------------------------------------
-Ran 6 tests in 0.067s
+Ran 6 tests in 0.074s
 
 OK

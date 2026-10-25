@@ -13,6 +13,7 @@ class Rules(unittest.TestCase):
         self.assertIn("PS003", rules("خانه\u200cها") + rules("در\u200cها"))
         self.assertEqual(rules("خانه\u200cها"), [])  # heh is dual-joining: valid
         self.assertIn("PS003", rules("در\u200cها"))
+        self.assertEqual(rules("کتاب\u200c\u200c\u200cها"), ["PS003"])  # one finding per run
     def test_bidi_and_digits(self):
         self.assertEqual(rules("\u202bسلام\u202c"), ["PS004", "PS004"])
         self.assertIn("PS005", rules("1403 ۱۴۰۳")); self.assertNotIn("PS005", rules("۱۴۰۳"))
@@ -21,7 +22,7 @@ class Rules(unittest.TestCase):
 class Docs(unittest.TestCase):
     def test_fixtures(self):
         d = lint_document(json.loads((FX / "dirty.json").read_text("utf-8")))
-        self.assertEqual(d["counts"], {"PS001": 1, "PS002": 1, "PS003": 3, "PS004": 2, "PS005": 1, "PS006": 1})
+        self.assertEqual(d["counts"], {"PS001": 1, "PS002": 1, "PS003": 2, "PS004": 2, "PS005": 1, "PS006": 1})
         self.assertTrue(lint_document(json.loads((FX / "clean.json").read_text("utf-8")))["clean"])
     def test_cli_exit_codes(self):
         run = lambda f: subprocess.run([sys.executable, "-m", "cultural_typographic_ai_evaluation.script_lint", str(FX / f), "--json", "--fields", "output"],

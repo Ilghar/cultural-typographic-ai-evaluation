@@ -37,8 +37,10 @@ def lint_text(text):
         elif ch == ZWNJ:
             prev = text[i - 1] if i else ""
             nxt = text[i + 1] if i + 1 < len(text) else ""
+            if prev == ZWNJ:
+                continue  # run already reported once at its first ZWNJ
             if nxt == ZWNJ:
-                out.append(_f("PS003", i, "doubled ZWNJ"))
+                out.append(_f("PS003", i, "repeated ZWNJ"))
             elif not prev or not nxt or prev.isspace() or nxt.isspace():
                 out.append(_f("PS003", i, "ZWNJ at word edge or beside whitespace"))
             elif prev in NON_JOINING:
