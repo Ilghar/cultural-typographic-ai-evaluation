@@ -1,150 +1,150 @@
 {
-  "schema_version": 1,
-  "project_id": "02",
-  "stage": "bot_m07_accepted",
-  "owner": "Grok Bot (coordinator)",
-  "repository": {
-    "url": "https://github.com/Ilghar/cultural-typographic-ai-evaluation",
-    "branch": "main",
-    "commit": "M02 da629e97ea7d6bf9957ec1bd45054bb0f1eba5d4; M03 7370f06ba950dc746a4f9106655f20a1108fea73; M04 4e8f8e4ace136600ddedf491e5815d97aa369ec2; M05/M06 219be1789cc293ba7c985dfaed6f643fb9aaae09; latest in Drive MANIFEST_M07.json",
-    "visibility": "private"
+ "schema_version": 1,
+ "project_id": "02",
+ "stage": "bot_m07_accepted",
+ "owner": "Grok Bot (coordinator)",
+ "repository": {
+  "url": "https://github.com/Ilghar/cultural-typographic-ai-evaluation",
+  "branch": "main",
+  "commit": "M02 da629e97ea7d6bf9957ec1bd45054bb0f1eba5d4; M03 7370f06ba950dc746a4f9106655f20a1108fea73; M04 4e8f8e4ace136600ddedf491e5815d97aa369ec2; M05/M06 219be1789cc293ba7c985dfaed6f643fb9aaae09; latest in Drive MANIFEST_M07.json",
+  "visibility": "private"
+ },
+ "drive_folder_url": "https://drive.google.com/drive/folders/1RQlqxKACA7kJJ8zDX76gC6Jyt3_viDKj",
+ "milestones": [
+  {
+   "id": "M01",
+   "status": "accepted",
+   "evidence": [
+    "docs/SOURCES.md",
+    "docs/PRODUCT_CONTRACT.md",
+    "inputs/source_register.jsonl"
+   ]
   },
-  "drive_folder_url": "https://drive.google.com/drive/folders/1RQlqxKACA7kJJ8zDX76gC6Jyt3_viDKj",
-  "milestones": [
-    {
-      "id": "M01",
-      "status": "accepted",
-      "evidence": [
-        "docs/SOURCES.md",
-        "docs/PRODUCT_CONTRACT.md",
-        "inputs/source_register.jsonl"
-      ]
-    },
-    {
-      "id": "M02",
-      "status": "accepted",
-      "evidence": [
-        "docs/ARCHITECTURE.md",
-        "docs/REVIEW_M01_M03.md",
-        "docs/adr/0001-scope-and-boundaries.md",
-        "docs/architecture.mmd",
-        "schemas/annotation.schema.json",
-        "schemas/case.schema.json",
-        "tools/check_m02.py"
-      ]
-    },
-    {
-      "id": "M03",
-      "status": "accepted",
-      "evidence": [
-        "src/cultural_typographic_ai_evaluation/__init__.py",
-        "src/cultural_typographic_ai_evaluation/__main__.py",
-        "src/cultural_typographic_ai_evaluation/aggregate.py",
-        "src/cultural_typographic_ai_evaluation/checks.py",
-        "src/cultural_typographic_ai_evaluation/cli.py",
-        "tests/test_checks.py",
-        "fixtures/synthetic_eval_m03.json",
-        "tests/receipts/m03_run.json",
-        "tests/receipts/m03_report.json",
-        "README.md"
-      ]
-    },
-    {
-      "id": "M04",
-      "status": "accepted",
-      "evidence": [
-        "src/cultural_typographic_ai_evaluation/slice.py",
-        "tests/test_slice.py",
-        "inputs/synthetic_cases.json",
-        "fixtures/card_specs_m04.json",
-        "tests/receipts/m04_run.json",
-        "tests/receipts/m04_report.json",
-        "docs/REVIEW_M01_M03.md"
-      ]
-    },
-    {
-      "id": "M05",
-      "status": "accepted",
-      "evidence": [
-        "src/cultural_typographic_ai_evaluation/schema.py",
-        "data/collection_v1/DATASHEET.md",
-        "tests/receipts/m05_manifest.json",
-        "tests/receipts/m05_m06_run.json",
-        "src/cultural_typographic_ai_evaluation/bridge.py",
-        "src/cultural_typographic_ai_evaluation/collection.py",
-        "data/collection_v1/specs.json",
-        "tests/test_m05_m06.py"
-      ]
-    },
-    {
-      "id": "M06",
-      "status": "accepted",
-      "evidence": [
-        "docs/RESULTS.md",
-        "tests/receipts/m06_baseline.json",
-        "tests/test_m05_m06.py"
-      ]
-    },
-    {
-      "id": "M07",
-      "status": "accepted",
-      "evidence": [
-        "docs/FAILURE_ANALYSIS.md",
-        "src/cultural_typographic_ai_evaluation/failure.py",
-        "tests/test_m07.py",
-        "tests/receipts/m07_failure.json",
-        "tests/receipts/m07_prefix_run.json",
-        "tests/receipts/m07_run.json"
-      ]
-    },
-    {
-      "id": "M08",
-      "status": "not_started",
-      "evidence": []
-    },
-    {
-      "id": "M09",
-      "status": "not_started",
-      "evidence": []
-    },
-    {
-      "id": "M10",
-      "status": "not_started",
-      "evidence": []
-    }
-  ],
-  "tests": [
-    {
-      "command": "PYTHONPATH=src python3 -m unittest discover -s tests -v",
-      "scope": "behavioural, synthetic/mock fixtures",
-      "receipt": "tests/receipts/m07_run.json"
-    },
-    {
-      "command": "python3 common/validate_state.py handoff/STATE.json --root .",
-      "scope": "bookkeeping only"
-    }
-  ],
-  "next_actions": [
-    "Native/expert annotation of C01-C06",
-    "Independent review of M01-M07",
-    "M08 packaging/CI"
-  ],
-  "budget": {
-    "observed_remaining": "week1 3% used at 11:09 Berlin (user reading)",
-    "pool_relationship": "unknown",
-    "paid_spend_allowed": false
+  {
+   "id": "M02",
+   "status": "accepted",
+   "evidence": [
+    "docs/ARCHITECTURE.md",
+    "docs/REVIEW_M01_M03.md",
+    "docs/adr/0001-scope-and-boundaries.md",
+    "docs/architecture.mmd",
+    "schemas/annotation.schema.json",
+    "schemas/case.schema.json",
+    "tools/check_m02.py"
+   ]
   },
-  "completion_fraction": 0.7,
-  "notes": "M01-M07 accepted by Bot review only (not independent). Illustration generated (assets/ASSETS.json), binary on Drive only.",
-  "lease": {
-    "status": "active",
-    "released_at": null,
-    "holder": "Grok Bot",
-    "note": "Bot owns main until release report"
+  {
+   "id": "M03",
+   "status": "accepted",
+   "evidence": [
+    "src/cultural_typographic_ai_evaluation/__init__.py",
+    "src/cultural_typographic_ai_evaluation/__main__.py",
+    "src/cultural_typographic_ai_evaluation/aggregate.py",
+    "src/cultural_typographic_ai_evaluation/checks.py",
+    "src/cultural_typographic_ai_evaluation/cli.py",
+    "tests/test_checks.py",
+    "fixtures/synthetic_eval_m03.json",
+    "tests/receipts/m03_run.json",
+    "tests/receipts/m03_report.json",
+    "README.md"
+   ]
   },
-  "portfolio_control_locator": {
-    "coordinator_project": "01",
-    "repo_path": "portfolio/ (in abstention-routing-harness)",
-    "drive_path": "project01 outputs/current/portfolio/"
+  {
+   "id": "M04",
+   "status": "accepted",
+   "evidence": [
+    "src/cultural_typographic_ai_evaluation/slice.py",
+    "tests/test_slice.py",
+    "inputs/synthetic_cases.json",
+    "fixtures/card_specs_m04.json",
+    "tests/receipts/m04_run.json",
+    "tests/receipts/m04_report.json",
+    "docs/REVIEW_M01_M03.md"
+   ]
+  },
+  {
+   "id": "M05",
+   "status": "accepted",
+   "evidence": [
+    "src/cultural_typographic_ai_evaluation/schema.py",
+    "data/collection_v1/DATASHEET.md",
+    "tests/receipts/m05_manifest.json",
+    "tests/receipts/m05_m06_run.json",
+    "src/cultural_typographic_ai_evaluation/bridge.py",
+    "src/cultural_typographic_ai_evaluation/collection.py",
+    "data/collection_v1/specs.json",
+    "tests/test_m05_m06.py"
+   ]
+  },
+  {
+   "id": "M06",
+   "status": "accepted",
+   "evidence": [
+    "docs/RESULTS.md",
+    "tests/receipts/m06_baseline.json",
+    "tests/test_m05_m06.py"
+   ]
+  },
+  {
+   "id": "M07",
+   "status": "accepted",
+   "evidence": [
+    "docs/FAILURE_ANALYSIS.md",
+    "src/cultural_typographic_ai_evaluation/failure.py",
+    "tests/test_m07.py",
+    "tests/receipts/m07_failure.json",
+    "tests/receipts/m07_prefix_run.json",
+    "tests/receipts/m07_run.json"
+   ]
+  },
+  {
+   "id": "M08",
+   "status": "not_started",
+   "evidence": []
+  },
+  {
+   "id": "M09",
+   "status": "not_started",
+   "evidence": []
+  },
+  {
+   "id": "M10",
+   "status": "not_started",
+   "evidence": []
   }
+ ],
+ "tests": [
+  {
+   "command": "PYTHONPATH=src python3 -m unittest discover -s tests -v",
+   "scope": "behavioural, synthetic/mock fixtures",
+   "receipt": "tests/receipts/review_run.json"
+  },
+  {
+   "command": "python3 common/validate_state.py handoff/STATE.json --root .",
+   "scope": "bookkeeping only"
+  }
+ ],
+ "next_actions": [
+  "Native/expert annotation of C01-C06",
+  "M08 packaging/CI",
+  "Human/independent review of M01-M07 (AI self-review done)"
+ ],
+ "budget": {
+  "observed_remaining": "week1 3% used at 11:09 Berlin (user reading)",
+  "pool_relationship": "unknown",
+  "paid_spend_allowed": false
+ },
+ "completion_fraction": 0.7,
+ "notes": "M01-M07 accepted by Bot review only (not independent). Illustration generated (assets/ASSETS.json), binary on Drive only. M01-M07 re-checked 2026-10-25 by AI self-review (separate pass, not human): docs/REVIEW_M01_M07.md.",
+ "lease": {
+  "status": "active",
+  "released_at": null,
+  "holder": "Grok Bot",
+  "note": "Bot owns main until release report"
+ },
+ "portfolio_control_locator": {
+  "coordinator_project": "01",
+  "repo_path": "portfolio/ (in abstention-routing-harness)",
+  "drive_path": "project01 outputs/current/portfolio/"
+ }
 }

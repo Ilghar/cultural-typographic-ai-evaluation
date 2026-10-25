@@ -1,0 +1,36 @@
+{
+ "utc_time": "2026-10-25T12:47:44+00:00",
+ "python": "3.13.5 and 3.11.17",
+ "environment": "fresh copy, stdlib only, no network",
+ "base_commit": "e5b44c3ceec294e1fb9e1e4e9a94e56c80fb92ba",
+ "runs": [
+  {
+   "name": "unittest py3.13 -W error seed0",
+   "command": "python3 -W error -m unittest discover -s tests -v",
+   "exit_code": 0,
+   "stdout": "",
+   "stderr": "test_identity_fields_and_range_rejected_minority_kept (test_checks.Aggregation.test_identity_fields_and_range_rejected_minority_kept) ... ok\ntest_report (test_checks.CLI.test_report) ... ok\ntest_arabic_yeh_detected_and_exact_passes (test_checks.Glyph.test_arabic_yeh_detected_and_exact_passes) ... ok\ntest_zwnj_and_arabic_kaf_detected (test_checks.Glyph.test_zwnj_and_arabic_kaf_detected) ... ok\ntest_measured_detector_baseline_regression (test_m05_m06.Baseline.test_measured_detector_baseline_regression) ... ok\ntest_all_six_cases_bridge_and_validate (test_m05_m06.Bridge.test_all_six_cases_bridge_and_validate) ... ok\ntest_annotation_schema_forbids_identity_fields (test_m05_m06.Bridge.test_annotation_schema_forbids_identity_fields) ... ok\ntest_fidelity (test_m05_m06.Diagram.test_fidelity) ... ok\ntest_adversarial_suite_all_pass (test_m07.M07.test_adversarial_suite_all_pass) ... ok\ntest_disagreement_and_adjudication_flags (test_m07.M07.test_disagreement_and_adjudication_flags) ... ok\ntest_invisible_text_is_not_a_present_field (test_m07.M07.test_invisible_text_is_not_a_present_field) ... ok\ntest_numeric_claims_in_any_script_fail (test_m07.M07.test_numeric_claims_in_any_script_fail) ... ok\ntest_identity_field_does_not_hide_other_errors (test_review.Review.test_identity_field_does_not_hide_other_errors) ... ok\ntest_structural_errors_still_stop_early (test_review.Review.test_structural_errors_still_stop_early) ... ok\ntest_generated_pages_in_sync_with_project_json (test_site.Site.test_generated_pages_in_sync_with_project_json) ... ok\ntest_project_json_valid_and_html_escapes (test_site.Site.test_project_json_valid_and_html_escapes) ... ok\ntest_svg_diagram_matches_project_architecture (test_site.Site.test_svg_diagram_matches_project_architecture) ... ok\ntest_end_to_end_on_cleared_cases (test_slice.Slice.test_end_to_end_on_cleared_cases) ... ok\ntest_missing_field_and_wrong_order_fail (test_slice.Slice.test_missing_field_and_wrong_order_fail) ... ok\ntest_render_escapes_and_roundtrips_exact_unicode (test_slice.Slice.test_render_escapes_and_roundtrips_exact_unicode) ... ok\n\n----------------------------------------------------------------------\nRan 20 tests in 0.149s\n\nOK\n"
+  },
+  {
+   "name": "unittest py3.13 seed12345",
+   "command": "python3 -m unittest discover -s tests",
+   "exit_code": 0,
+   "stdout": "",
+   "stderr": "....................\n----------------------------------------------------------------------\nRan 20 tests in 0.132s\n\nOK\n"
+  },
+  {
+   "name": "unittest cpython 3.11.17 (uv)",
+   "command": "~/.local/bin/python3.11 -W error -m unittest discover -s tests",
+   "exit_code": 0,
+   "stdout": "",
+   "stderr": "....................\n----------------------------------------------------------------------\nRan 20 tests in 0.123s\n\nOK\n"
+  },
+  {
+   "name": "validate_state",
+   "command": "python3 common/validate_state.py handoff/STATE.json --root .",
+   "exit_code": 0,
+   "stdout": "{\"valid\": true, \"errors\": [], \"scope\": \"bookkeeping only, not semantic or production readiness\"}\n",
+   "stderr": ""
+  }
+ ]
+}

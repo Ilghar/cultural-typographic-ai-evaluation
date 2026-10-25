@@ -5,9 +5,9 @@ def validate_annotation(a):
     if not isinstance(a, dict): return ["annotation is not an object"]
     errs = [f"forbidden identity field {k}" for k in a if isinstance(k, str) and k.lower() in FORBIDDEN]
     if not isinstance(a.get("rater_id"), str) or not a["rater_id"]: errs.append("missing rater_id")
-    for key in ("constraint_results", "aesthetic_ratings"):
-        if not isinstance(a.get(key), list) or not all(isinstance(x, dict) for x in a[key]): errs.append(f"{key} must be a list of objects")
-    if errs: return errs
+    structural = [f"{key} must be a list of objects" for key in ("constraint_results", "aesthetic_ratings")
+                  if not isinstance(a.get(key), list) or not all(isinstance(x, dict) for x in a[key])]
+    if structural: return errs + structural  # only stop early when the lists are unusable (review R-02)
     for r in a["aesthetic_ratings"]:
         v = r.get("rating")
         if isinstance(v, bool) or not isinstance(v, int) or not 1 <= v <= 5: errs.append(f"rating out of range on {r.get('axis')}")
