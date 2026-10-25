@@ -1,0 +1,57 @@
+{
+ "utc_time": "2026-10-25T12:51:27+00:00",
+ "python": "3.13.5 and 3.11.17",
+ "environment": "fresh copy, stdlib only, no network",
+ "base_commit": "3c2a2432e37061bcfc45b2b2c96bb3832daae4fe",
+ "runs": [
+  {
+   "name": "unittest py3.13 -W error seed0",
+   "command": "python3 -W error -m unittest discover -s tests -v",
+   "exit_code": 0,
+   "stdout": "",
+   "stderr": "test_identity_fields_and_range_rejected_minority_kept (test_checks.Aggregation.test_identity_fields_and_range_rejected_minority_kept) ... ok\ntest_report (test_checks.CLI.test_report) ... ok\ntest_arabic_yeh_detected_and_exact_passes (test_checks.Glyph.test_arabic_yeh_detected_and_exact_passes) ... ok\ntest_zwnj_and_arabic_kaf_detected (test_checks.Glyph.test_zwnj_and_arabic_kaf_detected) ... ok\ntest_measured_detector_baseline_regression (test_m05_m06.Baseline.test_measured_detector_baseline_regression) ... ok\ntest_all_six_cases_bridge_and_validate (test_m05_m06.Bridge.test_all_six_cases_bridge_and_validate) ... ok\ntest_annotation_schema_forbids_identity_fields (test_m05_m06.Bridge.test_annotation_schema_forbids_identity_fields) ... ok\ntest_fidelity (test_m05_m06.Diagram.test_fidelity) ... ok\ntest_adversarial_suite_all_pass (test_m07.M07.test_adversarial_suite_all_pass) ... ok\ntest_disagreement_and_adjudication_flags (test_m07.M07.test_disagreement_and_adjudication_flags) ... ok\ntest_invisible_text_is_not_a_present_field (test_m07.M07.test_invisible_text_is_not_a_present_field) ... ok\ntest_numeric_claims_in_any_script_fail (test_m07.M07.test_numeric_claims_in_any_script_fail) ... ok\ntest_no_dependencies_declared (test_package.Package.test_no_dependencies_declared) ... ok\ntest_sdist_builds (test_package.Package.test_sdist_builds) ... ok\ntest_wheel_contents_and_determinism (test_package.Package.test_wheel_contents_and_determinism) ... ok\ntest_identity_field_does_not_hide_other_errors (test_review.Review.test_identity_field_does_not_hide_other_errors) ... ok\ntest_structural_errors_still_stop_early (test_review.Review.test_structural_errors_still_stop_early) ... ok\ntest_generated_pages_in_sync_with_project_json (test_site.Site.test_generated_pages_in_sync_with_project_json) ... ok\ntest_project_json_valid_and_html_escapes (test_site.Site.test_project_json_valid_and_html_escapes) ... ok\ntest_svg_diagram_matches_project_architecture (test_site.Site.test_svg_diagram_matches_project_architecture) ... ok\ntest_end_to_end_on_cleared_cases (test_slice.Slice.test_end_to_end_on_cleared_cases) ... ok\ntest_missing_field_and_wrong_order_fail (test_slice.Slice.test_missing_field_and_wrong_order_fail) ... ok\ntest_render_escapes_and_roundtrips_exact_unicode (test_slice.Slice.test_render_escapes_and_roundtrips_exact_unicode) ... ok\n\n----------------------------------------------------------------------\nRan 23 tests in 0.133s\n\nOK\n"
+  },
+  {
+   "name": "unittest py3.13 seed12345",
+   "command": "python3 -m unittest discover -s tests",
+   "exit_code": 0,
+   "stdout": "",
+   "stderr": ".......................\n----------------------------------------------------------------------\nRan 23 tests in 0.145s\n\nOK\n"
+  },
+  {
+   "name": "unittest cpython 3.11.17 (uv)",
+   "command": "~/.local/bin/python3.11 -W error -m unittest discover -s tests",
+   "exit_code": 0,
+   "stdout": "",
+   "stderr": ".......................\n----------------------------------------------------------------------\nRan 23 tests in 0.169s\n\nOK\n"
+  },
+  {
+   "name": "validate_state",
+   "command": "python3 common/validate_state.py handoff/STATE.json --root .",
+   "exit_code": 0,
+   "stdout": "{\"valid\": true, \"errors\": [], \"scope\": \"bookkeeping only, not semantic or production readiness\"}\n",
+   "stderr": ""
+  },
+  {
+   "name": "examples py3.13",
+   "command": "sh examples/run.sh",
+   "exit_code": 0,
+   "stdout": "{\"X01\": [\"fail\", \"fail\", \"fail\", \"uncertain\"], \"X02\": [\"pass\"]}\n{\"C01\": [\"pass\", \"pass\", \"pass\"], \"C02\": [\"pass\", \"pass\", \"pass\"], \"C03\": [], \"C04\": [], \"C05\": [], \"C06\": []}\nexamples: outputs match examples/expected.sha256\n",
+   "stderr": ""
+  },
+  {
+   "name": "examples cpython 3.11.17",
+   "command": "PYTHON=$HOME/.local/bin/python3.11 sh examples/run.sh",
+   "exit_code": 0,
+   "stdout": "{\"X01\": [\"fail\", \"fail\", \"fail\", \"uncertain\"], \"X02\": [\"pass\"]}\n{\"C01\": [\"pass\", \"pass\", \"pass\"], \"C02\": [\"pass\", \"pass\", \"pass\"], \"C03\": [], \"C04\": [], \"C05\": [], \"C06\": []}\nexamples: outputs match examples/expected.sha256\n",
+   "stderr": ""
+  },
+  {
+   "name": "wheel sha256 x2",
+   "command": "for i in 1 2; do d=$(mktemp -d); python3 -c \"import sys;sys.path.insert(0,'_build');import backend;print(backend.build_wheel('$d'))\" >/dev/null; sha256sum $d/*.whl | cut -c1-64; done",
+   "exit_code": 0,
+   "stdout": "dbe907b180ec4ade897d29519276476dbb4fe8b321ce43441222e6b835223863\ndbe907b180ec4ade897d29519276476dbb4fe8b321ce43441222e6b835223863\n",
+   "stderr": ""
+  }
+ ]
+}
