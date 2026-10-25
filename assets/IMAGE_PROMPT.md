@@ -1,5 +1,8 @@
-# Grok Imagine brief — execute only within included allowance
+# Image prompts (2026-10-25)
+Shared direction: soft-daylight editorial still life on lavender-grey paper (#f3f1f6); cream (#fffcfe), aubergine-plum (#4a3a5c) and dusty-rose (#c97a98) only; generous negative space; no letters, glyphs, numbers, screens or logos. Persian text is never put in pixels; it stays native and checkable.
 
-Create one restrained editorial illustration for ‘Cultural and typographic AI evaluation kit’. Concept: How can evaluators separate factual cultural/typographic constraint failures from subjective aesthetic preference, while documenting disagreement and source provenance? Workflow stages: Cleared brief + reference constraints; Original or licensed candidate example; Separate factual and aesthetic rubric axes; Independent annotation + uncertainty; Adjudication without identity-based inference; Versioned evaluation report and design examples. Use a coherent warm-neutral or white editorial surface, precise generous spacing and a limited muted accent. Favor an explanatory visual metaphor grounded in this actual workflow. No human likenesses, borrowed logos, neural-brain cliches, fake metrics, tiny text, claimed results or screenshots of nonexistent UI. Use3:2landscape with a mobile-safe central composition; leave calm space for native title/labels. Match the common art direction chosen for the three active projects. Provide a descriptive alt-text draft and save original image + prompt/provenance. Native labels/diagrams remain authoritative.
+## hero
+Overhead: vintage typewriter with deliberately blank cream keycaps; a cream sheet with a fine rose square modular grid with margins and gutters; brass line gauge; loupe; loose blank type sorts. 16:9.
 
-When reviewing: correct wrong arrows/objects or unsupported claims; maximum one targeted correction within budget. If unavailable save prompt only.
+## fact-vs-taste
+Overhead: a cream tray with a brass gauge, loupe and blank type sort (facts) and a rose felt tray with plum and rose swatches and a dried flower (taste), divided by a plum ruler. 16:9.
