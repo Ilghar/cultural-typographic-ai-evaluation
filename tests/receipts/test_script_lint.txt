@@ -1,0 +1,12 @@
+Python 3.13.5
+test_cli_exit_codes (tests.test_script_lint.Docs.test_cli_exit_codes) ... ok
+test_fixtures (tests.test_script_lint.Docs.test_fixtures) ... ok
+test_bidi_and_digits (tests.test_script_lint.Rules.test_bidi_and_digits) ... ok
+test_mi_prefix (tests.test_script_lint.Rules.test_mi_prefix) ... ok
+test_yeh_kaf (tests.test_script_lint.Rules.test_yeh_kaf) ... ok
+test_zwnj (tests.test_script_lint.Rules.test_zwnj) ... ok
+
+----------------------------------------------------------------------
+Ran 6 tests in 0.067s
+
+OK
