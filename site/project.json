@@ -1,9 +1,9 @@
 {
  "id": "cultural-typographic-ai-evaluation",
- "title": "Cultural & Typographic Evaluation Kit",
+ "title": "cultural & typographic evaluation kit",
  "summary": "How can evaluators separate factual cultural/typographic constraint failures from subjective aesthetic preference, while documenting disagreement and source provenance?",
  "status": "in_progress",
- "evidence_level": "Measured check self-consistency and adversarial robustness on template artifacts; no model or rater results",
+ "evidence_level": "Measured check self-consistency and adversarial robustness on template artifacts. No model or rater results yet.",
  "contribution": "Concept, design criteria, typographic research and editorial: ilghar.studio.",
  "architecture": [
   "Cleared brief + reference constraints",
@@ -29,8 +29,8 @@
    "caveat": "template SVG, not model outputs"
   },
   {
-   "metric": "adversarial check/aggregation suite",
-   "value": "28/28 after M07 fixes (11/28 before)",
+   "metric": "adversarial suite (checks and aggregation)",
+   "value": "28/28 (11/28 before the hardening pass)",
    "denominator": 28,
    "kind": "measured robustness",
    "caveat": "suite written by check author"
@@ -73,11 +73,11 @@
   },
   {
    "title": "Candidate artifact",
-   "body": "Original or licensed examples only. The M04 slice renders a right-to-left SVG card from a spec, with native text, never text baked into pixels."
+   "body": "Original or licensed examples only. The vertical slice renders a right-to-left SVG card from a spec, with native text, never text baked into pixels."
   },
   {
    "title": "Factual checks",
-   "body": "glyph_exact, reading_order, required_fields and diagram_fidelity return pass, fail or uncertain with evidence. Anything that needs eyes is marked human-review, never guessed."
+   "body": "Exact-glyph, reading-order, required-field and diagram checks return pass, fail or uncertain with evidence. Anything that needs eyes is marked human-review, never guessed."
   },
   {
    "title": "Taste, separately",
@@ -85,15 +85,15 @@
   },
   {
    "title": "Disagreement and adjudication",
-   "body": "Conflicting rater verdicts are flagged needs_adjudication. Malformed or identity-bearing annotations are rejected with reasons."
+   "body": "Conflicting rater verdicts are flagged for adjudication. Malformed or identity-bearing annotations are rejected with reasons."
   },
   {
    "title": "Grid and keyboard checks",
-   "body": "New: grid verifies margins, gutters, square modules and baseline rhythm by arithmetic; keyboard checks Persian keycaps for duplicates, look-alikes and missing letters."
+   "body": "The grid checker verifies margins, gutters, square modules and baseline rhythm by arithmetic; the keyboard checker checks Persian keycaps for duplicates, look-alikes and missing letters."
   },
   {
    "title": "Script linter",
-   "body": "script_lint walks every string in an evaluation output and flags codepoint-level Persian-script faults: Arabic yeh/kaf (U+064A, U+0649, U+0643) where Persian U+06CC/U+06A9 are expected, misplaced or repeated ZWNJ, bidi control characters, mixed digit sets, and a labelled heuristic for a missing ZWNJ after the mi-/nemi- verb prefix. Rules follow the character-level guidance in W3C Arabic & Persian Layout Requirements (alreq, https://www.w3.org/TR/alreq/). It reports characters, not language quality; exit 0 clean, 1 findings, 2 bad input."
+   "body": "The script linter walks every string in an evaluation output and flags codepoint-level Persian-script faults: Arabic yeh/kaf (U+064A, U+0649, U+0643) where Persian U+06CC/U+06A9 are expected, misplaced or repeated ZWNJ, bidi control characters, mixed digit sets, and a labelled heuristic for a missing ZWNJ after the mi-/nemi- verb prefix. Rules follow the character-level guidance in [W3C Arabic & Persian Layout Requirements](https://www.w3.org/TR/alreq/). It reports characters, not language quality; exit 0 clean, 1 findings, 2 bad input."
   }
  ],
  "board": {
@@ -142,17 +142,17 @@
   },
   {
    "cmd": "python -c \"from cultural_typographic_ai_evaluation.grid import check_grid; ...\"",
-   "what": "New. The recorded A4 template: 6×9 grid, 12 pt gutter, margins declared equal but inside set to 37.89 pt.",
+   "what": "The recorded A4 template: 6×9 grid, 12 pt gutter, margins declared equal but inside set to 37.89 pt.",
    "output": "{\"verdict\": \"fail\", \"findings\": [{\"check\": \"equal_margins\", \"verdict\": \"fail\", \"evidence\": \"declared equal but got {'top': 36, 'bottom': 36, 'inside': 37.89, 'outside': 36} pt\"}, {\"check\": \"square_modules\", \"verdict\": \"fail\", \"evidence\": \"module 76.898 x 74.877 pt (difference 2.021)\"}], \"derived\": {\"text_area\": [521.386, 769.89], \"module\": [76.898, 74.877]}}"
   },
   {
    "cmd": "python -c \"from cultural_typographic_ai_evaluation.keyboard import check_keys; ...\"",
-   "what": "New. A synthetic 33-key Persian layout with one Arabic kāf and dāl printed three times.",
+   "what": "A synthetic 33-key Persian layout with one Arabic kāf and dāl printed three times.",
    "output": "{\"verdict\": \"fail\", \"n_keys\": 33, \"n_missing\": 2, \"findings\": [{\"kind\": \"arabic_lookalike\", \"key\": 30, \"evidence\": \"ARABIC LETTER KAF used; Persian needs ARABIC LETTER KEHEH\"}, {\"kind\": \"duplicate\", \"key\": \"9,31,40\", \"evidence\": \"U+062F appears on 3 keys\"}, {\"kind\": \"missing\", \"key\": null, \"evidence\": \"U+0647 U+06CC\"}]}"
   },
   {
    "cmd": "python -m cultural_typographic_ai_evaluation.script_lint tests/fixtures/script_lint/dirty.json",
-   "what": "Lint a synthetic fixture of deliberately broken Persian strings (not model output). Reference: W3C alreq, https://www.w3.org/TR/alreq/.",
+   "what": "Lint a synthetic fixture of deliberately broken Persian strings (not model output). Reference: [W3C Arabic & Persian Layout Requirements](https://www.w3.org/TR/alreq/).",
    "output": "tests/fixtures/script_lint/dirty.json:outputs[0].output@0 PS006 'مي' prefix joined without ZWNJ (heuristic; verify)\ntests/fixtures/script_lint/dirty.json:outputs[0].output@1 PS001 ARABIC LETTER YEH U+064A; Persian uses U+06CC\ntests/fixtures/script_lint/dirty.json:outputs[0].output@8 PS002 ARABIC LETTER KAF U+0643; Persian uses U+06A9\ntests/fixtures/script_lint/dirty.json:outputs[1].output@4 PS003 repeated ZWNJ\ntests/fixtures/script_lint/dirty.json:outputs[1].output@11 PS003 ZWNJ at word edge or beside whitespace\ntests/fixtures/script_lint/dirty.json:outputs[2].output@0 PS004 bidi control RLE U+202B\ntests/fixtures/script_lint/dirty.json:outputs[2].output@5 PS004 bidi control PDF U+202C\ntests/fixtures/script_lint/dirty.json:outputs[3].output@0 PS005 mixed digit sets: ascii, persian\n8 finding(s)\nexit=1"
   }
  ],
@@ -169,12 +169,12 @@
  "roadmap": [
   {
    "item": "Margin/gutter solver that proposes a square, rhythmic modular grid for a given page",
-   "status": "checker implemented (grid); solver planned",
+   "status": "grid checker implemented; solver planned",
    "origin": "“what should be the relation between the margins and gutters and still arrive at a modular, flexible and square rhythmic grid-system?”"
   },
   {
    "item": "Persian typewriter / keyboard fidelity benchmark",
-   "status": "keycap checker implemented (keyboard); benchmark cases planned",
+   "status": "keycap checker implemented; benchmark cases planned",
    "origin": "critique of generated Persian keycaps with repeated and wrong letters"
   },
   {
