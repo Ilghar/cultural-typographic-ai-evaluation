@@ -1,4 +1,4 @@
-# Cultural & Typographic Evaluation Kit
+# cultural & typographic evaluation kit
 
 **A kit for judging generated design work the way a typographer would: first the facts you can check (the right Persian letters, the right reading order, the grid that actually adds up), then taste, kept separate and allowed to disagree.**
 
@@ -22,14 +22,14 @@ This kit keeps the two apart. Factual constraints are checked by deterministic c
 
 ## How it works
 1. **Cleared brief + constraints.** Each case states what must be true (exact title glyphs, reading order, required fields, diagram stages) and records rights and review status for every reference.
-2. **Candidate artifact.** Original or licensed examples only. The M04 slice renders a right-to-left SVG card from a spec, with native text, never text baked into pixels.
-3. **Factual checks.** glyph_exact, reading_order, required_fields and diagram_fidelity return pass, fail or uncertain with evidence. Anything that needs eyes is marked human-review, never guessed.
+2. **Candidate artifact.** Original or licensed examples only. The vertical slice renders a right-to-left SVG card from a spec, with native text, never text baked into pixels.
+3. **Factual checks.** Exact-glyph, reading-order, required-field and diagram checks return pass, fail or uncertain with evidence. Anything that needs eyes is marked human-review, never guessed.
 4. **Taste, separately.** Aesthetic axes such as hierarchy are collected as rating distributions with n, not merged into the factual verdict.
-5. **Disagreement and adjudication.** Conflicting rater verdicts are flagged needs_adjudication. Malformed or identity-bearing annotations are rejected with reasons.
-6. **Grid and keyboard checks.** New: grid verifies margins, gutters, square modules and baseline rhythm by arithmetic; keyboard checks Persian keycaps for duplicates, look-alikes and missing letters.
-7. **Script linter.** script_lint walks every string in an evaluation output and flags codepoint-level Persian-script faults: Arabic yeh/kaf (U+064A, U+0649, U+0643) where Persian U+06CC/U+06A9 are expected, misplaced or repeated ZWNJ, bidi control characters, mixed digit sets, and a labelled heuristic for a missing ZWNJ after the mi-/nemi- verb prefix. Rules follow the character-level guidance in W3C Arabic & Persian Layout Requirements (alreq, https://www.w3.org/TR/alreq/). It reports characters, not language quality; exit 0 clean, 1 findings, 2 bad input.
+5. **Disagreement and adjudication.** Conflicting rater verdicts are flagged for adjudication. Malformed or identity-bearing annotations are rejected with reasons.
+6. **Grid and keyboard checks.** The grid checker verifies margins, gutters, square modules and baseline rhythm by arithmetic; the keyboard checker checks Persian keycaps for duplicates, look-alikes and missing letters.
+7. **Script linter.** The script linter walks every string in an evaluation output and flags codepoint-level Persian-script faults: Arabic yeh/kaf (U+064A, U+0649, U+0643) where Persian U+06CC/U+06A9 are expected, misplaced or repeated ZWNJ, bidi control characters, mixed digit sets, and a labelled heuristic for a missing ZWNJ after the mi-/nemi- verb prefix. Rules follow the character-level guidance in [W3C Arabic & Persian Layout Requirements](https://www.w3.org/TR/alreq/). It reports characters, not language quality; exit 0 clean, 1 findings, 2 bad input.
 
-Stages (see `architecture.mmd`, authoritative, and `architecture.svg`): Cleared brief + reference constraints → Original or licensed candidate example → Separate factual and aesthetic rubric axes → Independent annotation + uncertainty → Adjudication without identity-based inference → Versioned evaluation report and design examples
+Stages (see `docs/architecture.mmd`, authoritative, and `docs/architecture.svg`): Cleared brief + reference constraints → Original or licensed candidate example → Separate factual and aesthetic rubric axes → Independent annotation + uncertainty → Adjudication without identity-based inference → Versioned evaluation report and design examples
 
 ![Two trays divided by a plum ruler: measuring tools on the left, swatches and a dried flower on the right.](../assets/fact-vs-taste.svg)
 
@@ -80,21 +80,21 @@ Adversarial suite for checks and aggregation (bidi controls, Persian digits, per
 ```
 
 ### `python -c "from cultural_typographic_ai_evaluation.grid import check_grid; ..."`
-New. The recorded A4 template: 6×9 grid, 12 pt gutter, margins declared equal but inside set to 37.89 pt.
+The recorded A4 template: 6×9 grid, 12 pt gutter, margins declared equal but inside set to 37.89 pt.
 
 ```
 {"verdict": "fail", "findings": [{"check": "equal_margins", "verdict": "fail", "evidence": "declared equal but got {'top': 36, 'bottom': 36, 'inside': 37.89, 'outside': 36} pt"}, {"check": "square_modules", "verdict": "fail", "evidence": "module 76.898 x 74.877 pt (difference 2.021)"}], "derived": {"text_area": [521.386, 769.89], "module": [76.898, 74.877]}}
 ```
 
 ### `python -c "from cultural_typographic_ai_evaluation.keyboard import check_keys; ..."`
-New. A synthetic 33-key Persian layout with one Arabic kāf and dāl printed three times.
+A synthetic 33-key Persian layout with one Arabic kāf and dāl printed three times.
 
 ```
 {"verdict": "fail", "n_keys": 33, "n_missing": 2, "findings": [{"kind": "arabic_lookalike", "key": 30, "evidence": "ARABIC LETTER KAF used; Persian needs ARABIC LETTER KEHEH"}, {"kind": "duplicate", "key": "9,31,40", "evidence": "U+062F appears on 3 keys"}, {"kind": "missing", "key": null, "evidence": "U+0647 U+06CC"}]}
 ```
 
 ### `python -m cultural_typographic_ai_evaluation.script_lint tests/fixtures/script_lint/dirty.json`
-Lint a synthetic fixture of deliberately broken Persian strings (not model output). Reference: W3C alreq, https://www.w3.org/TR/alreq/.
+Lint a synthetic fixture of deliberately broken Persian strings (not model output). Reference: [W3C Arabic & Persian Layout Requirements](https://www.w3.org/TR/alreq/).
 
 ```
 tests/fixtures/script_lint/dirty.json:outputs[0].output@0 PS006 'مي' prefix joined without ZWNJ (heuristic; verify)
@@ -110,13 +110,17 @@ exit=1
 ```
 
 ## Measured results
-| Metric | Value | Kind | Caveat |
-|---|---|---|---|
-| automated check detection of generated corruptions | 15/15 | measured self-consistency | corruptions written by check author |
-| false positives on clean template artifacts | 0/4 | measured | template SVG, not model outputs |
-| adversarial check/aggregation suite | 28/28 after M07 fixes (11/28 before) | measured robustness | suite written by check author |
+| Metric | Value | n | Kind | Caveat |
+|---|---|---|---|---|
+| automated check detection of generated corruptions | 15/15 | 15 | measured self-consistency | corruptions written by check author |
+| false positives on clean template artifacts | 0/4 | 4 | measured | template SVG, not model outputs |
+| adversarial suite (checks and aggregation) | 28/28 (11/28 before the hardening pass) | 28 | measured robustness | suite written by check author |
 
-**Status:** Measured check self-consistency and adversarial robustness on template artifacts; no model or rater results. Private work in progress.
+**Status:** Measured check self-consistency and adversarial robustness on template artifacts. No model or rater results yet. Private work in progress.
+
+## Schemas
+- `schemas/case.schema.json`: One case: id, kind, brief, required_text, constraints, aesthetic_axes, rights, review_status, gold_verdict (null until reviewed).
+- `schemas/annotation.schema.json`: One rater’s annotation: case_id, artifact_id, rater_id, constraint_results, aesthetic_ratings, notes. No identity fields allowed.
 
 ## Limitations
 - No generative model outputs evaluated yet; artifacts are templates and hand-written examples.
@@ -129,8 +133,8 @@ exit=1
 ## Roadmap: the original ambition
 | Next | Status | Where it comes from |
 |---|---|---|
-| Margin/gutter solver that proposes a square, rhythmic modular grid for a given page | checker implemented (grid); solver planned | “what should be the relation between the margins and gutters and still arrive at a modular, flexible and square rhythmic grid-system?” |
-| Persian typewriter / keyboard fidelity benchmark | keycap checker implemented (keyboard); benchmark cases planned | critique of generated Persian keycaps with repeated and wrong letters |
+| Margin/gutter solver that proposes a square, rhythmic modular grid for a given page | grid checker implemented; solver planned | “what should be the relation between the margins and gutters and still arrive at a modular, flexible and square rhythmic grid-system?” |
+| Persian typewriter / keyboard fidelity benchmark | keycap checker implemented; benchmark cases planned | critique of generated Persian keycaps with repeated and wrong letters |
 | Typography-history layer: how historical systems shaped contemporary ones, numbers and poetics | planned | request to trace modern type systems back to their references, “not only the numbers but also the poetic, conceptual thoughts” |
 | Reference-justified objects: cultural and literary references must have a reason to appear | human-review axis today; structured rubric planned | critique of decorative name-dropping and irrelevant symbolic objects |
 | Identity preservation: separate a reference person’s attributes from setting and style | planned, consent-cleared material only | critiques of identity and reference drift in generated portraits |
