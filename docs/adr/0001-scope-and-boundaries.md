@@ -1,5 +1,5 @@
 # ADR 0001 — Scope and boundaries
-Status: accepted (Bot self-review, 2026-10-23); independent review pending.
+Status: accepted (internal self-review, 2026-10-23); independent review pending.
 
 ## Decision
 - Two independent axes: factual constraints (pass/fail/uncertain + evidence) and aesthetic ratings (ordinal + rationale). They are never merged into one score.

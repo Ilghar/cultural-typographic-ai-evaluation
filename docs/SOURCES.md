@@ -6,7 +6,7 @@ Machine-readable: `inputs/source_register.jsonl`.
 | ID | What | Status |
 |---|---|---|
 | S01 | 6 newly drafted synthetic case specifications (C01–C06) | In repo. **Unreviewed, no gold verdicts**, not model outputs. |
-| S02 | Paraphrased historical requirements from Ilghar's design critiques | Summarized below; source file not copied. |
+| S02 | Paraphrased historical requirements from ilghar.studio design critiques | Summarized below; source file not copied. |
 | S03 | Four private user excerpts (grid margins/gutters, InDesign parent pages and inside margins, wrong Persian glyphs on a generated typewriter) | **Not copied** (private). Used only to derive requirement categories. |
 | S04 | Locators (conversation/message IDs + sha256) for 6 user messages | Not copied; no share URLs exist. |
 
@@ -20,7 +20,7 @@ Requirement categories derived from S02/S03 (paraphrase, not quotes):
 These are historical design requirements, **not** a benchmark, gold dataset or universal cultural standard. No measured model improvement exists.
 
 ## Access actually used (2026-10-23, Europe/Berlin)
-Drive project-02 folder read via connector (all files except `.DS_Store`; `source_register.jsonl` was empty). GitHub `Ilghar` verified; repo private. Grok Library search unavailable (S05).
+Drive project-02 folder read via connector (all files except `.DS_Store`; `source_register.jsonl` was empty). GitHub `Ilghar` verified; repo private. Library search unavailable (S05).
 
 ## Plans
 Everything in `docs/PRODUCT_CONTRACT.md` acceptance criteria and `docs/ARCHITECTURE.md` is planned until code + receipts exist.

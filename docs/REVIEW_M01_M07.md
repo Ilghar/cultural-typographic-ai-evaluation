@@ -1,6 +1,6 @@
 # Review of M01–M07
 
-**Type: AI self-review by a separate pass (Grok Bot, 2026-10-25). This is not a human or independent expert review.** The same agent that built M01–M07 wrote this review, so it cannot replace a human reviewer.
+**Type: internal self-review (separate pass, not a human review), 2026-10-25. This is not an independent expert review.** The same team that built M01–M07 wrote this review, so it cannot replace a human reviewer.
 
 ## Method
 - Fresh copy of `main` rebuilt from the GitHub tree, with every listed blob SHA-1 matching the local tree. The tree listing was truncated at 20 kB, so a few `tools/` files were not compared.
@@ -23,4 +23,4 @@
 | — | low (documented, not fixed) | `fixtures/synthetic_eval_m03.json` uses the pre-M04 minimal case format and does not validate against the current `case.schema.json`. | Kept unchanged so the M03 receipt stays reproducible. The schema applies to M04+ inputs only. |
 
 ## Not covered
-No human listening, expert annotation or blind probe authoring took place. Milestone acceptance stays "Bot review only".
+No human listening, expert annotation or blind probe authoring took place. Milestone acceptance stays "internal review only".

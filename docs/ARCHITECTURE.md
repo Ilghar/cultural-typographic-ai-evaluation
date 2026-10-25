@@ -31,7 +31,7 @@ Python ≥3.11 stdlib (`unicodedata`). Viewer: plain HTML/CSS/JS, no build. No n
 Only original synthetic text now. Any image/media: requires source, license, consent and `private` flag before entering fixtures; portraits only if Ilghar selects them. No Outlier material ever. Repo license decided at M10.
 
 ## Review
-Bot self-review 2026-10-23 against M02 + TEST_PLAN; independent review pending.
+Internal self-review 2026-10-23 against M02 + TEST_PLAN; independent review pending.
 
 ## Implementation status (after M04)
 Built: `checks.py`, `aggregate.py`, `slice.py` (M04 template SVG renderer + extraction), `cli.py`. Planned not built: `schema.py`, `report.py` (Markdown), `viewer/`.

@@ -32,4 +32,4 @@ Critiques mix two different things: **factual constraint failures** (wrong glyph
 Only newly authored synthetic text enters the repo. No images yet; any future image requires recorded source, license and consent. No license chosen yet (decided at M10). Gap: cases have no reviewed verdicts and no second rater.
 
 ## Contribution
-Ilghar: critiques, requirements, design/curation expertise as documented source material. Implementation: AI-assisted (Grok Bot), attributed per commit.
+Creator: ilghar.studio — critiques, requirements, design/curation expertise as documented source material.

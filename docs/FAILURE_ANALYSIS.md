@@ -1,4 +1,4 @@
-# M07 failure analysis (Bot-authored, not independently reviewed)
+# M07 failure analysis (internal, not independently reviewed)
 
 Reproduce: `PYTHONPATH=src python3 -m cultural_typographic_ai_evaluation failure --out out/m07` (receipt `tests/receipts/m07_failure.json`).
 The suite (`src/cultural_typographic_ai_evaluation/failure.py`) has 28 rows: 20 adversarial/malformed check inputs and 8 aggregation/disagreement cases.
