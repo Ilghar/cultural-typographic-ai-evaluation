@@ -1,38 +1,27 @@
 {
- "assets": [
+ "credit": "ilghar.studio",
+ "status": "round 5 boards approved by owner 2026-10-25",
+ "boards": [
   {
-   "path": "assets/hero.svg",
-   "format": "SVG wrapper around an embedded JPEG (1280x720), so the file can be committed as text",
-   "sha256_svg": "a6c29d807a74a4b09d79dc8f5583e89e99ff78aac4dfb4d410443778d0d0eb8b",
-   "sha256_jpeg": "e738e8bd8c76d4d4131188a749a2dbc988d3692fdf39a14877757166956584e8",
-   "jpeg_bytes": 93155,
-   "generated_at": "2026-10-25 Europe/Berlin",
-   "prompt": "assets/IMAGE_PROMPT.md#hero",
-   "alt": "A plum typewriter with blank keycaps above a square modular grid sheet, a brass line gauge and a loupe.",
-   "caption": "Blank keys on purpose: letters belong in native text that can be checked, not in pixels. Editorial illustration.",
-   "review": "Reviewed by eye: palette matches studio tokens; no text, numbers, logos or faces; concept matches the page.",
-   "role": "editorial illustration only; docs/architecture.mmd is authoritative",
-   "rights_notes": "Generated illustration for this private repository; no third-party input images.",
-   "committed_to_git": true
+   "path": "assets/board-light.svg",
+   "theme": "light",
+   "source_png_sha256": "67dd286a81134148860aa3eeb494c76cf9704526241c4646134ed5e676da9d5a",
+   "width": 2400,
+   "height": 1500,
+   "embedded": "JPEG q85 in SVG wrapper"
   },
   {
-   "path": "assets/fact-vs-taste.svg",
-   "format": "SVG wrapper around an embedded JPEG (1280x720), so the file can be committed as text",
-   "sha256_svg": "ac46374aa5e7d3fd0511db7e07ce68d2b1fcde8eaa6054dd7c6ed055d7728443",
-   "sha256_jpeg": "633dda4f0e942fea01428042ffd6826efc0fe381aa99f49a26fe23fdef234c71",
-   "jpeg_bytes": 96576,
-   "generated_at": "2026-10-25 Europe/Berlin",
-   "prompt": "assets/IMAGE_PROMPT.md#fact-vs-taste",
-   "alt": "Two trays divided by a plum ruler: measuring tools on the left, swatches and a dried flower on the right.",
-   "caption": "Facts on one side, taste on the other, and a ruler between them.",
-   "review": "Reviewed by eye: palette matches studio tokens; no text, numbers, logos or faces; concept matches the page.",
-   "role": "editorial illustration only; docs/architecture.mmd is authoritative",
-   "rights_notes": "Generated illustration for this private repository; no third-party input images.",
-   "committed_to_git": true
+   "path": "assets/board-dark.svg",
+   "theme": "dark",
+   "source_png_sha256": "13fb060158d48b9bac1c189cb82fea685148f1d2a49e54779e7319c1d9249741",
+   "width": 2400,
+   "height": 1500,
+   "embedded": "JPEG q85 in SVG wrapper"
   }
  ],
- "retired": [
-  "illustration_v1 / v2 images from 2026-10-23 (replaced; never committed to git)"
- ],
- "style": "site/DESIGN_TOKENS.json image_direction"
+ "usage": "<picture><source media=\"(prefers-color-scheme: dark)\" srcset=\"assets/board-dark.svg\"><img src=\"assets/board-light.svg\"></picture>",
+ "format_note": "Raster boards are embedded inside SVG wrappers so they can be committed as text.",
+ "construction": "code-rendered construction drawing",
+ "photos": "Model/study photograph generated for this board.",
+ "superseded": "earlier illustration_v* and rejected hero options (not committed)"
 }
