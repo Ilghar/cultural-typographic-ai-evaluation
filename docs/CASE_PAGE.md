@@ -27,6 +27,7 @@ This kit keeps the two apart. Factual constraints are checked by deterministic c
 4. **Taste, separately.** Aesthetic axes such as hierarchy are collected as rating distributions with n, not merged into the factual verdict.
 5. **Disagreement and adjudication.** Conflicting rater verdicts are flagged needs_adjudication. Malformed or identity-bearing annotations are rejected with reasons.
 6. **Grid and keyboard checks.** New: grid verifies margins, gutters, square modules and baseline rhythm by arithmetic; keyboard checks Persian keycaps for duplicates, look-alikes and missing letters.
+7. **Script linter.** script_lint walks every string in an evaluation output and flags codepoint-level Persian-script faults: Arabic yeh/kaf (U+064A, U+0649, U+0643) where Persian U+06CC/U+06A9 are expected, misplaced or repeated ZWNJ, bidi control characters, mixed digit sets, and a labelled heuristic for a missing ZWNJ after the mi-/nemi- verb prefix. Rules follow the character-level guidance in W3C Arabic & Persian Layout Requirements (alreq, https://www.w3.org/TR/alreq/). It reports characters, not language quality; exit 0 clean, 1 findings, 2 bad input.
 
 Stages (see `architecture.mmd`, authoritative, and `architecture.svg`): Cleared brief + reference constraints → Original or licensed candidate example → Separate factual and aesthetic rubric axes → Independent annotation + uncertainty → Adjudication without identity-based inference → Versioned evaluation report and design examples
 
@@ -90,6 +91,22 @@ New. A synthetic 33-key Persian layout with one Arabic kāf and dāl printed thr
 
 ```
 {"verdict": "fail", "n_keys": 33, "n_missing": 2, "findings": [{"kind": "arabic_lookalike", "key": 30, "evidence": "ARABIC LETTER KAF used; Persian needs ARABIC LETTER KEHEH"}, {"kind": "duplicate", "key": "9,31,40", "evidence": "U+062F appears on 3 keys"}, {"kind": "missing", "key": null, "evidence": "U+0647 U+06CC"}]}
+```
+
+### `python -m cultural_typographic_ai_evaluation.script_lint tests/fixtures/script_lint/dirty.json`
+Lint a synthetic fixture of deliberately broken Persian strings (not model output). Reference: W3C alreq, https://www.w3.org/TR/alreq/.
+
+```
+tests/fixtures/script_lint/dirty.json:outputs[0].output@0 PS006 'مي' prefix joined without ZWNJ (heuristic; verify)
+tests/fixtures/script_lint/dirty.json:outputs[0].output@1 PS001 ARABIC LETTER YEH U+064A; Persian uses U+06CC
+tests/fixtures/script_lint/dirty.json:outputs[0].output@8 PS002 ARABIC LETTER KAF U+0643; Persian uses U+06A9
+tests/fixtures/script_lint/dirty.json:outputs[1].output@4 PS003 repeated ZWNJ
+tests/fixtures/script_lint/dirty.json:outputs[1].output@11 PS003 ZWNJ at word edge or beside whitespace
+tests/fixtures/script_lint/dirty.json:outputs[2].output@0 PS004 bidi control RLE U+202B
+tests/fixtures/script_lint/dirty.json:outputs[2].output@5 PS004 bidi control PDF U+202C
+tests/fixtures/script_lint/dirty.json:outputs[3].output@0 PS005 mixed digit sets: ascii, persian
+8 finding(s)
+exit=1
 ```
 
 ## Measured results

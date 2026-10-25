@@ -1,0 +1,44 @@
+Python 3.13.5
+test_identity_fields_and_range_rejected_minority_kept (test_checks.Aggregation.test_identity_fields_and_range_rejected_minority_kept) ... ok
+test_report (test_checks.CLI.test_report) ... ok
+test_arabic_yeh_detected_and_exact_passes (test_checks.Glyph.test_arabic_yeh_detected_and_exact_passes) ... ok
+test_zwnj_and_arabic_kaf_detected (test_checks.Glyph.test_zwnj_and_arabic_kaf_detected) ... ok
+test_malformed_inputs_never_raise (test_grid_keyboard.Grid.test_malformed_inputs_never_raise) ... ok
+test_mm_converts_to_pt (test_grid_keyboard.Grid.test_mm_converts_to_pt) ... ok
+test_non_square_and_off_baseline_fail (test_grid_keyboard.Grid.test_non_square_and_off_baseline_fail) ... ok
+test_recorded_inside_margin_drift_is_caught (test_grid_keyboard.Grid.test_recorded_inside_margin_drift_is_caught) ... ok
+test_square_module_solution_passes (test_grid_keyboard.Grid.test_square_module_solution_passes) ... ok
+test_32_distinct_letters (test_grid_keyboard.Keyboard.test_32_distinct_letters) ... ok
+test_duplicates_lookalikes_and_missing (test_grid_keyboard.Keyboard.test_duplicates_lookalikes_and_missing) ... ok
+test_full_correct_alphabet_passes (test_grid_keyboard.Keyboard.test_full_correct_alphabet_passes) ... ok
+test_latin_and_empty_keys_flagged (test_grid_keyboard.Keyboard.test_latin_and_empty_keys_flagged) ... ok
+test_measured_detector_baseline_regression (test_m05_m06.Baseline.test_measured_detector_baseline_regression) ... ok
+test_all_six_cases_bridge_and_validate (test_m05_m06.Bridge.test_all_six_cases_bridge_and_validate) ... ok
+test_annotation_schema_forbids_identity_fields (test_m05_m06.Bridge.test_annotation_schema_forbids_identity_fields) ... ok
+test_fidelity (test_m05_m06.Diagram.test_fidelity) ... ok
+test_adversarial_suite_all_pass (test_m07.M07.test_adversarial_suite_all_pass) ... ok
+test_disagreement_and_adjudication_flags (test_m07.M07.test_disagreement_and_adjudication_flags) ... ok
+test_invisible_text_is_not_a_present_field (test_m07.M07.test_invisible_text_is_not_a_present_field) ... ok
+test_numeric_claims_in_any_script_fail (test_m07.M07.test_numeric_claims_in_any_script_fail) ... ok
+test_no_dependencies_declared (test_package.Package.test_no_dependencies_declared) ... ok
+test_sdist_builds (test_package.Package.test_sdist_builds) ... ok
+test_wheel_contents_and_determinism (test_package.Package.test_wheel_contents_and_determinism) ... ok
+test_identity_field_does_not_hide_other_errors (test_review.Review.test_identity_field_does_not_hide_other_errors) ... ok
+test_structural_errors_still_stop_early (test_review.Review.test_structural_errors_still_stop_early) ... ok
+test_cli_exit_codes (test_script_lint.Docs.test_cli_exit_codes) ... ok
+test_fixtures (test_script_lint.Docs.test_fixtures) ... ok
+test_bidi_and_digits (test_script_lint.Rules.test_bidi_and_digits) ... ok
+test_mi_prefix (test_script_lint.Rules.test_mi_prefix) ... ok
+test_yeh_kaf (test_script_lint.Rules.test_yeh_kaf) ... ok
+test_zwnj (test_script_lint.Rules.test_zwnj) ... ok
+test_generated_pages_in_sync_with_project_json (test_site.Site.test_generated_pages_in_sync_with_project_json) ... ok
+test_project_json_valid_and_html_escapes (test_site.Site.test_project_json_valid_and_html_escapes) ... ok
+test_svg_diagram_matches_project_architecture (test_site.Site.test_svg_diagram_matches_project_architecture) ... ok
+test_end_to_end_on_cleared_cases (test_slice.Slice.test_end_to_end_on_cleared_cases) ... ok
+test_missing_field_and_wrong_order_fail (test_slice.Slice.test_missing_field_and_wrong_order_fail) ... ok
+test_render_escapes_and_roundtrips_exact_unicode (test_slice.Slice.test_render_escapes_and_roundtrips_exact_unicode) ... ok
+
+----------------------------------------------------------------------
+Ran 38 tests in 0.297s
+
+OK
