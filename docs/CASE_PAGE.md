@@ -1,27 +1,125 @@
-# Cultural and typographic AI evaluation kit
+# Cultural & Typographic Evaluation Kit
 
+**A kit for judging generated design work the way a typographer would: first the facts you can check (the right Persian letters, the right reading order, the grid that actually adds up), then taste, kept separate and allowed to disagree.**
+
+![A plum typewriter with blank keycaps above a square modular grid sheet, a brass line gauge and a loupe.](../assets/hero.svg)
+
+*Blank keys on purpose: letters belong in native text that can be checked, not in pixels. Editorial illustration.*
+
+## The question
 > How can evaluators separate factual cultural/typographic constraint failures from subjective aesthetic preference, while documenting disagreement and source provenance?
+
+Image and layout generators produce posters, cards and keyboards that look plausible and are quietly wrong. Persian keycaps with the same letter printed four times. An Arabic kāf where Persian needs keheh. A missing zero-width non-joiner that breaks a word in two. A template whose inside margin is 37.89 pt while every other margin is 36. A literary or cultural object dropped in as decoration, with no reason to be there.
+
+Most evaluations fold all of this into one “quality” score, so a factual error and a matter of taste end up on the same scale, and the people who notice the error are outvoted by the people who liked the colours.
+
+This kit keeps the two apart. Factual constraints are checked by deterministic code at the level of Unicode code points and arithmetic. Aesthetic judgements are collected from raters as distributions, never averaged into a verdict, and disagreement is flagged for adjudication. Rater identity is never used as evidence of expertise: an annotation that carries a nationality field is rejected.
+
+## Who it is for
+- **Teams evaluating image, layout or type generators:** Code-point-exact checks for Persian and mixed-direction text, and a clear line between “wrong” and “I don’t like it”.
+- **Designers and art directors:** A grid checker that tells you whether margins, gutters and baseline really form the square, rhythmic module you asked for.
+- **Annotation and research leads:** Annotation schemas that preserve minority opinions and uncertainty, and refuse identity-based shortcuts.
+
+## How it works
+1. **Cleared brief + constraints.** Each case states what must be true (exact title glyphs, reading order, required fields, diagram stages) and records rights and review status for every reference.
+2. **Candidate artifact.** Original or licensed examples only. The M04 slice renders a right-to-left SVG card from a spec, with native text, never text baked into pixels.
+3. **Factual checks.** glyph_exact, reading_order, required_fields and diagram_fidelity return pass, fail or uncertain with evidence. Anything that needs eyes is marked human-review, never guessed.
+4. **Taste, separately.** Aesthetic axes such as hierarchy are collected as rating distributions with n, not merged into the factual verdict.
+5. **Disagreement and adjudication.** Conflicting rater verdicts are flagged needs_adjudication. Malformed or identity-bearing annotations are rejected with reasons.
+6. **Grid and keyboard checks.** New: grid verifies margins, gutters, square modules and baseline rhythm by arithmetic; keyboard checks Persian keycaps for duplicates, look-alikes and missing letters.
+
+Stages (see `architecture.mmd`, authoritative, and `architecture.svg`): Cleared brief + reference constraints → Original or licensed candidate example → Separate factual and aesthetic rubric axes → Independent annotation + uncertainty → Adjudication without identity-based inference → Versioned evaluation report and design examples
+
+![Two trays divided by a plum ruler: measuring tools on the left, swatches and a dried flower on the right.](../assets/fact-vs-taste.svg)
+
+*Facts on one side, taste on the other, and a ruler between them.*
+
+## Commands, with real output
+### `cultural-typographic-ai-evaluation report fixtures/synthetic_eval_m03.json --out out/`
+Run factual checks and aggregate annotations for two synthetic cases. X01 is a deliberately broken card.
+
+```
+{"X01": ["fail", "fail", "fail", "uncertain"], "X02": ["pass"]}
+
+X01 evidence (from out/report.json):
+  title   fail  ZWNJ count 1 expected, 0 observed; Arabic ARABIC LETTER KAF used where Persian ARABIC LETTER KEHEH expected
+  order   fail  expected [rtl:عنوان, ltr:2026] observed [ltr:2026, rtl:عنوان]
+  fields  fail  missing: venue
+  ref     uncertain  artifact lacks data for this constraint
+  raters  ref: 1 pass / 1 fail -> needs_adjudication
+  rejected r3: forbidden identity field rater_nationality; rating out of range on hierarchy
+```
+
+### `cultural-typographic-ai-evaluation slice inputs/synthetic_cases.json --specs fixtures/card_specs_m04.json --out out/m04`
+Vertical slice: render RTL SVG cards from specs and run the checks on them. Cases without an automatable spec stay empty rather than pass.
+
+```
+{"C01": ["pass", "pass", "pass"], "C02": ["pass", "pass", "pass"], "C03": [], "C04": [], "C05": [], "C06": []}
+```
+
+### `cultural-typographic-ai-evaluation collection . --out out/c`
+Validate the case collection and list which constraints per case can be checked by code.
+
+```
+{"errors": [], "automatable": {"C01": ["glyph_exact"], "C02": ["required_fields", "reading_order"], "C03": [], "C04": [], "C05": ["reading_order", "glyph_exact"], "C06": ["diagram_fidelity"]}}
+```
+
+### `cultural-typographic-ai-evaluation baseline . --out out/b`
+Corruption suite: inject known errors (Arabic kāf/yeh, dropped ZWNJ, swapped order, invented metric) and measure detection.
+
+```
+{"detection": {"detected": 15, "denominator": 15, "value": 1.0}, "false_positives_on_clean": {"count": 0, "denominator": 4}, "by_variant": {"arabic_kaf": {"detected": 2}, "arabic_yeh": {"detected": 2}, "drop_stage": {"detected": 1}, "drop_venue": {"detected": 3}, "drop_zwnj": {"detected": 1}, "invented_metric": {"detected": 1}, "swap_order": {"detected": 1}, "title_moved_last": {"detected": 3}, "zwnj_to_space": {"detected": 1}}}
+```
+
+### `cultural-typographic-ai-evaluation failure --out out/f`
+Adversarial suite for checks and aggregation (bidi controls, Persian digits, percent signs, malformed annotations).
+
+```
+{"passed": "28/28"}
+```
+
+### `python -c "from cultural_typographic_ai_evaluation.grid import check_grid; ..."`
+New. The recorded A4 template: 6×9 grid, 12 pt gutter, margins declared equal but inside set to 37.89 pt.
+
+```
+{"verdict": "fail", "findings": [{"check": "equal_margins", "verdict": "fail", "evidence": "declared equal but got {'top': 36, 'bottom': 36, 'inside': 37.89, 'outside': 36} pt"}, {"check": "square_modules", "verdict": "fail", "evidence": "module 76.898 x 74.877 pt (difference 2.021)"}], "derived": {"text_area": [521.386, 769.89], "module": [76.898, 74.877]}}
+```
+
+### `python -c "from cultural_typographic_ai_evaluation.keyboard import check_keys; ..."`
+New. A synthetic 33-key Persian layout with one Arabic kāf and dāl printed three times.
+
+```
+{"verdict": "fail", "n_keys": 33, "n_missing": 2, "findings": [{"kind": "arabic_lookalike", "key": 30, "evidence": "ARABIC LETTER KAF used; Persian needs ARABIC LETTER KEHEH"}, {"kind": "duplicate", "key": "9,31,40", "evidence": "U+062F appears on 3 keys"}, {"kind": "missing", "key": null, "evidence": "U+0647 U+06CC"}]}
+```
+
+## Measured results
+| Metric | Value | Kind | Caveat |
+|---|---|---|---|
+| automated check detection of generated corruptions | 15/15 | measured self-consistency | corruptions written by check author |
+| false positives on clean template artifacts | 0/4 | measured | template SVG, not model outputs |
+| adversarial check/aggregation suite | 28/28 after M07 fixes (11/28 before) | measured robustness | suite written by check author |
 
 **Status:** Measured check self-consistency and adversarial robustness on template artifacts; no model or rater results. Private work in progress.
 
-## Contribution
-Ilghar Dadgostari: problem framing, requirements and evaluation direction. Implementation AI-assisted (Grok Bot), reviewed only by Grok Bot so far.
-
-## Architecture
-See `architecture.mmd` (authoritative) and `architecture.svg` (fallback). Stages: Cleared brief + reference constraints → Original or licensed candidate example → Separate factual and aesthetic rubric axes → Independent annotation + uncertainty → Adjudication without identity-based inference → Versioned evaluation report and design examples
-
-## Measured results
-- automated check detection of generated corruptions: 15/15 (measured self-consistency; corruptions written by check author)
-- false positives on clean template artifacts: 0/4 (measured; template SVG, not model outputs)
-- adversarial check/aggregation suite: 28/28 after M07 fixes (11/28 before) (measured robustness; suite written by check author)
-
 ## Limitations
-- No generative model outputs evaluated.
-- No human annotations; aesthetic axes unmeasured.
-- C03/C04 are human-review-only; text checks cannot see font shaping.
-- Illustration (assets/ASSETS.json) is AI-generated, illustration only, stored on Drive not git; the native diagram is authoritative.
+- No generative model outputs evaluated yet; artifacts are templates and hand-written examples.
+- No real human annotations; aesthetic axes are unmeasured. Synthetic annotations are labelled synthetic.
+- C03/C04 are human-review-only; text checks cannot see font shaping or rendering.
+- Grid and keyboard checks work on declared numbers and text, never on screenshots.
+- Reviews so far are self-reviews.
+- Illustrations are editorial images only; the native diagram is authoritative.
 
-## Reproduce
-See README and `tests/receipts/`. Next steps: `handoff/NEXT.md`.
+## Roadmap: the original ambition
+| Next | Status | Where it comes from |
+|---|---|---|
+| Margin/gutter solver that proposes a square, rhythmic modular grid for a given page | checker implemented (grid); solver planned | “what should be the relation between the margins and gutters and still arrive at a modular, flexible and square rhythmic grid-system?” |
+| Persian typewriter / keyboard fidelity benchmark | keycap checker implemented (keyboard); benchmark cases planned | critique of generated Persian keycaps with repeated and wrong letters |
+| Typography-history layer: how historical systems shaped contemporary ones, numbers and poetics | planned | request to trace modern type systems back to their references, “not only the numbers but also the poetic, conceptual thoughts” |
+| Reference-justified objects: cultural and literary references must have a reason to appear | human-review axis today; structured rubric planned | critique of decorative name-dropping and irrelevant symbolic objects |
+| Identity preservation: separate a reference person’s attributes from setting and style | planned, consent-cleared material only | critiques of identity and reference drift in generated portraits |
+| Real rater study with documented disagreement | open | no human annotations collected yet |
+
+## Credit
+Concept, design criteria, typographic research and editorial: ilghar.studio.
 
 _Generated by `tools/export_site.py` from `site/project.json`; do not edit by hand._
