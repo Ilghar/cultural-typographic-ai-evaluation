@@ -3,18 +3,18 @@
 
 **A kit for judging generated design work the way a typographer would: first the facts you can check (the right Persian letters, the right reading order, the grid that actually adds up), then taste, kept separate and allowed to disagree.**
 
-![Project board: a fine-line girih star grid with some stars marked in rose, a code-drawn star construction with one rose point, and a text column describing the six checks.](assets/board-light.svg)
+![Project board: a fine-line star grid with some stars marked in rose, a code-drawn star construction with one rose point, and a text column describing the seven checks.](assets/board-light.svg)
 
 *Project board, ilghar.studio. Light and dark versions follow the page theme.*
 
 ## The question
 > How can evaluators separate factual cultural/typographic constraint failures from subjective aesthetic preference, while documenting disagreement and source provenance?
 
-Image and layout generators produce posters, cards and keyboards that look plausible and are quietly wrong. Persian keycaps with the same letter printed four times. An Arabic kāf where Persian needs keheh. A missing zero-width non-joiner that breaks a word in two. A template whose inside margin is 37.89 pt while every other margin is 36. A literary or cultural object dropped in as decoration, with no reason to be there.
+Image and layout generators produce posters, cards and keyboards that look right and are wrong. Persian keycaps with the same letter printed four times. An Arabic kāf where Persian needs keheh. A missing zero-width non-joiner that breaks a word in two. A template whose inside margin is 37.89 pt while every other margin is 36. A literary or cultural object dropped in as decoration, with no reason to be there.
 
-Most evaluations fold all of this into one “quality” score, so a factual error and a matter of taste end up on the same scale, and the people who notice the error are outvoted by the people who liked the colours.
+Most evaluations fold all of this into one “quality” score, so a factual error and a matter of taste end up on the same scale, and the people who notice the error are outvoted by the people who liked the colors.
 
-This kit keeps the two apart. Factual constraints are checked by deterministic code at the level of Unicode code points and arithmetic. Aesthetic judgements are collected from raters as distributions, never averaged into a verdict, and disagreement is flagged for adjudication. Rater identity is never used as evidence of expertise: an annotation that carries a nationality field is rejected.
+This kit keeps the two apart. Factual constraints are checked by deterministic code at the level of Unicode code points and arithmetic. Aesthetic judgments are collected from raters as distributions, never averaged into a verdict, and disagreement is flagged for adjudication. Rater identity is never used as evidence of expertise: an annotation that carries a nationality field is rejected.
 
 ## Who it is for
 - **Teams evaluating image, layout or type generators:** Code-point-exact checks for Persian and mixed-direction text, and a clear line between “wrong” and “I don’t like it”.
@@ -28,7 +28,7 @@ This kit keeps the two apart. Factual constraints are checked by deterministic c
 4. **Taste, separately.** Aesthetic axes such as hierarchy are collected as rating distributions with n, not merged into the factual verdict.
 5. **Disagreement and adjudication.** Conflicting rater verdicts are flagged for adjudication. Malformed or identity-bearing annotations are rejected with reasons.
 6. **Grid and keyboard checks.** The grid checker verifies margins, gutters, square modules and baseline rhythm by arithmetic; the keyboard checker checks Persian keycaps for duplicates, look-alikes and missing letters.
-7. **Script linter.** The script linter walks every string in an evaluation output and flags codepoint-level Persian-script faults: Arabic yeh/kaf (U+064A, U+0649, U+0643) where Persian U+06CC/U+06A9 are expected, misplaced or repeated ZWNJ, bidi control characters, mixed digit sets, and a labelled heuristic for a missing ZWNJ after the mi-/nemi- verb prefix. Rules follow the character-level guidance in [W3C Arabic & Persian Layout Requirements](https://www.w3.org/TR/alreq/). It reports characters, not language quality; exit 0 clean, 1 findings, 2 bad input.
+7. **Script linter.** The script linter walks every string in an evaluation output and flags codepoint-level Persian-script faults: Arabic yeh/kaf (U+064A, U+0649, U+0643) where Persian U+06CC/U+06A9 are expected, misplaced or repeated ZWNJ, bidi control characters, mixed digit sets, and a labeled heuristic for a missing ZWNJ after the mi-/nemi- verb prefix. Rules follow the character-level guidance in [W3C Arabic & Persian Layout Requirements](https://www.w3.org/TR/alreq/). It reports characters, not language quality; exit 0 clean, 1 findings, 2 bad input.
 
 Stages (see `docs/architecture.mmd`, authoritative, and `docs/architecture.svg`): Cleared brief + reference constraints → Original or licensed candidate example → Separate factual and aesthetic rubric axes → Independent annotation + uncertainty → Adjudication without identity-based inference → Versioned evaluation report and design examples
 
@@ -134,7 +134,7 @@ exit=1
 
 ## Limitations
 - No generative model outputs evaluated yet; artifacts are templates and hand-written examples.
-- No real human annotations; aesthetic axes are unmeasured. Synthetic annotations are labelled synthetic.
+- No real human annotations; aesthetic axes are unmeasured. Synthetic annotations are labeled synthetic.
 - C03/C04 are human-review-only; text checks cannot see font shaping or rendering.
 - Grid and keyboard checks work on declared numbers and text, never on screenshots.
 - Reviews so far are self-reviews.
