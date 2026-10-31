@@ -20,7 +20,7 @@ Requirement categories derived from S02/S03 (paraphrase, not quotes):
 These are historical design requirements, **not** a benchmark, gold dataset or universal cultural standard. No measured model improvement exists.
 
 ## Access actually used (2026-10-23, Europe/Berlin)
-Drive project-02 folder read via connector (all files except `.DS_Store`; `source_register.jsonl` was empty). GitHub `Ilghar` verified; repo private. Library search unavailable (S05).
+Drive project-02 folder read via connector (all files except `.DS_Store`; `source_register.jsonl` was empty). GitHub `Ilghar` verified; repo private. The project library could not be searched, so the SEARCH_GUIDE terms were not searched; no source came from it.
 
 ## Plans
 Everything in `docs/PRODUCT_CONTRACT.md` acceptance criteria and `docs/ARCHITECTURE.md` is planned until code + receipts exist.

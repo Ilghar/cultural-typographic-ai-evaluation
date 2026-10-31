@@ -47,3 +47,10 @@ class Readme(unittest.TestCase):
         p = json.loads((ROOT / "site/project.json").read_text(encoding="utf-8")); t = (ROOT / "README.md").read_text(encoding="utf-8")
         self.assertIn(export_site.render_readme_block(p), t)
 if __name__ == "__main__": unittest.main()
+
+
+class LinkColour(unittest.TestCase):
+    def test_links_use_theme_ink_not_browser_blue(self):
+        page = (ROOT / "site" / "index.html").read_text(encoding="utf-8") if "ROOT" in globals() else \
+            (__import__("pathlib").Path(__file__).resolve().parent.parent / "site" / "index.html").read_text(encoding="utf-8")
+        self.assertRegex(page, r"\.ilg-case a\{[^}]*color:var\(--ink\)")

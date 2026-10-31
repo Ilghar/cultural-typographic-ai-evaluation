@@ -3,7 +3,7 @@
 
 **A kit for judging generated design work the way a typographer would: first the facts you can check (the right Persian letters, the right reading order, the grid that actually adds up), then taste, kept separate and allowed to disagree.**
 
-![Project board: a fine-line girih star grid with some stars marked blue, a photo of a hand-laid star tiling with a compass, and a text column describing the six checks.](../assets/board-light.svg)
+![Project board: a fine-line girih star grid with some stars marked blue, a photo of a hand-laid star tiling with a compass, and a text column describing the six checks.](assets/board-light.svg)
 
 *Project board, ilghar.studio. Light and dark versions follow the page theme.*
 
@@ -32,9 +32,18 @@ This kit keeps the two apart. Factual constraints are checked by deterministic c
 
 Stages (see `docs/architecture.mmd`, authoritative, and `docs/architecture.svg`): Cleared brief + reference constraints → Original or licensed candidate example → Separate factual and aesthetic rubric axes → Independent annotation + uncertainty → Adjudication without identity-based inference → Versioned evaluation report and design examples
 
-![Two trays divided by a plum ruler: measuring tools on the left, swatches and a dried flower on the right.](../assets/fact-vs-taste.svg)
+![Two trays divided by a plum ruler: measuring tools on the left, swatches and a dried flower on the right.](assets/fact-vs-taste.svg)
 
 *Facts on one side, taste on the other, and a ruler between them.*
+
+## Install and run (offline, Python ≥ 3.11, no dependencies)
+```sh
+python3 -m venv .venv && . .venv/bin/activate   # isolated environment (Windows: .venv\Scripts\activate)
+python3 -m pip install --no-index .          # console script: cultural-typographic-ai-evaluation
+PYTHONPATH=src python3 -m unittest discover -s tests -v
+sh examples/run.sh                           # reinstall in a temp venv and compare outputs with examples/expected.sha256
+```
+Receipts for every run live in `tests/receipts/`. Dependencies: `docs/DEPENDENCIES.md`.
 
 ## Commands, with real output
 ### `cultural-typographic-ai-evaluation report fixtures/synthetic_eval_m03.json --out out/`
@@ -80,21 +89,21 @@ Adversarial suite for checks and aggregation (bidi controls, Persian digits, per
 {"passed": "28/28"}
 ```
 
-### `python -c "from cultural_typographic_ai_evaluation.grid import check_grid; ..."`
+### `python3 -c "from cultural_typographic_ai_evaluation.grid import check_grid; ..."`
 The recorded A4 template: 6×9 grid, 12 pt gutter, margins declared equal but inside set to 37.89 pt.
 
 ```
 {"verdict": "fail", "findings": [{"check": "equal_margins", "verdict": "fail", "evidence": "declared equal but got {'top': 36, 'bottom': 36, 'inside': 37.89, 'outside': 36} pt"}, {"check": "square_modules", "verdict": "fail", "evidence": "module 76.898 x 74.877 pt (difference 2.021)"}], "derived": {"text_area": [521.386, 769.89], "module": [76.898, 74.877]}}
 ```
 
-### `python -c "from cultural_typographic_ai_evaluation.keyboard import check_keys; ..."`
+### `python3 -c "from cultural_typographic_ai_evaluation.keyboard import check_keys; ..."`
 A synthetic 33-key Persian layout with one Arabic kāf and dāl printed three times.
 
 ```
 {"verdict": "fail", "n_keys": 33, "n_missing": 2, "findings": [{"kind": "arabic_lookalike", "key": 30, "evidence": "ARABIC LETTER KAF used; Persian needs ARABIC LETTER KEHEH"}, {"kind": "duplicate", "key": "9,31,40", "evidence": "U+062F appears on 3 keys"}, {"kind": "missing", "key": null, "evidence": "U+0647 U+06CC"}]}
 ```
 
-### `python -m cultural_typographic_ai_evaluation.script_lint tests/fixtures/script_lint/dirty.json`
+### `python3 -m cultural_typographic_ai_evaluation.script_lint tests/fixtures/script_lint/dirty.json`
 Lint a synthetic fixture of deliberately broken Persian strings (not model output). Reference: [W3C Arabic & Persian Layout Requirements](https://www.w3.org/TR/alreq/).
 
 ```
@@ -144,14 +153,6 @@ exit=1
 ## Credit
 Concept, design criteria, typographic research and editorial: ilghar.studio.
 <!-- case:end -->
-
-## Install and run (offline, Python ≥ 3.11, no dependencies)
-```sh
-python3 -m pip install --no-index .          # console script: cultural-typographic-ai-evaluation
-PYTHONPATH=src python3 -m unittest discover -s tests -v
-sh examples/run.sh                           # reinstall in a temp venv and compare outputs with examples/expected.sha256
-```
-Receipts for every run live in `tests/receipts/`. Dependencies: `docs/DEPENDENCIES.md`.
 
 ## Architecture
 ```mermaid

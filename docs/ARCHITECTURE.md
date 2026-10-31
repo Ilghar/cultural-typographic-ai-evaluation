@@ -9,7 +9,7 @@ Diagram `docs/architecture.mmd`; ADR `docs/adr/0001-scope-and-boundaries.md`.
 | `checks.py` | Deterministic factual checks on **native text artifacts**: exact codepoint match (`glyph_exact`), bidi run order, required fields present/ordered, diagram nodes/edges vs stage list |
 | `aggregate.py` | Keep constraint verdicts and aesthetic ratings separate; disagreement per constraint (any pass vs fail) and per axis (range, distribution) |
 | `report.py` | JSON + Markdown report with denominators; `private` fields stripped from public export |
-| `cli.py` | `python -m cultural_typographic_ai_evaluation report CASES ANNOTATIONS --out DIR` |
+| `cli.py` | `python3 -m cultural_typographic_ai_evaluation report CASES ANNOTATIONS --out DIR` |
 | `viewer/` (later) | Static HTML viewer, escaped text, RTL-safe |
 
 ## Data flow

@@ -141,17 +141,17 @@
    "output": "{\"passed\": \"28/28\"}"
   },
   {
-   "cmd": "python -c \"from cultural_typographic_ai_evaluation.grid import check_grid; ...\"",
+   "cmd": "python3 -c \"from cultural_typographic_ai_evaluation.grid import check_grid; ...\"",
    "what": "The recorded A4 template: 6×9 grid, 12 pt gutter, margins declared equal but inside set to 37.89 pt.",
    "output": "{\"verdict\": \"fail\", \"findings\": [{\"check\": \"equal_margins\", \"verdict\": \"fail\", \"evidence\": \"declared equal but got {'top': 36, 'bottom': 36, 'inside': 37.89, 'outside': 36} pt\"}, {\"check\": \"square_modules\", \"verdict\": \"fail\", \"evidence\": \"module 76.898 x 74.877 pt (difference 2.021)\"}], \"derived\": {\"text_area\": [521.386, 769.89], \"module\": [76.898, 74.877]}}"
   },
   {
-   "cmd": "python -c \"from cultural_typographic_ai_evaluation.keyboard import check_keys; ...\"",
+   "cmd": "python3 -c \"from cultural_typographic_ai_evaluation.keyboard import check_keys; ...\"",
    "what": "A synthetic 33-key Persian layout with one Arabic kāf and dāl printed three times.",
    "output": "{\"verdict\": \"fail\", \"n_keys\": 33, \"n_missing\": 2, \"findings\": [{\"kind\": \"arabic_lookalike\", \"key\": 30, \"evidence\": \"ARABIC LETTER KAF used; Persian needs ARABIC LETTER KEHEH\"}, {\"kind\": \"duplicate\", \"key\": \"9,31,40\", \"evidence\": \"U+062F appears on 3 keys\"}, {\"kind\": \"missing\", \"key\": null, \"evidence\": \"U+0647 U+06CC\"}]}"
   },
   {
-   "cmd": "python -m cultural_typographic_ai_evaluation.script_lint tests/fixtures/script_lint/dirty.json",
+   "cmd": "python3 -m cultural_typographic_ai_evaluation.script_lint tests/fixtures/script_lint/dirty.json",
    "what": "Lint a synthetic fixture of deliberately broken Persian strings (not model output). Reference: [W3C Arabic & Persian Layout Requirements](https://www.w3.org/TR/alreq/).",
    "output": "tests/fixtures/script_lint/dirty.json:outputs[0].output@0 PS006 'مي' prefix joined without ZWNJ (heuristic; verify)\ntests/fixtures/script_lint/dirty.json:outputs[0].output@1 PS001 ARABIC LETTER YEH U+064A; Persian uses U+06CC\ntests/fixtures/script_lint/dirty.json:outputs[0].output@8 PS002 ARABIC LETTER KAF U+0643; Persian uses U+06A9\ntests/fixtures/script_lint/dirty.json:outputs[1].output@4 PS003 repeated ZWNJ\ntests/fixtures/script_lint/dirty.json:outputs[1].output@11 PS003 ZWNJ at word edge or beside whitespace\ntests/fixtures/script_lint/dirty.json:outputs[2].output@0 PS004 bidi control RLE U+202B\ntests/fixtures/script_lint/dirty.json:outputs[2].output@5 PS004 bidi control PDF U+202C\ntests/fixtures/script_lint/dirty.json:outputs[3].output@0 PS005 mixed digit sets: ascii, persian\n8 finding(s)\nexit=1"
   }
