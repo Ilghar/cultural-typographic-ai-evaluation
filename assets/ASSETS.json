@@ -1,11 +1,11 @@
 {
  "credit": "ilghar.studio",
- "status": "round 5 boards approved by owner 2026-10-25",
+ "status": "boards re-exported 2026-10-31 in the studio palette (text plum #4a3a5c / ink #f4eef3, accent #c97a98 / #e8a8bc, no blue)",
  "boards": [
   {
    "path": "assets/board-light.svg",
    "theme": "light",
-   "source_png_sha256": "67dd286a81134148860aa3eeb494c76cf9704526241c4646134ed5e676da9d5a",
+   "source_png_sha256": "8fd72d4aff790d6693bcf69ec4ebf17788f8e8cd6459c79bd057eb679f64002b",
    "width": 2400,
    "height": 1500,
    "embedded": "lossless PNG (source_png_sha256) in SVG wrapper"
@@ -13,7 +13,7 @@
   {
    "path": "assets/board-dark.svg",
    "theme": "dark",
-   "source_png_sha256": "13fb060158d48b9bac1c189cb82fea685148f1d2a49e54779e7319c1d9249741",
+   "source_png_sha256": "fc8ae9304d9f048c307913e0d997229a3835ad226821b43e42fe6b42db0a5979",
    "width": 2400,
    "height": 1500,
    "embedded": "lossless PNG (source_png_sha256) in SVG wrapper"
@@ -21,7 +21,7 @@
  ],
  "usage": "<picture><source media=\"(prefers-color-scheme: dark)\" srcset=\"assets/board-dark.svg\"><img src=\"assets/board-light.svg\"></picture>",
  "format_note": "Raster boards are embedded inside SVG wrappers so they can be committed as text.",
- "construction": "code-rendered construction drawing",
- "photos": "Model/study photograph generated for this board.",
+ "construction": "code-rendered drawings (girih star grid and star construction)",
+ "photos": "No photograph on this board.",
  "superseded": "earlier illustration_v* and rejected hero options (not committed)"
 }

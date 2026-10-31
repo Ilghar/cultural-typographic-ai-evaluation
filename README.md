@@ -3,7 +3,7 @@
 
 **A kit for judging generated design work the way a typographer would: first the facts you can check (the right Persian letters, the right reading order, the grid that actually adds up), then taste, kept separate and allowed to disagree.**
 
-![Project board: a fine-line girih star grid with some stars marked blue, a photo of a hand-laid star tiling with a compass, and a text column describing the six checks.](assets/board-light.svg)
+![Project board: a fine-line girih star grid with some stars marked in rose, a code-drawn star construction with one rose point, and a text column describing the six checks.](assets/board-light.svg)
 
 *Project board, ilghar.studio. Light and dark versions follow the page theme.*
 
