@@ -6,3 +6,5 @@ Detector baseline on a generated corruption suite over template RTL SVG cards (C
 - False positives on clean artifacts 0/4.
 
 Reading: this shows the checks are internally consistent, not that they catch real model failures. Real candidate artifacts and multi-rater annotations are required for an empirical baseline.
+
+A proposed (not yet run) protocol for an independent, human-reviewed evaluation is in [`EVALUATION_PROTOCOL.md`](EVALUATION_PROTOCOL.md).
