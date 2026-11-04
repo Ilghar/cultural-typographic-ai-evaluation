@@ -32,6 +32,13 @@ This kit keeps the two apart. Factual constraints are checked by deterministic c
 
 Stages (see `docs/architecture.mmd`, authoritative, and `docs/architecture.svg`): Cleared brief + reference constraints → Original or licensed candidate example → Separate factual and aesthetic rubric axes → Independent annotation + uncertainty → Adjudication without identity-based inference → Versioned evaluation report and design examples
 
+### Quick start
+```sh
+python3 -m venv .venv && . .venv/bin/activate
+python3 -m pip install --no-index .
+cultural-typographic-ai-evaluation report fixtures/synthetic_eval_m03.json --out out/
+```
+
 ![Two trays divided by a plum ruler: measuring tools on the left, swatches and a dried flower on the right.](assets/fact-vs-taste.svg)
 
 *Facts on one side, taste on the other, and a ruler between them.*
