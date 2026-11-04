@@ -16,6 +16,8 @@ def fa(s):
 
 CSS = THEME.css(".ilg-case") + """@font-face{font-family:"Vazirmatn";src:url("fonts/vazirmatn-fa.woff2") format("woff2");font-weight:100 900;font-display:swap;unicode-range:U+0600-06FF,U+200C-200D,U+FB50-FDFF,U+FE70-FEFF}
 .ilg-case [lang="fa"]{font-family:"Vazirmatn","Noto Naskh Arabic",sans-serif;letter-spacing:0;text-transform:none}
+.ilg-case{--title-fa-weight:400;--title-fa-size:.9em;--title-lat-weight:400}
+.ilg-case h1 [lang="fa"]{font-weight:var(--title-fa-weight);font-size:var(--title-fa-size)}
 .ilg-case a{color:var(--ink);text-decoration-color:var(--accent);text-underline-offset:.15em}
 .ilg-case{--ease-out:cubic-bezier(.22,1,.36,1);
 font-family:"Jost","Avenir Next","Avenir","Helvetica Neue",Helvetica,Arial,"Vazirmatn","Noto Naskh Arabic",sans-serif;font-weight:400;
