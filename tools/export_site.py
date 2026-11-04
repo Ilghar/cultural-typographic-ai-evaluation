@@ -9,7 +9,14 @@ ROOT = pathlib.Path(__file__).resolve().parents[1]; sys.path.insert(0, str(ROOT 
 PKG = [p.name for p in (ROOT / "src").iterdir() if p.is_dir() and not p.name.startswith("_")][0]
 validate = __import__(f"{PKG}.schema", fromlist=["validate"]).validate
 THEME = __import__(f"{PKG}.theme", fromlist=["css"])
-CSS = THEME.css(".ilg-case") + """.ilg-case a{color:var(--ink);text-decoration-color:var(--accent);text-underline-offset:.15em}
+FA_RUN = re.compile(r"[\u0600-\u06FF\uFB50-\uFDFF\uFE70-\uFEFF]+(?:[\u200c\u200d ][\u0600-\u06FF\uFB50-\uFDFF\uFE70-\uFEFF]+)*")
+def fa(s):
+    """Wrap Arabic-script runs so they use the shared design-system Vazirmatn subset."""
+    return FA_RUN.sub(lambda m: f'<span lang="fa" dir="rtl">{m.group(0)}</span>', s)
+
+CSS = THEME.css(".ilg-case") + """@font-face{font-family:"Vazirmatn";src:url("fonts/vazirmatn-fa.woff2") format("woff2");font-weight:100 900;font-display:swap;unicode-range:U+0600-06FF,U+200C-200D,U+FB50-FDFF,U+FE70-FEFF}
+.ilg-case [lang="fa"]{font-family:"Vazirmatn","Noto Naskh Arabic",sans-serif;letter-spacing:0;text-transform:none}
+.ilg-case a{color:var(--ink);text-decoration-color:var(--accent);text-underline-offset:.15em}
 .ilg-case{--ease-out:cubic-bezier(.22,1,.36,1);
 font-family:"Jost","Avenir Next","Avenir","Helvetica Neue",Helvetica,Arial,"Vazirmatn","Noto Naskh Arabic",sans-serif;font-weight:400;
 -webkit-font-smoothing:antialiased;line-height:1.6;font-size:1.0625rem}
@@ -65,7 +72,7 @@ def render(p):
     flow = "".join(f"<li>{e(s)}</li>" for s in p["architecture"])
     steps = "".join(f'<div class="card step"><h3>{e(s["title"])}</h3><p>{e(s["body"])}</p></div>' for s in p.get("how", []))
     who = "".join(f'<div class="card"><h3>{e(a["who"])}</h3><p>{e(a["why"])}</p></div>' for a in p.get("audience", []))
-    cmds = "".join(f'<h3><code>{e(c["cmd"])}</code></h3><p>{e(c["what"])}</p><pre>{e(c["output"])}</pre>' for c in p.get("commands", []))
+    cmds = "".join(f'<h3><code>{e(c["cmd"])}</code></h3><p>{e(c["what"])}</p><pre>{fa(e(c["output"]))}</pre>' for c in p.get("commands", []))
     sch = "".join(f"<tr><td><code>{e(s['path'])}</code></td><td>{e(s['what'])}</td></tr>" for s in p.get("schemas", []))
     road = "".join(f"<tr><td>{e(r['item'])}</td><td>{e(r['status'])}</td><td>{e(r['origin'])}</td></tr>" for r in p.get("roadmap", []))
     lim = "".join(f"<li>{e(s)}</li>" for s in p.get("limitations", []))
