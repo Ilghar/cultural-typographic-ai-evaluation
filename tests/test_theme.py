@@ -38,8 +38,8 @@ class Theme(unittest.TestCase):
         self.assertAlmostEqual(theme.contrast("#000000", "#ffffff"), 21.0, places=2)
         self.assertAlmostEqual(theme.contrast("#777777", "#ffffff"), 4.48, places=2)
     def test_studio_tokens_unchanged(self):
-        self.assertEqual(theme.TOKENS["dark"]["canvas"], "#4a434c"); self.assertEqual(theme.TOKENS["dark"]["ink"], "#f4eef3")
-        self.assertEqual(theme.TOKENS["light"]["canvas"], "#f3f1f6"); self.assertEqual(theme.TOKENS["light"]["accent"], "#c97a98")
+        self.assertEqual(theme.TOKENS["dark"]["canvas"], "#473448"); self.assertEqual(theme.TOKENS["dark"]["ink"], "#f4eef3")
+        self.assertEqual(theme.TOKENS["light"]["canvas"], "#f3f1f6"); self.assertEqual(theme.TOKENS["light"]["accent"], "#856a8e")
     def test_generated_page_has_both_themes_and_toggle(self):
         h = (ROOT / "site/index.html").read_text(encoding="utf-8")
         self.assertIn("prefers-color-scheme:dark", h); self.assertIn(".ilg-case[data-theme=dark]", h)

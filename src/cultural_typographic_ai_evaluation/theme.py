@@ -20,8 +20,8 @@ TOKENS = {
 # Figures sit on a light plate in both themes (studio --surface / light --canvas) so art drawn on paper stays legible.
 FIGURE_BG = {"light": "#fffcfe", "dark": "#f3f1f6"}
 SHADOWS = {
-    "light": "--shadow-frame:inset 0 1px 0 rgba(255,255,255,.98),inset 0 -1px 0 rgba(74,58,92,.05),0 2px 3px rgba(74,58,92,.06),0 10px 18px rgba(74,58,92,.1),0 28px 44px -8px rgba(74,58,92,.22);"
-             "--shadow-plate:0 1px 0 rgba(255,255,255,.7),0 6px 18px rgba(74,58,92,.1);",
+    "light": "--shadow-frame:inset 0 1px 0 rgba(255,255,255,.98),inset 0 -1px 0 rgba(71,52,72,.05),0 2px 3px rgba(71,52,72,.06),0 10px 18px rgba(71,52,72,.1),0 28px 44px -8px rgba(71,52,72,.22);"
+             "--shadow-plate:0 1px 0 rgba(255,255,255,.7),0 6px 18px rgba(71,52,72,.1);",
     "dark": "--shadow-frame:inset 0 1px 0 rgba(255,255,255,.1),0 2px 4px rgba(0,0,0,.25),0 16px 32px -8px rgba(0,0,0,.45),0 32px 56px -16px rgba(0,0,0,.4);"
             "--shadow-plate:0 1px 0 rgba(255,255,255,.08),0 8px 20px rgba(0,0,0,.28);",
 }
