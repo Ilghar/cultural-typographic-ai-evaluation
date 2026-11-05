@@ -5,7 +5,7 @@
   {
    "path": "assets/board-light.svg",
    "theme": "light",
-   "source_png_sha256": "1bbd0717827b2fbaa0c1765e453d9ac51c2c510a9d9de8bf2373038ead94554a",
+   "source_png_sha256": "f35d67dc695b125c52b8dcc614793e123e4009e6768fae5a41e3b525feb38c59",
    "width": 2400,
    "height": 1500,
    "embedded": "lossless PNG (source_png_sha256) in SVG wrapper"
@@ -13,7 +13,7 @@
   {
    "path": "assets/board-dark.svg",
    "theme": "dark",
-   "source_png_sha256": "a4ba60504fe10510a9af137295d65eeaf1f475afe41fcb882c803168ffce713e",
+   "source_png_sha256": "b35313e5cdbba13c5d70ee8a4719cf5096006adb3eee235f505aa5428b386f70",
    "width": 2400,
    "height": 1500,
    "embedded": "lossless PNG (source_png_sha256) in SVG wrapper"
