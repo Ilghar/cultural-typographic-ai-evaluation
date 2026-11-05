@@ -1,116 +1,108 @@
-<!doctype html><html lang="en"><head>
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Cultural &amp; Typographic Evaluation Kit · ilghar.studio</title>
 <link rel="stylesheet" href="tokens.css">
 <link rel="stylesheet" href="pages-shell.css">
 <style>
-/* mobile overflow: long code/tables stay in column */
-.ilg-case pre,.ilg-case code,.ilg-case table{max-width:100%}
-.ilg-case pre,.ilg-case table{display:block;overflow-x:auto;-webkit-overflow-scrolling:touch}
-.ilg-case code{overflow-wrap:anywhere;word-break:break-word}
-.ilg-case td,.ilg-case th{overflow-wrap:anywhere}
-
-.cards-proof{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:1.5rem 0}
-.cards-proof .card{border:1px solid var(--line);border-radius:12px;padding:16px;background:var(--surface)}
-.cards-proof .big{font-size:1.8rem;color:var(--accent-dot);margin:.2rem 0}
-.cards-proof h3{font-size:.85rem;letter-spacing:.12em;text-transform:uppercase;color:var(--label);font-weight:500;margin:0}
-.cards-proof .note{font-size:.9rem;color:var(--ink);margin:0}
-@media (max-width:640px){.cards-proof{grid-template-columns:1fr}}
-.hero{margin:1rem 0 1.5rem;max-width:100%}
-
+@font-face{font-family:"Jost";font-style:normal;font-weight:300;font-display:swap;src:url("fonts/jost-latin-300-normal.woff2") format("woff2")}
+@font-face{font-family:"Jost";font-style:normal;font-weight:400;font-display:swap;src:url("fonts/jost-latin-400-normal.woff2") format("woff2")}
+@font-face{font-family:"Jost";font-style:normal;font-weight:500;font-display:swap;src:url("fonts/jost-latin-500-normal.woff2") format("woff2")}
+@font-face{font-family:"Vazirmatn";font-style:normal;font-weight:300;font-display:swap;src:url("fonts/vazirmatn-fa.woff2") format("woff2")}
+[lang=fa]{font-family:Vazirmatn,Jost,sans-serif;font-size:90%}
+label{display:grid;gap:6px;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--label)}
+input{font:300 16px/1.55 var(--font);padding:8px;border:1px solid var(--line);border-radius:0;background:var(--bg);color:var(--fg)}
+button.run{font:400 12px var(--font);letter-spacing:.12em;text-transform:uppercase;color:var(--fg);background:transparent;border:1px solid var(--line);border-radius:0;padding:.5rem .9rem;cursor:pointer}
+.live-pad{padding:16px;display:grid;gap:12px}
+pre.out{margin:0;font:300 14px/1.5 ui-monospace,Menlo,monospace;white-space:pre-wrap;color:var(--fg)}
 </style>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>cultural &amp; typographic evaluation kit · ilghar.studio</title><style>.ilg-case{}.ilg-case{background:var(--canvas);color:var(--ink);min-height:100vh}.ilg-case .ilg-theme-toggle{position:fixed;top:1rem;inset-inline-end:1rem;z-index:10;font:inherit;font-size:.8rem;letter-spacing:.08em;color:var(--ink);background:var(--surface);border:1px solid var(--accent);border-radius:2rem;padding:.35rem .9rem;cursor:pointer;box-shadow:var(--shadow-plate)}.ilg-case .ilg-theme-toggle:focus-visible{outline:2px solid var(--ring);outline-offset:2px}.ilg-case .ilg-theme-toggle[hidden]{display:none}@font-face{font-family:"Jost";font-style:normal;font-weight:300;font-display:swap;src:url("fonts/jost-latin-ext-300-normal.woff2") format("woff2");unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF;}@font-face{font-family:"Jost";font-style:normal;font-weight:300;font-display:swap;src:url("fonts/jost-latin-300-normal.woff2") format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;}@font-face{font-family:"Jost";font-style:normal;font-weight:400;font-display:swap;src:url("fonts/jost-latin-ext-400-normal.woff2") format("woff2");unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF;}@font-face{font-family:"Jost";font-style:normal;font-weight:400;font-display:swap;src:url("fonts/jost-latin-400-normal.woff2") format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;}@font-face{font-family:"Jost";font-style:normal;font-weight:500;font-display:swap;src:url("fonts/jost-latin-ext-500-normal.woff2") format("woff2");unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF;}@font-face{font-family:"Jost";font-style:normal;font-weight:500;font-display:swap;src:url("fonts/jost-latin-500-normal.woff2") format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;}@font-face{font-family:"Jost";font-style:normal;font-weight:600;font-display:swap;src:url("fonts/jost-latin-ext-600-normal.woff2") format("woff2");unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF;}@font-face{font-family:"Jost";font-style:normal;font-weight:600;font-display:swap;src:url("fonts/jost-latin-600-normal.woff2") format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;}@font-face{font-family:"Jost";font-style:italic;font-weight:400;font-display:swap;src:url("fonts/jost-latin-ext-400-italic.woff2") format("woff2");unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF;}@font-face{font-family:"Jost";font-style:italic;font-weight:400;font-display:swap;src:url("fonts/jost-latin-400-italic.woff2") format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;}@font-face{font-family:"Vazirmatn";font-style:normal;font-weight:100 900;font-display:swap;src:url("fonts/vazirmatn-fa.woff2") format("woff2");unicode-range:U+0600-06FF,U+200C-200D,U+FB50-FDFF,U+FE70-FEFF;}
-.ilg-case [lang="fa"]{font-family:"Vazirmatn","Noto Naskh Arabic",sans-serif;letter-spacing:0;text-transform:none}
-.ilg-case{--title-fa-weight:400;--title-fa-size:.9em;--title-lat-weight:400}
-.ilg-case h1 [lang="fa"]{font-weight:var(--title-fa-weight);font-size:var(--title-fa-size)}
-.ilg-case a{color:var(--ink);text-decoration-color:var(--accent);text-underline-offset:.15em}
-.ilg-case{--ease-out:cubic-bezier(.22,1,.36,1);
-font-family:"Jost","Avenir Next","Avenir","Helvetica Neue",Helvetica,Arial,"Vazirmatn","Noto Naskh Arabic",sans-serif;font-weight:400;
--webkit-font-smoothing:antialiased;line-height:1.6;font-size:1.0625rem}
-body{margin:0}.ilg-case *{box-sizing:border-box}
-.ilg-case main{max-width:960px;margin:0 auto;padding:clamp(1.5rem,4vw,4rem) clamp(1rem,4vw,3rem);display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:1.5rem}
-.ilg-case main>*{grid-column:1/-1}.ilg-case .col{grid-column:1/-1}@media (min-width:60rem){.ilg-case .col{grid-column:3/11}}
-.ilg-case h1,.ilg-case h2,.ilg-case h3{font-family:"Jost","Avenir Next",sans-serif;font-weight:500;text-wrap:balance;letter-spacing:-.01em;margin:0}
-.ilg-case h1{font-family:"Jost","Avenir Next",sans-serif;font-weight:400;text-transform:uppercase;letter-spacing:.14em;font-size:clamp(1.6rem,4vw,2.4rem);line-height:1.15;color:var(--label);margin:.5rem 0 1rem}.initial{color:var(--accent-dot)}
-.ilg-case h2{font-size:.8rem;text-transform:uppercase;letter-spacing:.14em;color:var(--ink);margin:4rem 0 1rem}.ilg-case h2::before{content:"";display:block;width:2.5rem;height:2px;background:var(--accent);margin-bottom:.7rem}
-.ilg-case h3{font-size:1.15rem;margin:0 0 .35rem}.ilg-case p{text-wrap:pretty;margin:.5rem 0}
-.ilg-case .kicker{font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ink)}
-.ilg-case .pitch{font-size:clamp(1.2rem,2.2vw,1.5rem);font-weight:300;color:var(--ink);max-width:40rem}
-.ilg-case .meta{color:var(--ink);font-size:.95rem}
-.ilg-case .badge{display:inline-block;border:1px solid var(--accent);color:var(--ink);padding:.05rem .65rem;border-radius:1rem;font-size:.8rem;margin:0 .35rem .35rem 0}
-.ilg-case figure{margin:2rem 0}.ilg-case figure img{width:100%;height:auto;display:block;border-radius:14px;box-shadow:var(--shadow-frame);background:var(--figure-bg)}
-.ilg-case figcaption{font-size:max(12px,.875rem);font-weight:400;line-height:1.55;color:var(--ink);margin-top:.75rem}
-.ilg-case .caveat{color:var(--ink);font-size:1rem;font-weight:400;line-height:1.6;max-width:40rem;margin:.75rem 0 0;padding-inline-start:.85rem;border-inline-start:2px solid var(--accent)}
-.ilg-case .cards{display:grid;gap:1.25rem;grid-template-columns:repeat(auto-fit,minmax(15rem,1fr))}
-.ilg-case .card{background:var(--surface);border-radius:14px;padding:1.25rem 1.35rem;box-shadow:var(--shadow-plate)}
-.ilg-case .steps{grid-template-columns:repeat(auto-fit,minmax(15rem,1fr))}@media(min-width:60rem){.ilg-case .steps{grid-template-columns:repeat(3,minmax(0,1fr))}}
-.ilg-case .step{counter-increment:s}.ilg-case .steps{counter-reset:s}.ilg-case .step h3::before{content:counter(s,decimal-leading-zero) "  ";color:var(--ink);border-bottom:2px solid var(--accent)}
-.ilg-case pre{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:1rem;overflow:auto;font:.85rem/1.5 ui-monospace,SFMono-Regular,Menlo,monospace;white-space:pre-wrap;word-break:break-word}
-.ilg-case code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.9em}
-.ilg-case table{border-collapse:collapse;width:100%;font-size:.95rem}.ilg-case td,.ilg-case th{border-bottom:1px solid var(--line);padding:.55rem .4rem;text-align:start;vertical-align:top}
-.ilg-case th{font-weight:600;color:var(--ink);font-size:.8rem;text-transform:uppercase;letter-spacing:.08em}
-.ilg-case ul{padding-inline-start:1.2rem}.ilg-case li{margin:.3rem 0}.ilg-case footer{margin-top:5rem;color:var(--ink);font-size:.9rem;border-top:1px solid var(--line);padding-top:1.5rem}
-.ilg-case ::selection{background:color-mix(in oklab,var(--accent) 38%,transparent)}
-@media (prefers-reduced-motion:reduce){.ilg-case *{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
-.ilg-case .board{margin:2rem 0;display:grid;grid-template-columns:subgrid}.ilg-case .board>*{grid-column:1/-1}@media (min-width:60rem){.ilg-case .board>figcaption{grid-column:3/11}}.ilg-case .board picture,.ilg-case .board>img{display:block;background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:clamp(.5rem,1.2vw,1rem)}.ilg-case .board img{width:100%;height:auto;display:block;border-radius:4px}.ilg-case .board .b-light,.ilg-case .board .b-dark{border-radius:8px}
-.ilg-case .board .b-light,.ilg-case .board .b-dark{display:none}
-.ilg-case[data-theme=light] .board .b-auto,.ilg-case[data-theme=dark] .board .b-auto{display:none}
-.ilg-case[data-theme=light] .board .b-light,.ilg-case[data-theme=dark] .board .b-dark{display:block}
-.cards-proof{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:1.5rem 0}
-.cards-proof .card{border:1px solid var(--line);border-radius:12px;padding:16px;background:var(--surface)}
-.cards-proof .big{font-size:1.8rem;color:var(--accent-dot);margin:.2rem 0}
-.cards-proof h3{font-size:.85rem;letter-spacing:.12em;text-transform:uppercase;color:var(--label);font-weight:500;margin:0}
-.cards-proof .note{font-size:.9rem;color:var(--ink);margin:0}
-@media (max-width:640px){.cards-proof{grid-template-columns:1fr}}
-.hero{margin:1rem 0 1.5rem;max-width:100%}
+</head>
+<body>
+<div class="ilg-case">
+<main>
+  <header class="site span12">
+    <p class="brand-label">ilghar.studio | cultural</p>
+    <button type="button" class="theme-toggle" aria-pressed="false">Dark mode</button>
+  </header>
+  <header class="hero span12">
+    <h1 class="name"><span class="first">C</span>ultural &amp; Typographic Evaluation</h1>
+    <p class="title">Evaluation kit</p>
+    <p class="sub"><span>Glyphs</span><span>order</span><span>grid</span></p>
+    <span class="status">In progress</span>
+  </header>
 
-</style></head><body><div class="ilg-case"><button type="button" class="ilg-theme-toggle" aria-pressed="false" hidden>Dark mode</button><main>
-<header class="col"><p class="kicker">ilghar.studio · case study</p><h1><span class="initial">C</span>ultural &amp; Typographic Evaluation Kit</h1><p class="pitch">A kit for judging generated design work the way a typographer would: first the facts you can check (the right Persian letters, the right reading order, the grid that actually adds up), then taste, kept separate and allowed to disagree.</p>
-<p><span class="badge">In progress</span></p><p class="caveat">Measured check self-consistency and adversarial robustness on template artifacts. No model or rater results yet.</p></header>
+  <section class="span12" aria-label="Live function">
+    <h2>Live function</h2>
+    <figure>
+      <div class="frame r1610">
+        <form id="glyph-demo" class="live-pad" onsubmit="return false">
+          <label>Expected (Persian)<input id="g-exp" type="text" dir="rtl" lang="fa" value="می‌رود"></label>
+          <label>Observed<input id="g-obs" type="text" dir="rtl" lang="fa" value="مي‌رود"></label>
+          <p style="margin:0;font-size:16px;font-weight:300">Default observed swaps Persian yeh for Arabic yeh — a common generator fault.</p>
+          <button type="button" class="run" id="g-run">Run check</button>
+          <pre class="out" id="g-out" aria-live="polite"></pre>
+        </form>
+      </div>
+      <figcaption>Glyph check · exact Unicode match</figcaption>
+    </figure>
+  </section>
 
+  <section class="span12" aria-label="Proof">
+    <h2>Proof</h2>
+    <div class="grid-444">
+      <div class="card"><h3>Corruption detection</h3><p>15/15 injected glyph, ZWNJ and order faults caught.</p></div>
+      <div class="card"><h3>False positives</h3><p>0/4 clean template artifacts stay clean.</p></div>
+      <div class="card"><h3>Adversarial suite</h3><p>28/28 checks hold under bidi, digits and malformed annotations.</p></div>
+    </div>
+  </section>
 
-<figure class="hero col">
-  <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="../docs/hero/hero-dark.svg">
-    <img src="../docs/hero/hero-light.svg" width="1280" height="480" alt="Cultural &amp; typographic evaluation kit: a fine-line girih field with rose accents. ilghar.studio." style="width:100%;height:auto;border-radius:14px;display:block">
-  </picture>
-</figure>
+  <section class="span12" aria-label="Project material">
+    <h2>Project material</h2>
+    <div class="grid-66">
+      <figure>
+        <div class="frame r1610">
+          <picture>
+            <source media="(prefers-color-scheme: dark)" srcset="../assets/board-dark.svg">
+            <img src="../assets/board-light.svg" alt="Project board: star grid with rose marks and seven checks." width="2400" height="1500">
+          </picture>
+        </div>
+        <figcaption>Project board</figcaption>
+      </figure>
+      <figure>
+        <div class="frame r1610 placeholder" role="img" aria-label="Second material slot"></div>
+        <figcaption>Material · pending</figcaption>
+      </figure>
+    </div>
+  </section>
 
-<section class="col cards-proof" aria-label="Measured proof">
-  <div class="card"><h3>Corruption detection</h3><p class="big">15/15</p><p class="note">Automated checks catch injected glyph, ZWNJ and order faults on template artifacts.</p></div>
-  <div class="card"><h3>False positives</h3><p class="big">0/4</p><p class="note">Clean template artifacts stay clean.</p></div>
-  <div class="card"><h3>Adversarial suite</h3><p class="big">28/28</p><p class="note">Checks and aggregation hold under bidi, digits and malformed annotations.</p></div>
-</section>
-
-<section class="col ilg-app" aria-label="Live glyph check">
-  <h2>Try a glyph check</h2>
-  <p class="pitch">Same rule the kit uses: exact Unicode match. Arabic kāf/yeh where Persian needs keheh/yeh fails; a missing ZWNJ fails.</p>
-  <form id="glyph-demo" class="ilg-frame" onsubmit="return false" style="display:grid;gap:12px;padding:16px">
-    <label>Expected (Persian)<input id="g-exp" type="text" dir="rtl" lang="fa" value="می‌رود" style="width:100%;font:inherit;padding:8px;border:1px solid var(--line);border-radius:8px;background:var(--surface);color:var(--ink)"></label>
-    <label>Observed<input id="g-obs" type="text" dir="rtl" lang="fa" value="مي‌رود" style="width:100%;font:inherit;padding:8px;border:1px solid var(--line);border-radius:8px;background:var(--surface);color:var(--ink)"></label>
-    <p class="note">Default observed swaps Persian yeh for Arabic yeh — a common generator fault.</p>
-    <button type="button" id="g-run" class="ilg-cta" style="justify-self:start">Run check</button>
-    <pre id="g-out" class="note" style="white-space:pre-wrap;margin:0" aria-live="polite"></pre>
-  </form>
-  <p class="note" style="margin-top:12px"><a href="../docs/PAGES_LONGFORM.html">Longform notes, commands and schemas →</a></p>
-</section>
-<figure class="board"><picture class="b-auto"><source media="(prefers-color-scheme: dark)" srcset="../assets/board-dark.svg"><img src="../assets/board-light.svg" alt="Project board: a fine-line star grid with some stars marked in rose, a code-drawn star construction with one rose point, and a text column describing the seven checks." width="2400" height="1500"></picture><img class="b-light" src="../assets/board-light.svg" alt="" width="2400" height="1500" loading="lazy"><img class="b-dark" src="../assets/board-dark.svg" alt="" width="2400" height="1500" loading="lazy"><figcaption>Project board, ilghar.studio. Light and dark versions follow the page theme.</figcaption></figure>
-</main></div></div><script>(function(){var r=document.querySelector('.ilg-case'),b=r&&r.querySelector('.ilg-theme-toggle');if(!b)return;var k='ilg-theme',m=window.matchMedia&&matchMedia('(prefers-color-scheme: dark)'),s=null;try{s=localStorage.getItem(k)}catch(e){}function dark(){var t=r.getAttribute('data-theme');return t?t==='dark':!!(m&&m.matches)}function sync(){var d=dark();b.setAttribute('aria-pressed',String(d));b.textContent=d?'Light mode':'Dark mode';b.setAttribute('aria-label',d?'Switch to light mode':'Switch to dark mode')}if(s==='dark'||s==='light')r.setAttribute('data-theme',s);b.hidden=false;sync();if(m&&m.addEventListener)m.addEventListener('change',sync);b.addEventListener('click',function(){var n=dark()?'light':'dark';r.setAttribute('data-theme',n);try{localStorage.setItem(k,n)}catch(e){}sync()})})();</script></body>
+  <section class="span12">
+    <h2>How it works</h2>
+    <ul class="dots">
+      <li>Check the facts first: right Persian letters, reading order, a grid that adds up.</li>
+      <li>Keep taste separate, and allow raters to disagree.</li>
+      <li>Every check is a pure function over annotations — no model required.</li>
+    </ul>
+    <p><a href="../docs/PAGES_LONGFORM.html">Longform notes, commands and schemas →</a></p>
+  </section>
+  <footer class="span12">Concept and evaluation · ilghar.studio</footer>
+</main>
+</div>
 <script>
-(function(){
-  const CONF={"\u0643":"\u06a9","\u064a":"\u06cc","\u0649":"\u06cc"}; const Z="\u200c";
-  function cps(s){return [...s].map(c=>"U+"+c.codePointAt(0).toString(16).toUpperCase().padStart(4,"0"))}
-  function glyphExact(exp,obs){
-    if(typeof obs!=="string") return {verdict:"fail",evidence:"observed is not text"};
-    if(exp===obs) return {verdict:"pass",evidence:"exact codepoint match"};
-    const notes=[];
-    if((exp.split(Z).length-1)!==(obs.split(Z).length-1)) notes.push("ZWNJ count differs");
-    for(const [a,p] of Object.entries(CONF)){ if(obs.includes(a)&&exp.includes(p)) notes.push("Arabic lookalike where Persian expected ("+a+" vs "+p+")"); }
-    if(!notes.length) notes.push("expected "+cps(exp).join(" ")+" observed "+cps(obs).join(" "));
-    return {verdict:"fail",evidence:notes.join("; ")};
+(function(){var r=document.documentElement;var b=document.querySelector(".theme-toggle");if(!b)return;var k="ilg-theme";var m=window.matchMedia&&matchMedia("(prefers-color-scheme: dark)");var s=null;try{s=localStorage.getItem(k)}catch(e){}function dark(){var t=r.getAttribute("data-theme");return t?t==="dark":!!(m&&m.matches)}function sync(){var d=dark();b.setAttribute("aria-pressed",String(d));b.textContent=d?"Light mode":"Dark mode";var root=document.querySelector(".ilg-case");if(d){root.setAttribute("data-theme","dark");r.setAttribute("data-theme","dark")}else{root.setAttribute("data-theme","light");r.setAttribute("data-theme","light")}}if(s==="dark"||s==="light"){r.setAttribute("data-theme",s);document.querySelector(".ilg-case").setAttribute("data-theme",s)}sync();if(m&&m.addEventListener)m.addEventListener("change",sync);b.addEventListener("click",function(){var n=dark()?"light":"dark";r.setAttribute("data-theme",n);document.querySelector(".ilg-case").setAttribute("data-theme",n);try{localStorage.setItem(k,n)}catch(e){}sync()})})();
+document.getElementById("g-run").addEventListener("click",function(){
+  var exp=document.getElementById("g-exp").value;
+  var obs=document.getElementById("g-obs").value;
+  var ok=exp===obs;
+  var lines=["expected: "+JSON.stringify(exp),"observed: "+JSON.stringify(obs),"match: "+ok];
+  if(!ok){
+    var diffs=[];
+    var n=Math.max(exp.length,obs.length);
+    for(var i=0;i<n;i++){if(exp[i]!==obs[i])diffs.push("@"+i+" U+"+(exp[i]?exp.charCodeAt(i).toString(16):"—")+" vs U+"+(obs[i]?obs.charCodeAt(i).toString(16):"—"));}
+    lines.push("diffs: "+(diffs.slice(0,6).join("; ")||"length"));
   }
-  function run(){ const r=glyphExact(document.getElementById("g-exp").value, document.getElementById("g-obs").value);
-    document.getElementById("g-out").textContent=JSON.stringify(r,null,2); }
-  document.getElementById("g-run").addEventListener("click",run); run();
-})();
+  document.getElementById("g-out").textContent=lines.join("\n");
+});
 </script>
+</body>
 </html>
