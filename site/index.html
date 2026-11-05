@@ -32,6 +32,16 @@ pre.out{margin:0;font:300 14px/1.5 Jost;white-space:pre-wrap;color:var(--fg)}
     <span class="status">In progress</span>
   </header>
 
+  <figure class="span12">
+    <div class="frame r83">
+      <picture>
+        <source media="(prefers-color-scheme: dark)" srcset="hero/hero-dark.svg">
+        <img src="hero/hero-light.svg" width="1200" height="630" alt="Title card for Cultural & Typographic Evaluation by ilghar.studio.">
+      </picture>
+    </div>
+    <figcaption>Project hero</figcaption>
+  </figure>
+
   <section class="span12" aria-label="Live function">
     <h2>Live function</h2>
     <figure>
@@ -59,21 +69,15 @@ pre.out{margin:0;font:300 14px/1.5 Jost;white-space:pre-wrap;color:var(--fg)}
 
   <section class="span12" aria-label="Project material">
     <h2>Project material</h2>
-    <div class="grid-66">
-      <figure>
-        <div class="frame r1610">
-          <picture>
-            <source media="(prefers-color-scheme: dark)" srcset="assets/board-dark.svg">
-            <img src="assets/board-light.svg" alt="Project board: a fine-line star grid with some stars marked in rose, a code-drawn star construction with one rose point, and a text column describing the seven checks." width="2400" height="1500">
-          </picture>
-        </div>
-        <figcaption>Project board</figcaption>
-      </figure>
-      <figure>
-        <div class="frame r1610 placeholder" role="img" aria-label="Second material slot"></div>
-        <figcaption>Material · pending</figcaption>
-      </figure>
-    </div>
+    <figure>
+      <div class="frame r1610">
+        <picture>
+          <source media="(prefers-color-scheme: dark)" srcset="assets/board-dark.svg">
+          <img src="assets/board-light.svg" alt="Project board: a fine-line star grid with some stars marked in rose, a code-drawn star construction with one rose point, and a text column describing the seven checks." width="2400" height="1500">
+        </picture>
+      </div>
+      <figcaption>Project board</figcaption>
+    </figure>
   </section>
 
   <section class="span12">
@@ -103,6 +107,7 @@ document.getElementById("g-run").addEventListener("click",function(){
   }
   document.getElementById("g-out").textContent=lines.join("\n");
 });
+document.getElementById("g-run").click();
 </script>
 </body>
 </html>
