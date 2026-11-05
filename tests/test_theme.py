@@ -20,10 +20,20 @@ class Theme(unittest.TestCase):
             for tok in theme.DECORATIVE_EXCEPTIONS:
                 self.assertNotRegex(css, r"(?<![-\w])color:var\(--%s\)" % tok, f"{pg.name}: --{tok} used as text colour")
     def test_palette_is_exactly_the_studio_palette(self):
-        studio = {"#f3f1f6", "#fffcfe", "#473448", "#7d5a7c", "#a6a1a7", "#856a8e", "#fffafc", "#e4dde8",
-                  "#473448", "#5a535c", "#f4eef3", "#cbbdce", "#a6a1a7", "#e8a8bc", "#2c262f", "#4a424c"}
+        studio = {"#f3f1f6", "#fffcfe", "#4a3a5c", "#7a688c", "#a394ae", "#c97a98", "#fffafc", "#e4dde8",
+                  "#4a434c", "#5a535c", "#f4eef3", "#cbbdce", "#e8a8bc", "#a394ae"}
         used = {v for m in theme.TOKENS.values() for v in m.values()} | set(theme.FIGURE_BG.values())
         self.assertEqual(used - studio, set())
+    def test_retired_dark_values_are_gone(self):
+        # ilghar.studio src/styles.css (PR #1, round 3): dark subtle #cbbdce, accent-fg #4a434c, line #a394ae.
+        # Light accent-fg #fffafc is the value that stylesheet uses, so it is allowed.
+        retired = re.compile(r"#(9a8a9c|2c262f|4a424c)\b", re.I)
+        self.assertEqual(retired.findall(repr(theme.TOKENS) + repr(theme.FIGURE_BG)), [])
+        for f in ("site/index.html", "site/DESIGN_TOKENS.json", "src/cultural_typographic_ai_evaluation/theme.py"):
+            self.assertEqual(retired.findall((ROOT / f).read_text(encoding="utf-8")), [], f)
+        self.assertEqual((theme.TOKENS["dark"]["subtle"], theme.TOKENS["dark"]["accent-fg"], theme.TOKENS["dark"]["line"]),
+                         ("#cbbdce", "#4a434c", "#a394ae"))
+        self.assertEqual(theme.TOKENS["light"]["accent-fg"], "#fffafc")
     def test_contrast_formula_reference_values(self):
         self.assertAlmostEqual(theme.contrast("#000000", "#ffffff"), 21.0, places=2)
         self.assertAlmostEqual(theme.contrast("#777777", "#ffffff"), 4.48, places=2)
@@ -47,3 +57,10 @@ class Readme(unittest.TestCase):
         p = json.loads((ROOT / "site/project.json").read_text(encoding="utf-8")); t = (ROOT / "README.md").read_text(encoding="utf-8")
         self.assertIn(export_site.render_readme_block(p), t)
 if __name__ == "__main__": unittest.main()
+
+
+class LinkColour(unittest.TestCase):
+    def test_links_use_theme_ink_not_browser_blue(self):
+        page = (ROOT / "site" / "index.html").read_text(encoding="utf-8") if "ROOT" in globals() else \
+            (__import__("pathlib").Path(__file__).resolve().parent.parent / "site" / "index.html").read_text(encoding="utf-8")
+        self.assertRegex(page, r"\.ilg-case a\{[^}]*color:var\(--ink\)")

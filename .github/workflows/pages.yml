@@ -30,3 +30,4 @@ jobs:
           path: ./_pages
       - id: deployment
         uses: actions/deploy-pages@v4
+

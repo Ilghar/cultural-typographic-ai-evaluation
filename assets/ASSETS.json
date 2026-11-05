@@ -1,27 +1,27 @@
 {
  "credit": "ilghar.studio",
- "status": "round 5 boards approved by owner 2026-10-25",
+ "status": "boards re-exported 2026-10-31 in the studio palette: title first letter pink #fcb4c4 semibold, rest of the title plum #473448 (light) / ink-light #d4d2d2 (dark); other text plum #473448 / ink #d4d2d2; accent #856a8e / #fcb4c4; no blue",
  "boards": [
   {
    "path": "assets/board-light.svg",
    "theme": "light",
-   "source_png_sha256": "67dd286a81134148860aa3eeb494c76cf9704526241c4646134ed5e676da9d5a",
+   "source_png_sha256": "f35d67dc695b125c52b8dcc614793e123e4009e6768fae5a41e3b525feb38c59",
    "width": 2400,
    "height": 1500,
-   "embedded": "JPEG q85 in SVG wrapper"
+   "embedded": "lossless PNG (source_png_sha256) in SVG wrapper"
   },
   {
    "path": "assets/board-dark.svg",
    "theme": "dark",
-   "source_png_sha256": "13fb060158d48b9bac1c189cb82fea685148f1d2a49e54779e7319c1d9249741",
+   "source_png_sha256": "b35313e5cdbba13c5d70ee8a4719cf5096006adb3eee235f505aa5428b386f70",
    "width": 2400,
    "height": 1500,
-   "embedded": "JPEG q85 in SVG wrapper"
+   "embedded": "lossless PNG (source_png_sha256) in SVG wrapper"
   }
  ],
  "usage": "<picture><source media=\"(prefers-color-scheme: dark)\" srcset=\"assets/board-dark.svg\"><img src=\"assets/board-light.svg\"></picture>",
  "format_note": "Raster boards are embedded inside SVG wrappers so they can be committed as text.",
- "construction": "code-rendered construction drawing",
- "photos": "Model/study photograph generated for this board.",
+ "construction": "code-rendered drawings (girih star grid and star construction)",
+ "photos": "No photograph on this board.",
  "superseded": "earlier illustration_v* and rejected hero options (not committed)"
 }

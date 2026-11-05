@@ -1,201 +1,201 @@
 {
- "id": "cultural-typographic-ai-evaluation",
- "title": "cultural & typographic evaluation kit",
- "summary": "How can evaluators separate factual cultural/typographic constraint failures from subjective aesthetic preference, while documenting disagreement and source provenance?",
- "status": "in_progress",
- "evidence_level": "Measured check self-consistency and adversarial robustness on template artifacts. No model or rater results yet.",
- "contribution": "Concept, design criteria, typographic research and editorial: ilghar.studio.",
- "architecture": [
-  "Cleared brief + reference constraints",
-  "Original or licensed candidate example",
-  "Separate factual and aesthetic rubric axes",
-  "Independent annotation + uncertainty",
-  "Adjudication without identity-based inference",
-  "Versioned evaluation report and design examples"
- ],
- "results": [
-  {
-   "metric": "automated check detection of generated corruptions",
-   "value": "15/15",
-   "denominator": 15,
-   "kind": "measured self-consistency",
-   "caveat": "corruptions written by check author"
+  "id": "cultural-typographic-ai-evaluation",
+  "title": "cultural & typographic evaluation kit",
+  "summary": "How can evaluators separate factual cultural/typographic constraint failures from subjective aesthetic preference, while documenting disagreement and source provenance?",
+  "status": "in_progress",
+  "evidence_level": "Measured check self-consistency and adversarial robustness on template artifacts. No model or rater results yet.",
+  "contribution": "Concept, design criteria, typographic research and editorial: ilghar.studio.",
+  "architecture": [
+    "Cleared brief + reference constraints",
+    "Original or licensed candidate example",
+    "Separate factual and aesthetic rubric axes",
+    "Independent annotation + uncertainty",
+    "Adjudication without identity-based inference",
+    "Versioned evaluation report and design examples"
+  ],
+  "results": [
+    {
+      "metric": "automated check detection of generated corruptions",
+      "value": "15/15",
+      "denominator": 15,
+      "kind": "measured self-consistency",
+      "caveat": "corruptions written by check author"
+    },
+    {
+      "metric": "false positives on clean template artifacts",
+      "value": "0/4",
+      "denominator": 4,
+      "kind": "measured",
+      "caveat": "template SVG, not model outputs"
+    },
+    {
+      "metric": "adversarial suite (checks and aggregation)",
+      "value": "28/28 (11/28 before the hardening pass)",
+      "denominator": 28,
+      "kind": "measured robustness",
+      "caveat": "suite written by check author"
+    }
+  ],
+  "assets": [],
+  "links": [],
+  "limitations": [
+    "No generative model outputs evaluated yet; artifacts are templates and hand-written examples.",
+    "No real human annotations; aesthetic axes are unmeasured. Synthetic annotations are labeled synthetic.",
+    "C03/C04 are human-review-only; text checks cannot see font shaping or rendering.",
+    "Grid and keyboard checks work on declared numbers and text, never on screenshots.",
+    "Reviews so far are self-reviews.",
+    "Illustrations are editorial images only; the native diagram is authoritative."
+  ],
+  "pitch": "A kit for judging generated design work the way a typographer would: first the facts you can check (the right Persian letters, the right reading order, the grid that actually adds up), then taste, kept separate and allowed to disagree.",
+  "problem": [
+    "Image and layout generators produce posters, cards and keyboards that look right and are wrong. Persian keycaps with the same letter printed four times. An Arabic kāf where Persian needs keheh. A missing zero-width non-joiner that breaks a word in two. A template whose inside margin is 37.89 pt while every other margin is 36. A literary or cultural object dropped in as decoration, with no reason to be there.",
+    "Most evaluations fold all of this into one “quality” score, so a factual error and a matter of taste end up on the same scale, and the people who notice the error are outvoted by the people who liked the colors.",
+    "This kit keeps the two apart. Factual constraints are checked by deterministic code at the level of Unicode code points and arithmetic. Aesthetic judgments are collected from raters as distributions, never averaged into a verdict, and disagreement is flagged for adjudication. Rater identity is never used as evidence of expertise: an annotation that carries a nationality field is rejected."
+  ],
+  "audience": [
+    {
+      "who": "Teams evaluating image, layout or type generators",
+      "why": "Code-point-exact checks for Persian and mixed-direction text, and a clear line between “wrong” and “I don’t like it”."
+    },
+    {
+      "who": "Designers and art directors",
+      "why": "A grid checker that tells you whether margins, gutters and baseline really form the square, rhythmic module you asked for."
+    },
+    {
+      "who": "Annotation and research leads",
+      "why": "Annotation schemas that preserve minority opinions and uncertainty, and refuse identity-based shortcuts."
+    }
+  ],
+  "how": [
+    {
+      "title": "Cleared brief + constraints",
+      "body": "Each case states what must be true (exact title glyphs, reading order, required fields, diagram stages) and records rights and review status for every reference."
+    },
+    {
+      "title": "Candidate artifact",
+      "body": "Original or licensed examples only. The vertical slice renders a right-to-left SVG card from a spec, with native text, never text baked into pixels."
+    },
+    {
+      "title": "Factual checks",
+      "body": "Exact-glyph, reading-order, required-field and diagram checks return pass, fail or uncertain with evidence. Anything that needs eyes is marked human-review, never guessed."
+    },
+    {
+      "title": "Taste, separately",
+      "body": "Aesthetic axes such as hierarchy are collected as rating distributions with n, not merged into the factual verdict."
+    },
+    {
+      "title": "Disagreement and adjudication",
+      "body": "Conflicting rater verdicts are flagged for adjudication. Malformed or identity-bearing annotations are rejected with reasons."
+    },
+    {
+      "title": "Grid and keyboard checks",
+      "body": "The grid checker verifies margins, gutters, square modules and baseline rhythm by arithmetic; the keyboard checker checks Persian keycaps for duplicates, look-alikes and missing letters."
+    },
+    {
+      "title": "Script linter",
+      "body": "The script linter walks every string in an evaluation output and flags codepoint-level Persian-script faults: Arabic yeh/kaf (U+064A, U+0649, U+0643) where Persian U+06CC/U+06A9 are expected, misplaced or repeated ZWNJ, bidi control characters, mixed digit sets, and a labeled heuristic for a missing ZWNJ after the mi-/nemi- verb prefix. Rules follow the character-level guidance in [W3C Arabic & Persian Layout Requirements](https://www.w3.org/TR/alreq/). It reports characters, not language quality; exit 0 clean, 1 findings, 2 bad input."
+    }
+  ],
+  "board": {
+    "light": "assets/board-light.svg",
+    "dark": "assets/board-dark.svg",
+    "width": 2400,
+    "height": 1500,
+    "alt": "Project board: a fine-line star grid with some stars marked in rose, a code-drawn star construction with one rose point, and a text column describing the seven checks.",
+    "caption": "Project board, ilghar.studio. Light and dark versions follow the page theme."
   },
-  {
-   "metric": "false positives on clean template artifacts",
-   "value": "0/4",
-   "denominator": 4,
-   "kind": "measured",
-   "caveat": "template SVG, not model outputs"
-  },
-  {
-   "metric": "adversarial suite (checks and aggregation)",
-   "value": "28/28 (11/28 before the hardening pass)",
-   "denominator": 28,
-   "kind": "measured robustness",
-   "caveat": "suite written by check author"
-  }
- ],
- "assets": [],
- "links": [],
- "limitations": [
-  "No generative model outputs evaluated yet; artifacts are templates and hand-written examples.",
-  "No real human annotations; aesthetic axes are unmeasured. Synthetic annotations are labelled synthetic.",
-  "C03/C04 are human-review-only; text checks cannot see font shaping or rendering.",
-  "Grid and keyboard checks work on declared numbers and text, never on screenshots.",
-  "Reviews so far are self-reviews.",
-  "Illustrations are editorial images only; the native diagram is authoritative."
- ],
- "pitch": "A kit for judging generated design work the way a typographer would: first the facts you can check (the right Persian letters, the right reading order, the grid that actually adds up), then taste, kept separate and allowed to disagree.",
- "problem": [
-  "Image and layout generators produce posters, cards and keyboards that look plausible and are quietly wrong. Persian keycaps with the same letter printed four times. An Arabic kāf where Persian needs keheh. A missing zero-width non-joiner that breaks a word in two. A template whose inside margin is 37.89 pt while every other margin is 36. A literary or cultural object dropped in as decoration, with no reason to be there.",
-  "Most evaluations fold all of this into one “quality” score, so a factual error and a matter of taste end up on the same scale, and the people who notice the error are outvoted by the people who liked the colours.",
-  "This kit keeps the two apart. Factual constraints are checked by deterministic code at the level of Unicode code points and arithmetic. Aesthetic judgements are collected from raters as distributions, never averaged into a verdict, and disagreement is flagged for adjudication. Rater identity is never used as evidence of expertise: an annotation that carries a nationality field is rejected."
- ],
- "audience": [
-  {
-   "who": "Teams evaluating image, layout or type generators",
-   "why": "Code-point-exact checks for Persian and mixed-direction text, and a clear line between “wrong” and “I don’t like it”."
-  },
-  {
-   "who": "Designers and art directors",
-   "why": "A grid checker that tells you whether margins, gutters and baseline really form the square, rhythmic module you asked for."
-  },
-  {
-   "who": "Annotation and research leads",
-   "why": "Annotation schemas that preserve minority opinions and uncertainty, and refuse identity-based shortcuts."
-  }
- ],
- "how": [
-  {
-   "title": "Cleared brief + constraints",
-   "body": "Each case states what must be true (exact title glyphs, reading order, required fields, diagram stages) and records rights and review status for every reference."
-  },
-  {
-   "title": "Candidate artifact",
-   "body": "Original or licensed examples only. The vertical slice renders a right-to-left SVG card from a spec, with native text, never text baked into pixels."
-  },
-  {
-   "title": "Factual checks",
-   "body": "Exact-glyph, reading-order, required-field and diagram checks return pass, fail or uncertain with evidence. Anything that needs eyes is marked human-review, never guessed."
-  },
-  {
-   "title": "Taste, separately",
-   "body": "Aesthetic axes such as hierarchy are collected as rating distributions with n, not merged into the factual verdict."
-  },
-  {
-   "title": "Disagreement and adjudication",
-   "body": "Conflicting rater verdicts are flagged for adjudication. Malformed or identity-bearing annotations are rejected with reasons."
-  },
-  {
-   "title": "Grid and keyboard checks",
-   "body": "The grid checker verifies margins, gutters, square modules and baseline rhythm by arithmetic; the keyboard checker checks Persian keycaps for duplicates, look-alikes and missing letters."
-  },
-  {
-   "title": "Script linter",
-   "body": "The script linter walks every string in an evaluation output and flags codepoint-level Persian-script faults: Arabic yeh/kaf (U+064A, U+0649, U+0643) where Persian U+06CC/U+06A9 are expected, misplaced or repeated ZWNJ, bidi control characters, mixed digit sets, and a labelled heuristic for a missing ZWNJ after the mi-/nemi- verb prefix. Rules follow the character-level guidance in [W3C Arabic & Persian Layout Requirements](https://www.w3.org/TR/alreq/). It reports characters, not language quality; exit 0 clean, 1 findings, 2 bad input."
-  }
- ],
- "board": {
-  "light": "../assets/board-light.svg",
-  "dark": "../assets/board-dark.svg",
-  "width": 2400,
-  "height": 1500,
-  "alt": "Project board: a fine-line girih star grid with some stars marked mauve, a photo of a hand-laid star tiling with a compass, and a text column describing the six checks.",
-  "caption": "Project board, ilghar.studio. Light and dark versions follow the page theme."
- },
- "figures": [
-  {
-   "id": "second",
-   "src": "../assets/fact-vs-taste.svg",
-   "alt": "Two trays divided by a plum ruler: measuring tools on the left, swatches and a dried flower on the right.",
-   "caption": "Facts on one side, taste on the other, and a ruler between them.",
-   "width": 1280,
-   "height": 720
-  }
- ],
- "commands": [
-  {
-   "cmd": "cultural-typographic-ai-evaluation report fixtures/synthetic_eval_m03.json --out out/",
-   "what": "Run factual checks and aggregate annotations for two synthetic cases. X01 is a deliberately broken card.",
-   "output": "{\"X01\": [\"fail\", \"fail\", \"fail\", \"uncertain\"], \"X02\": [\"pass\"]}\n\nX01 evidence (from out/report.json):\n  title   fail  ZWNJ count 1 expected, 0 observed; Arabic ARABIC LETTER KAF used where Persian ARABIC LETTER KEHEH expected\n  order   fail  expected [rtl:عنوان, ltr:2026] observed [ltr:2026, rtl:عنوان]\n  fields  fail  missing: venue\n  ref     uncertain  artifact lacks data for this constraint\n  raters  ref: 1 pass / 1 fail -> needs_adjudication\n  rejected r3: forbidden identity field rater_nationality; rating out of range on hierarchy"
-  },
-  {
-   "cmd": "cultural-typographic-ai-evaluation slice inputs/synthetic_cases.json --specs fixtures/card_specs_m04.json --out out/m04",
-   "what": "Vertical slice: render RTL SVG cards from specs and run the checks on them. Cases without an automatable spec stay empty rather than pass.",
-   "output": "{\"C01\": [\"pass\", \"pass\", \"pass\"], \"C02\": [\"pass\", \"pass\", \"pass\"], \"C03\": [], \"C04\": [], \"C05\": [], \"C06\": []}"
-  },
-  {
-   "cmd": "cultural-typographic-ai-evaluation collection . --out out/c",
-   "what": "Validate the case collection and list which constraints per case can be checked by code.",
-   "output": "{\"errors\": [], \"automatable\": {\"C01\": [\"glyph_exact\"], \"C02\": [\"required_fields\", \"reading_order\"], \"C03\": [], \"C04\": [], \"C05\": [\"reading_order\", \"glyph_exact\"], \"C06\": [\"diagram_fidelity\"]}}"
-  },
-  {
-   "cmd": "cultural-typographic-ai-evaluation baseline . --out out/b",
-   "what": "Corruption suite: inject known errors (Arabic kāf/yeh, dropped ZWNJ, swapped order, invented metric) and measure detection.",
-   "output": "{\"detection\": {\"detected\": 15, \"denominator\": 15, \"value\": 1.0}, \"false_positives_on_clean\": {\"count\": 0, \"denominator\": 4}, \"by_variant\": {\"arabic_kaf\": {\"detected\": 2}, \"arabic_yeh\": {\"detected\": 2}, \"drop_stage\": {\"detected\": 1}, \"drop_venue\": {\"detected\": 3}, \"drop_zwnj\": {\"detected\": 1}, \"invented_metric\": {\"detected\": 1}, \"swap_order\": {\"detected\": 1}, \"title_moved_last\": {\"detected\": 3}, \"zwnj_to_space\": {\"detected\": 1}}}"
-  },
-  {
-   "cmd": "cultural-typographic-ai-evaluation failure --out out/f",
-   "what": "Adversarial suite for checks and aggregation (bidi controls, Persian digits, percent signs, malformed annotations).",
-   "output": "{\"passed\": \"28/28\"}"
-  },
-  {
-   "cmd": "python -c \"from cultural_typographic_ai_evaluation.grid import check_grid; ...\"",
-   "what": "The recorded A4 template: 6×9 grid, 12 pt gutter, margins declared equal but inside set to 37.89 pt.",
-   "output": "{\"verdict\": \"fail\", \"findings\": [{\"check\": \"equal_margins\", \"verdict\": \"fail\", \"evidence\": \"declared equal but got {'top': 36, 'bottom': 36, 'inside': 37.89, 'outside': 36} pt\"}, {\"check\": \"square_modules\", \"verdict\": \"fail\", \"evidence\": \"module 76.898 x 74.877 pt (difference 2.021)\"}], \"derived\": {\"text_area\": [521.386, 769.89], \"module\": [76.898, 74.877]}}"
-  },
-  {
-   "cmd": "python -c \"from cultural_typographic_ai_evaluation.keyboard import check_keys; ...\"",
-   "what": "A synthetic 33-key Persian layout with one Arabic kāf and dāl printed three times.",
-   "output": "{\"verdict\": \"fail\", \"n_keys\": 33, \"n_missing\": 2, \"findings\": [{\"kind\": \"arabic_lookalike\", \"key\": 30, \"evidence\": \"ARABIC LETTER KAF used; Persian needs ARABIC LETTER KEHEH\"}, {\"kind\": \"duplicate\", \"key\": \"9,31,40\", \"evidence\": \"U+062F appears on 3 keys\"}, {\"kind\": \"missing\", \"key\": null, \"evidence\": \"U+0647 U+06CC\"}]}"
-  },
-  {
-   "cmd": "python -m cultural_typographic_ai_evaluation.script_lint tests/fixtures/script_lint/dirty.json",
-   "what": "Lint a synthetic fixture of deliberately broken Persian strings (not model output). Reference: [W3C Arabic & Persian Layout Requirements](https://www.w3.org/TR/alreq/).",
-   "output": "tests/fixtures/script_lint/dirty.json:outputs[0].output@0 PS006 'مي' prefix joined without ZWNJ (heuristic; verify)\ntests/fixtures/script_lint/dirty.json:outputs[0].output@1 PS001 ARABIC LETTER YEH U+064A; Persian uses U+06CC\ntests/fixtures/script_lint/dirty.json:outputs[0].output@8 PS002 ARABIC LETTER KAF U+0643; Persian uses U+06A9\ntests/fixtures/script_lint/dirty.json:outputs[1].output@4 PS003 repeated ZWNJ\ntests/fixtures/script_lint/dirty.json:outputs[1].output@11 PS003 ZWNJ at word edge or beside whitespace\ntests/fixtures/script_lint/dirty.json:outputs[2].output@0 PS004 bidi control RLE U+202B\ntests/fixtures/script_lint/dirty.json:outputs[2].output@5 PS004 bidi control PDF U+202C\ntests/fixtures/script_lint/dirty.json:outputs[3].output@0 PS005 mixed digit sets: ascii, persian\n8 finding(s)\nexit=1"
-  }
- ],
- "schemas": [
-  {
-   "path": "schemas/case.schema.json",
-   "what": "One case: id, kind, brief, required_text, constraints, aesthetic_axes, rights, review_status, gold_verdict (null until reviewed)."
-  },
-  {
-   "path": "schemas/annotation.schema.json",
-   "what": "One rater’s annotation: case_id, artifact_id, rater_id, constraint_results, aesthetic_ratings, notes. No identity fields allowed."
-  }
- ],
- "roadmap": [
-  {
-   "item": "Margin/gutter solver that proposes a square, rhythmic modular grid for a given page",
-   "status": "grid checker implemented; solver planned",
-   "origin": "“what should be the relation between the margins and gutters and still arrive at a modular, flexible and square rhythmic grid-system?”"
-  },
-  {
-   "item": "Persian typewriter / keyboard fidelity benchmark",
-   "status": "keycap checker implemented; benchmark cases planned",
-   "origin": "critique of generated Persian keycaps with repeated and wrong letters"
-  },
-  {
-   "item": "Typography-history layer: how historical systems shaped contemporary ones, numbers and poetics",
-   "status": "planned",
-   "origin": "request to trace modern type systems back to their references, “not only the numbers but also the poetic, conceptual thoughts”"
-  },
-  {
-   "item": "Reference-justified objects: cultural and literary references must have a reason to appear",
-   "status": "human-review axis today; structured rubric planned",
-   "origin": "critique of decorative name-dropping and irrelevant symbolic objects"
-  },
-  {
-   "item": "Identity preservation: separate a reference person’s attributes from setting and style",
-   "status": "planned, consent-cleared material only",
-   "origin": "critiques of identity and reference drift in generated portraits"
-  },
-  {
-   "item": "Real rater study with documented disagreement",
-   "status": "open",
-   "origin": "no human annotations collected yet"
-  }
- ]
+  "figures": [
+    {
+      "id": "second",
+      "src": "../assets/fact-vs-taste.svg",
+      "alt": "Two trays divided by a plum ruler: measuring tools on the left, swatches and a dried flower on the right.",
+      "caption": "Facts on one side, taste on the other, and a ruler between them.",
+      "width": 1280,
+      "height": 720
+    }
+  ],
+  "commands": [
+    {
+      "cmd": "cultural-typographic-ai-evaluation report fixtures/synthetic_eval_m03.json --out out/",
+      "what": "Run factual checks and aggregate annotations for two synthetic cases. X01 is a deliberately broken card.",
+      "output": "{\"X01\": [\"fail\", \"fail\", \"fail\", \"uncertain\"], \"X02\": [\"pass\"]}\n\nX01 evidence (from out/report.json):\n  title   fail  ZWNJ count 1 expected, 0 observed; Arabic ARABIC LETTER KAF used where Persian ARABIC LETTER KEHEH expected\n  order   fail  expected [rtl:عنوان, ltr:2026] observed [ltr:2026, rtl:عنوان]\n  fields  fail  missing: venue\n  ref     uncertain  artifact lacks data for this constraint\n  raters  ref: 1 pass / 1 fail -> needs_adjudication\n  rejected r3: forbidden identity field rater_nationality; rating out of range on hierarchy"
+    },
+    {
+      "cmd": "cultural-typographic-ai-evaluation slice inputs/synthetic_cases.json --specs fixtures/card_specs_m04.json --out out/m04",
+      "what": "Vertical slice: render RTL SVG cards from specs and run the checks on them. Cases without an automatable spec stay empty rather than pass.",
+      "output": "{\"C01\": [\"pass\", \"pass\", \"pass\"], \"C02\": [\"pass\", \"pass\", \"pass\"], \"C03\": [], \"C04\": [], \"C05\": [], \"C06\": []}"
+    },
+    {
+      "cmd": "cultural-typographic-ai-evaluation collection . --out out/c",
+      "what": "Validate the case collection and list which constraints per case can be checked by code.",
+      "output": "{\"errors\": [], \"automatable\": {\"C01\": [\"glyph_exact\"], \"C02\": [\"required_fields\", \"reading_order\"], \"C03\": [], \"C04\": [], \"C05\": [\"reading_order\", \"glyph_exact\"], \"C06\": [\"diagram_fidelity\"]}}"
+    },
+    {
+      "cmd": "cultural-typographic-ai-evaluation baseline . --out out/b",
+      "what": "Corruption suite: inject known errors (Arabic kāf/yeh, dropped ZWNJ, swapped order, invented metric) and measure detection.",
+      "output": "{\"detection\": {\"detected\": 15, \"denominator\": 15, \"value\": 1.0}, \"false_positives_on_clean\": {\"count\": 0, \"denominator\": 4}, \"by_variant\": {\"arabic_kaf\": {\"detected\": 2}, \"arabic_yeh\": {\"detected\": 2}, \"drop_stage\": {\"detected\": 1}, \"drop_venue\": {\"detected\": 3}, \"drop_zwnj\": {\"detected\": 1}, \"invented_metric\": {\"detected\": 1}, \"swap_order\": {\"detected\": 1}, \"title_moved_last\": {\"detected\": 3}, \"zwnj_to_space\": {\"detected\": 1}}}"
+    },
+    {
+      "cmd": "cultural-typographic-ai-evaluation failure --out out/f",
+      "what": "Adversarial suite for checks and aggregation (bidi controls, Persian digits, percent signs, malformed annotations).",
+      "output": "{\"passed\": \"28/28\"}"
+    },
+    {
+      "cmd": "python3 -c \"from cultural_typographic_ai_evaluation.grid import check_grid; ...\"",
+      "what": "The recorded A4 template: 6×9 grid, 12 pt gutter, margins declared equal but inside set to 37.89 pt.",
+      "output": "{\"verdict\": \"fail\", \"findings\": [{\"check\": \"equal_margins\", \"verdict\": \"fail\", \"evidence\": \"declared equal but got {'top': 36, 'bottom': 36, 'inside': 37.89, 'outside': 36} pt\"}, {\"check\": \"square_modules\", \"verdict\": \"fail\", \"evidence\": \"module 76.898 x 74.877 pt (difference 2.021)\"}], \"derived\": {\"text_area\": [521.386, 769.89], \"module\": [76.898, 74.877]}}"
+    },
+    {
+      "cmd": "python3 -c \"from cultural_typographic_ai_evaluation.keyboard import check_keys; ...\"",
+      "what": "A synthetic 33-key Persian layout with one Arabic kāf and dāl printed three times.",
+      "output": "{\"verdict\": \"fail\", \"n_keys\": 33, \"n_missing\": 2, \"findings\": [{\"kind\": \"arabic_lookalike\", \"key\": 30, \"evidence\": \"ARABIC LETTER KAF used; Persian needs ARABIC LETTER KEHEH\"}, {\"kind\": \"duplicate\", \"key\": \"9,31,40\", \"evidence\": \"U+062F appears on 3 keys\"}, {\"kind\": \"missing\", \"key\": null, \"evidence\": \"U+0647 U+06CC\"}]}"
+    },
+    {
+      "cmd": "python3 -m cultural_typographic_ai_evaluation.script_lint tests/fixtures/script_lint/dirty.json",
+      "what": "Lint a synthetic fixture of deliberately broken Persian strings (not model output). Reference: [W3C Arabic & Persian Layout Requirements](https://www.w3.org/TR/alreq/).",
+      "output": "tests/fixtures/script_lint/dirty.json:outputs[0].output@0 PS006 'مي' prefix joined without ZWNJ (heuristic; verify)\ntests/fixtures/script_lint/dirty.json:outputs[0].output@1 PS001 ARABIC LETTER YEH U+064A; Persian uses U+06CC\ntests/fixtures/script_lint/dirty.json:outputs[0].output@8 PS002 ARABIC LETTER KAF U+0643; Persian uses U+06A9\ntests/fixtures/script_lint/dirty.json:outputs[1].output@4 PS003 repeated ZWNJ\ntests/fixtures/script_lint/dirty.json:outputs[1].output@11 PS003 ZWNJ at word edge or beside whitespace\ntests/fixtures/script_lint/dirty.json:outputs[2].output@0 PS004 bidi control RLE U+202B\ntests/fixtures/script_lint/dirty.json:outputs[2].output@5 PS004 bidi control PDF U+202C\ntests/fixtures/script_lint/dirty.json:outputs[3].output@0 PS005 mixed digit sets: ascii, persian\n8 finding(s)\nexit=1"
+    }
+  ],
+  "schemas": [
+    {
+      "path": "schemas/case.schema.json",
+      "what": "One case: id, kind, brief, required_text, constraints, aesthetic_axes, rights, review_status, gold_verdict (null until reviewed)."
+    },
+    {
+      "path": "schemas/annotation.schema.json",
+      "what": "One rater’s annotation: case_id, artifact_id, rater_id, constraint_results, aesthetic_ratings, notes. No identity fields allowed."
+    }
+  ],
+  "roadmap": [
+    {
+      "item": "Margin/gutter solver that proposes a square, rhythmic modular grid for a given page",
+      "status": "grid checker implemented; solver planned",
+      "origin": "“what should be the relation between the margins and gutters and still arrive at a modular, flexible and square rhythmic grid-system?”"
+    },
+    {
+      "item": "Persian typewriter / keyboard fidelity benchmark",
+      "status": "keycap checker implemented; benchmark cases planned",
+      "origin": "critique of generated Persian keycaps with repeated and wrong letters"
+    },
+    {
+      "item": "Typography-history layer: how historical systems shaped contemporary ones, numbers and poetics",
+      "status": "planned",
+      "origin": "request to trace modern type systems back to their references, “not only the numbers but also the poetic, conceptual thoughts”"
+    },
+    {
+      "item": "Reference-justified objects: cultural and literary references must have a reason to appear",
+      "status": "human-review axis today; structured rubric planned",
+      "origin": "critique of decorative name-dropping and irrelevant symbolic objects"
+    },
+    {
+      "item": "Identity preservation: separate a reference person’s attributes from setting and style",
+      "status": "planned, consent-cleared material only",
+      "origin": "critiques of identity and reference drift in generated portraits"
+    },
+    {
+      "item": "Real rater study with documented disagreement",
+      "status": "open",
+      "origin": "no human annotations collected yet"
+    }
+  ]
 }
