@@ -11,3 +11,6 @@ docs/hero/f2-light.gif
 docs/hero/f2-light.webp
 site/og/og-light.svg
 site/og/og-dark.svg
+
+# Palette-only: skip off-palette colours; still run the blue check
+palette assets/fact-vs-taste.svg
