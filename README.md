@@ -2,7 +2,7 @@
   <a href="https://ilghar.github.io/cultural-typographic-ai-evaluation/">
     <picture>
       <source media="(prefers-color-scheme: dark)" srcset="docs/hero/hero-dark.webp">
-      <img src="docs/hero/hero-light.webp" width="100%" alt="The live Pages project hero: CULTURAL typographic evaluation, a star grid, and a constructed eight-pointed star.">
+      <img src="docs/hero/hero-light.webp" width="100%" alt="The live glyph check mid-run: expected Persian می‌رود, observed Arabic yeh مي‌رود, match false, and the code-point diff.">
     </picture>
   </a>
 </p>
